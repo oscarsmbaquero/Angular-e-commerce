@@ -9,7 +9,7 @@
           <p class="product-description">{{ product.description }}</p>
           <p class="product-price">{{ product.precio }}&nbsp;€</p>
           <div class="product-action">
-            <button class="add-to-cart-btn">Agregar al carrito</button>
+            <button class="add-to-cart-btn" (click)="addToCart(product)">Agregar al carrito</button>
             <button class="wishlist-btn">Agregar a la lista de deseos</button>
           </div>
         </div>

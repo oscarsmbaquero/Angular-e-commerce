@@ -30,4 +30,8 @@ export class ListComponent {
     });
   }
 
+  addToCart(product: any): void {
+    this.storeService.addToCart(product);
+  }
+
 }

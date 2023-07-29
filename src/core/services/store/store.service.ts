@@ -11,9 +11,45 @@ import { map } from 'rxjs/operators';
 })
 export class StoreService {
 
-  constructor(private httpClient: HttpClient) { }
+  private cartKey = 'cart'; // Nombre para la clave en sessionStorage
 
+  constructor(private httpClient: HttpClient) { }
+/**
+ * Obtener productos
+ * @returns 
+ */
   public getProducts():Observable<IProduct[]> {
     return this.httpClient.get<IProduct[]>(`${environment.apiUrl}banks`);
+  }
+  /**
+   * Añadir a la cesta
+   * @param item 
+   */
+  addToCart(item: any): void {
+    const cart = this.getCart();
+    cart.push(item);
+    this.saveCart(cart);
+  }
+  /**
+   * obtener cesta
+   * @returns 
+   */
+  getCart(): any[] {
+    const cartData = sessionStorage.getItem(this.cartKey);
+    return cartData ? JSON.parse(cartData) : [];
+  }
+/**
+ * guarar en cesta
+ * @param cart 
+ */
+  saveCart(cart: any[]): void {
+    sessionStorage.setItem(this.cartKey, JSON.stringify(cart));
+  }
+
+  /**
+   * eliminar cesta
+   */
+  clearCart(): void {
+    sessionStorage.removeItem(this.cartKey);
   }
 }

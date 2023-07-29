@@ -1,12 +1,14 @@
+/* Estilos generales para todas las pantallas */
 .product-card-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: flex;    
+    gap: 20px;
     justify-content: space-between;
   }
   
   .product-card {
-    flex: 1 0 23%; /* Ajustar el ancho de las cards para mostrar tantas como entren por fila */
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -23,6 +25,7 @@
   .product-info {
     margin-top: 12px;
     text-align: center;
+    flex-grow: 1;
   }
   
   .product-name {
@@ -53,13 +56,21 @@
   .product-action button {
     padding: 10px 16px;
     border: none;
-    border-radius: 4px;
+    border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    background-color: rgb(222, 165, 224);
   }
   
   .product-action button:hover {
     background-color: #007bff;
     color: #fff;
+  }
+  
+  /* Estilos para dispositivos móviles */
+  @media screen and (max-width: 767px) {
+    .product-card-container {
+      grid-template-columns: 100%; /* Mostrar una tarjeta por fila en dispositivos móviles */
+    }
   }
   
