@@ -4,6 +4,10 @@ import { RouterModule } from '@angular/router'; // Import the RouterModule here
 import { HttpClientModule } from '@angular/common/http';
 
 
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatIconModule} from '@angular/material/icon';
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -18,7 +22,9 @@ import { CoreModule } from 'src/core/core.module';
     AppRoutingModule,
     CoreModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    MatBadgeModule,
+    MatIconModule
     
   ],
   providers: [],

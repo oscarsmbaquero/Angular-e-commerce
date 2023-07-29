@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { IProduct } from 'src/core/services/models/product.models';
+import { StoreService } from 'src/core/services/store/store.service';
 
 
 
@@ -9,11 +10,22 @@ import { Router } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+  
+  carts:number =0;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private storeService: StoreService
   ){
-
+    //this.carts = this.storeService.getCart().length;
+    //console.log(this.carts,'navbar');
   }
+
+  ngOnInit() {
+    // Obtener el número de carritos desde el storeService
+    this.carts = this.storeService.getCart().length;
+  }
+
+
 }

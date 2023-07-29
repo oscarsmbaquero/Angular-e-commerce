@@ -12,7 +12,8 @@ import { map } from 'rxjs/operators';
 export class StoreService {
 
   private cartKey = 'cart'; // Nombre para la clave en sessionStorage
-
+  private cart='';
+   
   constructor(private httpClient: HttpClient) { }
 /**
  * Obtener productos
@@ -52,4 +53,30 @@ export class StoreService {
   clearCart(): void {
     sessionStorage.removeItem(this.cartKey);
   }
+
+  clearCartId(cartId: string): void {
+    // Get the cart data from sessionStorage
+    const cartDataString = sessionStorage.getItem(this.cartKey);
+
+    if (cartDataString) {
+      try {
+        // Parse the cart data from JSON string to an array of objects
+        const cartData: any[] = JSON.parse(cartDataString);
+
+        // Find the index of the cart with the provided ID
+        const cartIndex = cartData.findIndex((item) => item.id === cartId);
+
+        if (cartIndex !== -1) {
+          // If the cart with the provided ID is found, remove it from the cartData array
+          cartData.splice(cartIndex, 1);
+
+          // Save the updated cartData back to sessionStorage
+          sessionStorage.setItem(this.cartKey, JSON.stringify(cartData));
+        }
+      } catch (error) {
+        console.error('Error parsing cart data:', error);
+      }
+    }
+  }
+  
 }

@@ -22,10 +22,13 @@
           <li class="nav-item" routerLinkActive="active">
             <a
               class="nav-link"
-              [routerLink]="['/detail']"
+              [routerLink]="['/cesta']"
               data-toggle="collapse"
               data-target=".navbar-collapse.show"
-              ><span class="text-black">Cesta</span></a
+              >
+              <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home">{{carts}}</mat-icon> -->
+              <!-- <mat-icon matBadge="{{cart}}" matBadgeColor="warn" class="badge"></mat-icon> -->
+              <span class="text-black">Cesta&nbsp;{{ carts }}</span></a
             >
           </li>
           <hr />
@@ -55,11 +58,15 @@
       <div class="navbar-right">
         <ul class="navbar-nav ms-auto px-3 flex-column flex-md-row">
           <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['/ingresos']"><span class="text-black">Login</span></a>
+            <a class="nav-link" [routerLink]="['/ingresos']"
+              ><span class="text-black">Login</span></a
+            >
           </li>
           <hr />
           <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['/list']"><span class="text-black">Sigin</span></a>
+            <a class="nav-link" [routerLink]="['/list']"
+              ><span class="text-black">Sigin</span></a
+            >
           </li>
           <!-- Add other right-aligned navigation items here -->
         </ul>

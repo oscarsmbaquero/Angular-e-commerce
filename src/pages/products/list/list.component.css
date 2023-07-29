@@ -59,7 +59,7 @@
     border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    background-color: rgb(222, 165, 224);
+    background-color: rgb(242, 246, 245);
   }
   
   .product-action button:hover {
