@@ -78,3 +78,6 @@
     gap: 10px; /* Add some space between the "Login" and "Logout" links */
   }
 }
+.prueba{
+  outline: 1px solid black;
+}
