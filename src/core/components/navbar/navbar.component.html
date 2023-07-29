@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-transparent sticky-top">
   <a class="navbar-brand ms-3 me-auto" routerLink="/">
-    <!-- <img src="assets/logo.jpg" width="70" height="50" alt="" />&nbsp; -->
-    <span class="text-warning">E-COMMERCE</span>
+    <img src="assets/images/logo.jpg" width="70" height="50" alt="" />&nbsp;
+    <span class="text-warning">O&J</span>
   </a>
 
   <button
@@ -16,25 +16,55 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ms-auto px-3 flex-column flex-md-row">
-      <li class="nav-item" routerLinkActive="active">
-        <!-- <a class="nav-link" [routerLink]="['/ingresos']" data-toggle="collapse" data-target=".navbar-collapse.show"><span class="text-white">Ingresos</span></a> -->
-      </li>
-      <li class="nav-item" routerLinkActive="active">        
-        <a class="nav-link" [routerLink]="['/list']" data-toggle="collapse" data-target=".navbar-collapse.show"><span class="text-black">Productos</span></a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <!-- <a class="nav-link" [routerLink]="['/gsvsin']" data-toggle="collapse" data-target=".navbar-collapse.show"><span class="text-white">Gráficas</span></a> -->
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <!-- <a class="nav-link" [routerLink]="['/tareas']" data-toggle="collapse" data-target=".navbar-collapse.show"><span class="text-white">Tareas </span> -->
-          <!-- <mat-icon matBadge="{{numeroTareas}}" matBadgeColor="warn" class="badge"></mat-icon> -->
-        <!-- </a>         -->
-      </li>
-      <!-- <li class="nav-item" routerLinkActive="active">
+    <div class="navbar-container">
+      <div class="navbar-left">
+        <ul class="navbar-nav ms-auto px-3 flex-column flex-md-row">
+          <li class="nav-item" routerLinkActive="active">
+            <a
+              class="nav-link"
+              [routerLink]="['/ingresos']"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              ><span class="text-black">Cesta</span></a
+            >
+          </li>
+          <hr />
+          <li class="nav-item" routerLinkActive="active">
+            <a
+              class="nav-link"
+              [routerLink]="['/list']"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              ><span class="text-black">Productos</span></a
+            >
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <!-- <a class="nav-link" [routerLink]="['/gsvsin']" data-toggle="collapse" data-target=".navbar-collapse.show"><span class="text-white">Gráficas</span></a> -->
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <!-- <a class="nav-link" [routerLink]="['/tareas']" data-toggle="collapse" data-target=".navbar-collapse.show"><span class="text-white">Tareas </span> -->
+            <!-- <mat-icon matBadge="{{numeroTareas}}" matBadgeColor="warn" class="badge"></mat-icon> -->
+            <!-- </a>         -->
+          </li>
+          <hr />
+          <!-- <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/compra']" data-toggle="collapse" data-target=".navbar-collapse.show">Compra</a>
       </li>              -->
-    </ul>
+        </ul>
+      </div>
+      <div class="navbar-right">
+        <ul class="navbar-nav ms-auto px-3 flex-column flex-md-row">
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/ingresos']"><span class="text-black">Login</span></a>
+          </li>
+          <hr />
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/list']"><span class="text-black">Logout</span></a>
+          </li>
+          <!-- Add other right-aligned navigation items here -->
+        </ul>
+      </div>
+    </div>
     <!-- <app-panel-control></app-panel-control> -->
   </div>
 </nav>
