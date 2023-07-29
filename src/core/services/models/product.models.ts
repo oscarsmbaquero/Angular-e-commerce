@@ -6,6 +6,7 @@ export interface IProduct {
     description:string;
     unidades: number;    
     precio: number;
+    image: string;
 }
 // export enum TypeGasto {
 //   "casa" = "casa",

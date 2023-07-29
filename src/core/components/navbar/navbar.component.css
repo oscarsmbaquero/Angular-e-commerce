@@ -70,7 +70,7 @@
   .navbar-container {
     display: flex;
     justify-content: space-between; /* Align items to the left and right */
-    align-items: center; /* Vertically align the content */
+    align-items: center; 
   }
 
   .navbar-right {
@@ -79,5 +79,5 @@
   }
 }
 .prueba{
-  outline: 1px solid black;
+  outline: 1px solid rgb(188, 185, 185);
 }
