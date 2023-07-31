@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-transparent prueba">
   <a class="navbar-brand ms-3 me-auto" routerLink="/">
     <img src="assets/images/logo.jpg" width="70" height="50" alt="" />&nbsp;
-    <span class="text-secondary">O&J</span>
+    <!-- <span class="text-secondary">O&J</span> -->
   </a>
 
   <button
@@ -28,7 +28,13 @@
               >
               <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home">{{carts}}</mat-icon> -->
               <!-- <mat-icon matBadge="{{cart}}" matBadgeColor="warn" class="badge"></mat-icon> -->
-              <span class="text-black">Cesta&nbsp;{{ carts }}</span></a
+              <img
+                      src="assets/images/bolsa.png"
+                      width="25"
+                      height="20"
+                      alt=""
+                    />&nbsp;
+              <span class="text-black">&nbsp;{{ carts }}</span></a
             >
           </li>
           <hr />
@@ -55,7 +61,7 @@
       </li>              -->
         </ul>
       </div>
-      <div class="navbar-right">
+      <!-- <div class="navbar-right">
         <ul class="navbar-nav ms-auto px-3 flex-column flex-md-row">
           <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" [routerLink]="['/ingresos']"
@@ -68,9 +74,9 @@
               ><span class="text-black">Sigin</span></a
             >
           </li>
-          <!-- Add other right-aligned navigation items here -->
+     
         </ul>
-      </div>
+      </div> -->
     </div>
     <!-- <app-panel-control></app-panel-control> -->
   </div>

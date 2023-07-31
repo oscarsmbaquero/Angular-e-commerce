@@ -13,7 +13,7 @@ const routes: Routes = [
     loadChildren: () => import('src/pages/products/list/list.module').then(m => m.ListModule)
    },
    {
-    path: "detail",
+    path: "detail/:id",
     loadChildren: () => import('src/pages/products/detail/detail.module').then(m => m.DetailModule)
    },
    {

@@ -35,4 +35,8 @@ export class ListComponent {
     this.router.navigate(['list']);
   }
 
+  navigateDetail(id:string){
+    this.router.navigate(['detail',id])
+  }
+
 }
