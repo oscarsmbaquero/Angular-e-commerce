@@ -1,5 +1,5 @@
-<div class="product-card-wrapper">
-  <div *ngIf="products; else loading">
+<div class="product-card-container">
+  <!-- <div *ngIf="products; else loading">
     <div *ngFor="let product of products" class="product-card">
       <div class="product-image">
         <img [src]="product.image" alt="Nombre del Producto" />
@@ -24,6 +24,54 @@
           <button class="wishlist-btn">
             <span class="material-icons icon-xl" style="color: rgb(255, 0, 0)">favorite</span>
           </button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div *ngIf="products; else loading">
+    <div class="row" style="margin-top: 25px">
+      <div
+        *ngFor="let car of products; let i = index"
+        class="col-lg-3 col-md-6 col-12 mx-auto"
+        [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'"
+      >
+        <div
+          class="card bg-light text-dark"
+          style="margin-bottom: 25px; position: relative"
+        >
+          <img src="{{ car.image }}" class="product-image" alt="Stony Beach" />
+          <!-- Datos en la parte inferior de la tarjeta -->
+          <div>
+            <!-- Column for the brand -->
+            <div class="d-flex flex-column align-items-center mr-3">
+              <div class="product-info">
+                <h3 class="product-name">{{ car.name }}</h3>
+                <p class="product-description">{{ car.description }}</p>
+                <p class="product-price">{{ car.precio }}&nbsp;€</p>
+                <div class="product-action">
+                  <button
+                    class="add-to-cart-btn"
+                    (click)="addToCart(car)"
+                    routerLink="/"
+                  >
+                    <img
+                      src="assets/images/cart.png"
+                      width="35"
+                      height="40"
+                      alt=""
+                    />&nbsp;
+                  </button>
+                  <button class="wishlist-btn">
+                    <span class="material-icons icon-xl" style="color: rgb(255, 0, 0)">favorite</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Column for the rest of the data -->
+           
+          </div>
+          
         </div>
       </div>
     </div>

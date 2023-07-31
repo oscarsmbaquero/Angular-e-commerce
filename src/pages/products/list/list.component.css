@@ -1,34 +1,43 @@
-/* Estilos generales para todas las pantallas */
+
 .product-card-container {
-    display: flex;    
-    gap: 20px;
-    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: flex-start;
+  
+    
   }
   
   .product-card {
+    flex-basis: calc(33.33% - 16px); /* Establecer el ancho base de cada tarjeta */
     display: flex;
     flex-direction: column;
-    height: 100%;
+    
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     padding: 16px;
+    margin: 8px; /* Añadir un pequeño margen entre las tarjetas */
+    max-width: 400px; /* Establecer un ancho máximo para cada tarjeta */
   }
   
   .product-image img {
-    max-width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    
   }
   
   .product-info {
+    width: 100%;
     margin-top: 12px;
     text-align: center;
-    flex-grow: 1;
+    
   }
   
   .product-name {
+    display: flex;
+    justify-content: center;
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 8px;
@@ -70,7 +79,7 @@
   /* Estilos para dispositivos móviles */
   @media screen and (max-width: 767px) {
     .product-card-container {
-      grid-template-columns: 100%; /* Mostrar una tarjeta por fila en dispositivos móviles */
+      justify-content: center; /* Mostrar una tarjeta por fila en dispositivos móviles */
     }
   }
   
