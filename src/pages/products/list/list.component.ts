@@ -1,5 +1,6 @@
 import { StoreService } from './../../../core/services/store/store.service';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { IProduct } from 'src/core/services/models/product.models';
 
 @Component({
@@ -13,7 +14,8 @@ export class ListComponent {
 
 
   constructor(
-    private storeService: StoreService
+    private storeService: StoreService,
+    private router: Router
   ){
 
   }
@@ -25,13 +27,12 @@ export class ListComponent {
   private getProducts() {
     this.storeService.getProducts().subscribe((products) => {
       this.products = products;
-      console.log(this.products,18);
-      
     });
   }
 
   addToCart(product: any): void {
     this.storeService.addToCart(product);
+    this.router.navigate(['list']);
   }
 
 }

@@ -1,33 +1,4 @@
-<div class="product-card-container">
-  <!-- <div *ngIf="products; else loading">
-    <div *ngFor="let product of products" class="product-card">
-      <div class="product-image">
-        <img [src]="product.image" alt="Nombre del Producto" />
-      </div>
-      <div class="product-info">
-        <h3 class="product-name">{{ product.name }}</h3>
-        <p class="product-description">{{ product.description }}</p>
-        <p class="product-price">{{ product.precio }}&nbsp;€</p>
-        <div class="product-action">
-          <button
-            class="add-to-cart-btn"
-            (click)="addToCart(product)"
-            routerLink="/"
-          >
-            <img
-              src="assets/images/cart.png"
-              width="35"
-              height="40"
-              alt=""
-            />&nbsp;
-          </button>
-          <button class="wishlist-btn">
-            <span class="material-icons icon-xl" style="color: rgb(255, 0, 0)">favorite</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div> -->
+<!-- <div class="product-card-container"> -->
   <div *ngIf="products; else loading">
     <div class="row" style="margin-top: 25px">
       <div
@@ -40,14 +11,11 @@
           style="margin-bottom: 25px; position: relative"
         >
           <img src="{{ car.image }}" class="product-image" alt="Stony Beach" />
-          <!-- Datos en la parte inferior de la tarjeta -->
-          <div>
-            <!-- Column for the brand -->
             <div class="d-flex flex-column align-items-center mr-3">
               <div class="product-info">
                 <h3 class="product-name">{{ car.name }}</h3>
                 <p class="product-description">{{ car.description }}</p>
-                <p class="product-price">{{ car.precio }}&nbsp;€</p>
+ 
                 <div class="product-action">
                   <button
                     class="add-to-cart-btn"
@@ -61,22 +29,18 @@
                       alt=""
                     />&nbsp;
                   </button>
+                  <p class="product-price">{{ car.precio }}&nbsp;€</p>
                   <button class="wishlist-btn">
                     <span class="material-icons icon-xl" style="color: rgb(255, 0, 0)">favorite</span>
                   </button>
                 </div>
               </div>
             </div>
-          
-            <!-- Column for the rest of the data -->
-           
-          </div>
-          
         </div>
       </div>
     </div>
   </div>
-</div>
+<!-- </div> -->
 <ng-template #loading>
   <app-loading></app-loading>
 </ng-template>
