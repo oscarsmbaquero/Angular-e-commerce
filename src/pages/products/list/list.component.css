@@ -259,6 +259,7 @@
   .product-image{
     width: 200px;
     height: 180px;
+    background-color: #fff;
   }
   
   .side {
@@ -273,7 +274,8 @@
   }
   .product-image{
     width: 200px;
-    height: 200px;
+    height: 170px;
+    background-color: #fff;
   }
   
   .side {
