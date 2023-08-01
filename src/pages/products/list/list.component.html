@@ -4,12 +4,22 @@
     <div *ngFor="let product of products" class="container">
       <div class="front side">
         <div class="content">
-          <h1>{{ product.name }}</h1>
-          <img
+          <div>
+            <h1>{{ product.name }}</h1>  
+            <img
             src="{{ product.image }}"
             class="product-image"
             alt="Stony Beach"
           />
+          </div>
+          <div>
+            <p class="product-description">{{product.description}}</p>            
+            <!-- <p class="product-price">{{ product.precio }}&nbsp;€</p> -->
+            
+          </div>
+          <div>
+            
+          </div>
         </div>
       </div>
       <div class="back side">
@@ -17,7 +27,7 @@
           <div>
             <h3 class="product-name">{{ product.name }}</h3>
             <div class="product-info_back">
-              <p class="product-description">{{ product.description }}</p>
+              <h6 class="product-description">{{ product.description }}</h6>
   
              
             </div>

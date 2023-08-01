@@ -51,7 +51,7 @@
   }
   
   .product-name {
-    padding :20px;
+    /* padding :20px; */
     display: flex;
     justify-content: flex-start;
     font-size: 12px;
@@ -61,17 +61,17 @@
   
   .product-description {
     display:flex;
-    padding :20px;
+    top:0;
     font-size: 14px;
     color: #fff;
     /* margin-bottom: 12px; */
   }
   
   .product-price {
-    font-size: 32px;
+    font-size: 18px;
     padding:10px;
     margin-left:15px;
-    margin-top:10px;
+    /* margin-top:5px; */
     
     color: white;
   }
@@ -158,6 +158,8 @@
   .content {
     transform: translatez(70px) scale(0.8);
     line-height: 1.5em;
+    display:flex;
+    justify-content: center;
   }
   .content h1 {
     position: relative;
@@ -256,7 +258,7 @@
   }
   .product-image{
     width: 200px;
-    height: 200px;
+    height: 220px;
   }
   
   .side {
