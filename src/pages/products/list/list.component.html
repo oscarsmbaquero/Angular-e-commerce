@@ -1,58 +1,99 @@
 <!-- <div class="product-card-container"> -->
-  <div *ngIf="products; else loading">
-    <div class="row" style="margin-top: 25px">
-      <div
-        *ngFor="let car of products; let i = index"
-        class="col-lg-3 col-md-6 col-12 mx-auto"
-        [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'"
-      >
-        <div
-          class="card bg-light text-dark"
-          style="margin-bottom: 25px; position: relative"
-        >
-        <!-- <a [routerLink]="['/detail', car.id]"> -->
-          <img src="{{ car.image }}" class="product-image" alt="Stony Beach" />
-        <!-- </a> -->
-            <div class="d-flex flex-column align-items-center">
-              <div class="product-info">
-                <h3 class="product-name">{{ car.name }}</h3>
-                <p class="product-description">{{ car.description }}</p>
- 
-                <div class="product-action">
-                  <p class="product-price">{{ car.precio }}&nbsp;€</p>
-                  <button
-                    class="add-to-cart-btn"
-                    (click)="addToCart(car)"
-                    routerLink="/"
-                  >
-                    <img
-                      src="assets/images/cart.png"
-                      width="35"
-                      height="40"
-                      alt=""
-                    />&nbsp;
-                  </button>
-                  <button class="wishlist-btn"
-                  (click)="navigateDetail(car.id)"
-                  >
-                    <img
-                    src="assets/images/info.png"
-                    width="35"
-                    height="40"
-                    alt=""
-                  />&nbsp;
+<div *ngIf="products; else loading">
+  <div class="row" style="margin-top: 25px">
+    <div *ngFor="let product of products" class="container">
+      <div class="front side">
+        <div class="content">
+          <h1>{{ product.name }}</h1>
+          <img
+            src="{{ product.image }}"
+            class="product-image"
+            alt="Stony Beach"
+          />
+        </div>
+      </div>
+      <div class="back side">
+        <div class="content">
+          <h3 class="product-name">{{ product.name }}</h3>
+          <div class="product-info">
+            <p class="product-description">{{ product.description }}</p>
 
-                  </button>
-                  <!-- <button class="wishlist-btn">
-                    <span class="material-icons icon-xl" style="color: rgb(255, 0, 0)">favorite</span>
-                  </button> -->
-                </div>
-              </div>
+            <div class="product-action">
+              <p class="product-price">{{ product.precio }}&nbsp;€</p>
+              <button
+                class="add-to-cart-btn"
+                (click)="addToCart(product)"
+                routerLink="/"
+              >
+                <img
+                  src="assets/images/cart.png"
+                  width="35"
+                  height="40"
+                  alt=""
+                />&nbsp;
+              </button>
+              <button class="wishlist-btn" (click)="navigateDetail(product.id)">
+                <img
+                  src="assets/images/info.png"
+                  width="35"
+                  height="40"
+                  alt=""
+                />&nbsp;
+              </button>
             </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <!-- <div class="row" style="margin-top: 25px">
+    <div
+      *ngFor="let car of products; let i = index"
+      class="col-lg-3 col-md-6 col-12 mx-auto"
+      [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'"
+    >
+      <div
+        class="card bg-light text-dark"
+        style="margin-bottom: 25px; position: relative"
+      >
+        <img src="{{ car.image }}" class="product-image" alt="Stony Beach" />
+
+        <div class="d-flex flex-column align-items-center">
+          <div class="product-info">
+            <h3 class="product-name">{{ car.name }}</h3>
+            <p class="product-description">{{ car.description }}</p>
+
+            <div class="product-action">
+              <p class="product-price" style="color: black">
+                {{ car.precio }}&nbsp;€
+              </p>
+              <button
+                class="add-to-cart-btn"
+                (click)="addToCart(car)"
+                routerLink="/"
+              >
+                <img
+                  src="assets/images/cart.png"
+                  width="35"
+                  height="40"
+                  alt=""
+                />&nbsp;
+              </button>
+              <button class="wishlist-btn" (click)="navigateDetail(car.id)">
+                <img
+                  src="assets/images/info.png"
+                  width="35"
+                  height="40"
+                  alt=""
+                />&nbsp;
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>
 <!-- </div> -->
 <ng-template #loading>
   <app-loading></app-loading>
