@@ -6,8 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  public text: string = 'Texto de ejemplo que se mueve de derecha a izquierda';
-  public scrollSpeed: number = 1; // Velocidad de desplazamiento (ajusta según tus preferencias)
+  public text: string = 'Consulta nuestros productos!!!';
+  public send: string='Envio en 24h'
+  public scrollSpeed: number = 3; // Velocidad de desplazamiento (ajusta según tus preferencias)
 
   constructor() { }
 

@@ -21,3 +21,6 @@ h6{
     font-size: 22px; /* Ajusta el tamaño de fuente según tus necesidades */
 
   }
+  .text-send{
+    color:red;
+  }
