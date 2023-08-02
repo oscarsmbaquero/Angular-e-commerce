@@ -1,0 +1,36 @@
+.close-button{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background-color: transparent;
+    font-size: 24px;
+    cursor: pointer;
+    color: rgb(22, 2, 2);
+}
+.flex-container {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    height: 300px; /* Ajusta la altura según tus necesidades */
+  }
+  
+  .flex-item {
+    flex: 1; /* Esto hace que cada div tome el espacio disponible */
+   
+   
+    margin: 5px; /* Solo para agregar un pequeño espacio entre los divs */
+  }
+  .flex-item:first-child {
+    color: #0c0b0b; /* Cambia el color de texto del primer hijo */
+    font-weight: bold; /* Aplica un estilo diferente al texto del primer hijo */
+  }
+  .flex-item:nth-child(2) {
+    justify-content: row;
+    justify-content: center;
+    border: 1px solid #ccc; /* Solo para visualizar los divs */
+    background-color: #00ff00; /* Cambia el color de fondo del segundo hijo */
+    color: #000000; /* Cambia el color de texto del segundo hijo */
+    font-style: italic; /* Aplica un estilo diferente al texto del segundo hijo */
+  }
+  

@@ -2,6 +2,8 @@ import { StoreService } from './../../../core/services/store/store.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IProduct } from 'src/core/services/models/product.models';
+//servicio  modal
+import { ConfirmCartService } from 'src/core/services/confirmCart/confirm-cart.service';
 
 @Component({
   selector: 'app-list',
@@ -15,7 +17,8 @@ export class ListComponent {
 
   constructor(
     private storeService: StoreService,
-    private router: Router
+    private router: Router,
+    private confirmCartService: ConfirmCartService
   ){
 
   }
@@ -30,6 +33,12 @@ export class ListComponent {
     });
   }
 
+  confirmAndAddtoCart(product: any){
+    this.addToCart(product);
+    this.openConfirmCart();
+
+  }
+
   addToCart(product: any): void {
     this.storeService.addToCart(product);
     this.router.navigate(['list']);
@@ -37,6 +46,10 @@ export class ListComponent {
 
   navigateDetail(id:string){
     this.router.navigate(['detail',id])
+  }
+
+  openConfirmCart(){
+    this.confirmCartService.openModal();
   }
 
 }
