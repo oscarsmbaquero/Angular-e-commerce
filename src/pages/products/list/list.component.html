@@ -28,24 +28,24 @@
           </div>
           <div>
             <div class="product-action">
-              <p class="product-price">{{ product.precio }}&nbsp;€</p>
+              <p class="product-price">{{ product.precio }}0&nbsp;€</p>
               <button
-                class="add-to-cart-btn"
+                class="button"
                 (click)="addToCart(product)"
                 routerLink="/"
               >
                 <img
                   src="assets/images/cart.png"
-                  width="35"
-                  height="40"
+                  width="55"
+                  height="55"
                   alt=""
                 />&nbsp;
               </button>
-              <button class="wishlist-btn" (click)="navigateDetail(product.id)">
-                <img
+              <button class="button" (click)="navigateDetail(product.id)">
+                <img 
                   src="assets/images/info.png"
-                  width="35"
-                  height="40"
+                  width="50"
+                  height="50"
                   alt=""
                 />&nbsp;
               </button>
