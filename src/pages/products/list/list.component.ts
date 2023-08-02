@@ -35,7 +35,7 @@ export class ListComponent {
 
   confirmAndAddtoCart(product: any){
     this.addToCart(product);
-    this.openConfirmCart();
+    this.openConfirmCart(product);
 
   }
 
@@ -48,8 +48,9 @@ export class ListComponent {
     this.router.navigate(['detail',id])
   }
 
-  openConfirmCart(){
+  openConfirmCart(product:any){
     this.confirmCartService.openModal();
+    this.confirmCartService.setProduct(product);
   }
 
 }

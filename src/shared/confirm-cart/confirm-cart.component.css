@@ -21,16 +21,36 @@
    
     margin: 5px; /* Solo para agregar un pequeño espacio entre los divs */
   }
-  .flex-item:first-child {
+  .flex-item-title {
     color: #0c0b0b; /* Cambia el color de texto del primer hijo */
-    font-weight: bold; /* Aplica un estilo diferente al texto del primer hijo */
+    font-weight: bold;
+    >h6{
+        font-size: 14px;
+    }
   }
-  .flex-item:nth-child(2) {
+  .flex-item-body {
+    display: flex;
     justify-content: row;
     justify-content: center;
-    border: 1px solid #ccc; /* Solo para visualizar los divs */
-    background-color: #00ff00; /* Cambia el color de fondo del segundo hijo */
+    align-items: center;
     color: #000000; /* Cambia el color de texto del segundo hijo */
-    font-style: italic; /* Aplica un estilo diferente al texto del segundo hijo */
+    font-style: italic;
+    padding: 20px;
+   
   }
-  
+  .flex-item-body >div >p{
+    font-size: 10px;
+    color:rgb(74, 96, 235);
+    font-weight: bold;
+  } 
+  .flex-item-data{
+    margin: 15px;
+    padding: 10px;
+    background-color: rgb(231, 224, 224);
+  }
+  .flex-item-data  >p{
+    margin:1px;
+    display: flex;
+    justify-content: center;
+    /* background-color: rgb(231, 224, 224); */
+  }

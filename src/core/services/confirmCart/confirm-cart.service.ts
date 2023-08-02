@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class ConfirmCartService {
 
+  product:any;
   constructor(
     private dialog: MatDialog
   ) { }
@@ -15,10 +16,19 @@ export class ConfirmCartService {
     this.dialog.open(ConfirmCartComponent, {
       width: '500px',
       height: '500px',
+      
     });
   }
 
   closeModal() {
     this.dialog.closeAll();
+  }
+  setProduct(product: any) {
+    this.product = product;
+    console.log(this.product,'service')
+  }
+
+  getProduct(): any {
+    return this.product;
   }
 }
