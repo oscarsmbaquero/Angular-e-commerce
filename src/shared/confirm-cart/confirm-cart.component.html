@@ -1,4 +1,4 @@
-<button class="close-button" (click)="closeModal()">X</button>
+<button class="close-button" (click)="closeModal($event)">X</button>
 
 <div class="flex-container">
   <div class="flex-item-title">
@@ -17,7 +17,7 @@
   </div>
   <div class="flex-item-action">
     <button
-    (click)="closeModal()">Seguir Comprando</button>
-    <button (click)="goCart()">Cesta</button>
+    (click)="closeModal($event)">Seguir Comprando</button>
+    <button (click)="goCart($event)">Cesta</button>
   </div>
 </div>

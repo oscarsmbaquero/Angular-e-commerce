@@ -26,11 +26,12 @@ export class ConfirmCartComponent {
   //   this.getProductCart();
   // }
 
-  closeModal(){
+  closeModal(event:Event){
     this.confirmCartComponent.closeModal();
+    event.stopPropagation();
   }
-  goCart(){
+  goCart(event: Event) {
     this.router.navigate(['cesta']);
-    this.closeModal();
+    this.closeModal(event);
   }
 }
