@@ -1,11 +1,49 @@
-<div *ngIf="carts">
-    <button (click)="delete()">
-        Elimiar Cesta Completa
-    </button>
-    <div *ngFor="let cart of carts">
-     <p>{{cart.name}}</p>
-     <!-- <p>{{cart.description}}</p> -->
-     <p>{{cart.precio}}</p>
-     <button (click)="deleteId(cart.id)">Eliminar</button>
+<div *ngIf="carts" class="cart">
+  <img src="assets/images/bolsa.png" width="30" height="30" alt="" />&nbsp;
+  <div
+    *ngFor="let car of carts"
+    style="border: 1px solid grey; border-radius: 12px"
+  >
+    <div class="header">
+      <p style="font-weight: bold">{{ car.name }}</p>
     </div>
+    <div class="content">
+      <div class="description">
+        <img src="{{ car.image }}" width="55" height="55" alt="" />
+      </div>
+      <div class="data">
+        <h5>Total: {{ car.totalPrice }}</h5>
+        <div class="price-units">
+          <h4>{{ car.precio }} € u</h4>
+          <div class="unit-controls">
+            <button (click)="decrementUnits(car)">-</button>
+            <span>{{ units }}</span>
+            <button (click)="incrementUnits(car)">+</button>
+          </div>
+        </div>
+        <button (click)="deleteId(car.id)" class="button">
+          <img
+            src="assets/images/basura.png"
+            width="25"
+            height="25"
+            alt=""
+          />&nbsp;
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="total">
+    <h3>Total: {{ total }}</h3>
+  </div>
 </div>
+
+
+<!-- <div *ngIf="carts">
+  <button (click)="delete()">Elimiar Cesta Completa</button>
+  <div *ngFor="let cart of carts">
+    <p>{{ cart.name }}</p>
+    <p>{{cart.description}}</p>
+    <p>{{ cart.precio }}</p>
+    <button (click)="deleteId(cart.id)">Eliminar</button>
+  </div>
+</div> -->

@@ -7,6 +7,7 @@ export interface IProduct {
     unidades: number;    
     precio: number;
     image: string;
+    totalPrice: number;
 }
 // export enum TypeGasto {
 //   "casa" = "casa",
