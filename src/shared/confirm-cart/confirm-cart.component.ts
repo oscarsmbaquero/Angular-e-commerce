@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ConfirmCartService } from 'src/core/services/confirmCart/confirm-cart.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-confirm-cart',
@@ -12,14 +12,14 @@ export class ConfirmCartComponent {
    product: any;
 
   constructor(
-    private confirmCartComponent: ConfirmCartService
+    private confirmCartComponent: ConfirmCartService,
+    private router:Router,
   ){}
   ngOnInit() {
     this.getProductCart();
   }
   getProductCart(){
     this.product = this.confirmCartComponent.getProduct();
-    console.log(this.product,'this');
 
   }
   // ngOninit(){
@@ -28,5 +28,9 @@ export class ConfirmCartComponent {
 
   closeModal(){
     this.confirmCartComponent.closeModal();
+  }
+  goCart(){
+    this.router.navigate(['cesta']);
+    this.closeModal();
   }
 }
