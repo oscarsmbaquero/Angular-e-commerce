@@ -22,8 +22,17 @@ export class CartComponent {
   constructor(
     private storeService: StoreService
   ){
+    // this.carts = this.storeService.getCart();
+    //this.calculateTotal(); // Calculamos el total al inicializar el componente
+  }
+
+  ngOnInit(){
     this.carts = this.storeService.getCart();
-    this.calculateTotal(); // Calculamos el total al inicializar el componente
+    //this.calculateTotal(); // Calculamos el total al inicializar el componente
+     // Inicializamos totalPrice para todos los artículos en la cesta
+     this.carts.forEach(car => {
+      car.totalPrice = car.precio * this.units;
+    });
   }
   /**
    * borrar del sessionStorage
