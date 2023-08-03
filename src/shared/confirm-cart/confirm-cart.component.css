@@ -12,7 +12,8 @@
     margin-top: 5px;
     display: flex;
     flex-direction: column;
-    height: 300px; /* Ajusta la altura según tus necesidades */
+    height: 300px; 
+    position: absolute;
   }
   
   .flex-item {
@@ -24,8 +25,10 @@
   .flex-item-title {
     color: #0c0b0b; /* Cambia el color de texto del primer hijo */
     font-weight: bold;
+    margin: 10px;
     >h6{
         font-size: 14px;
+        font-weight: bold;
     }
   }
   .flex-item-body {
@@ -45,7 +48,7 @@
   } 
   .flex-item-data{
     margin: 15px;
-    padding: 10px;
+    padding: 20px;
     background-color: rgb(231, 224, 224);
   }
   .flex-item-data  >p{
@@ -53,4 +56,18 @@
     display: flex;
     justify-content: center;
     /* background-color: rgb(231, 224, 224); */
+  }
+  .flex-item-action{
+    margin:10px;
+    margin-bottom: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+  }
+  .flex-item-action >button{
+    border-radius: 20px;
+    padding: 5px;
+    margin-top: 10px;
   }

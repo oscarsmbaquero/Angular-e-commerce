@@ -8,12 +8,6 @@
     <div><img src="{{ product.image }}" width="55" height="55" alt="" /></div>
     <div>
       <p>{{ product.name }}</p>
-      <!-- <img
-        src="assets/images/cart.png"
-        width="55"
-        height="55"
-        alt=""
-      /> -->
     </div>
   </div>
   <div class="flex-item-data">
@@ -21,8 +15,9 @@
     <p>Envío<span style="font-weight: bold;">&nbsp;12.00&nbsp;€</span></p>
     <p>Total Impuestos:<span style="font-weight: bold;">&nbsp;78.00&nbsp;€</span></p>
   </div>
-  <div class="flex-item">
-    <button>Seguir Comprando</button>
+  <div class="flex-item-action">
+    <button
+    (click)="closeModal()">Seguir Comprando</button>
     <button>Cesta</button>
   </div>
 </div>
