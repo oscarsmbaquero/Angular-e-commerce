@@ -71,3 +71,22 @@
     padding: 5px;
     margin-top: 10px;
   }
+  .tachado-grueso {
+    text-decoration: line-through;
+  }
+  
+  /* Estilos para centrar el párrafo */
+  .centrar {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  .centered-text {
+    text-align: center; /* Centrar el contenido de la sección de Envío */
+  }
+  .text-h6{
+    font-weight: bold; 
+    background-color: aliceblue;
+    border: 1px solid red;
+  }
+ 
