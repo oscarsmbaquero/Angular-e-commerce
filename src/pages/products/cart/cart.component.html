@@ -1,4 +1,4 @@
-<div *ngIf="carts" class="cart">
+<div *ngIf="carts.length; else noCarts" class="cart">
   <img src="assets/images/bolsa.png" width="30" height="30" alt="" />&nbsp;
   <div
     *ngFor="let car of carts let i = index"
@@ -34,8 +34,19 @@
   </div>
   <div class="total">
     <h3>Total: {{ total }}</h3>
+    <button (click)="pay()">Pagar</button>
   </div>
 </div>
+<ng-template #noCarts>
+  <div class="no-products">
+    <div>
+      <h4 style="font-weight: bold;">No hay productos en la cesta</h4>
+    </div>
+    <div>
+      <button  (click)="navigateList()"   class="button-navigate">Volver a la tienda</button>
+    </div>
+  </div>
+</ng-template>
 
 
 <!-- <div *ngIf="carts">
