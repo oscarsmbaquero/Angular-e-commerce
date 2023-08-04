@@ -39,10 +39,30 @@ export class ListComponent {
 
   }
 
+  // addToCart(product: any): void {
+  //   this.storeService.addToCart(product);
+  //   this.router.navigate(['list']);
+  // }
   addToCart(product: any): void {
-    this.storeService.addToCart(product);
+    const storedCart = sessionStorage.getItem('cart');
+    let cart = storedCart ? JSON.parse(storedCart) : [];
+  
+    const existingProduct = cart.find((item: { id: any; }) => item.id === product.id);
+  
+    if (existingProduct) {
+      existingProduct.unidades++;
+      existingProduct.totalPrice = existingProduct.precio * existingProduct.unidades;
+    } else {
+      product.unidades = 1;
+      product.totalPrice = product.precio;
+      cart.push(product);
+    }
+  
+    sessionStorage.setItem('cart', JSON.stringify(cart));
+    
     this.router.navigate(['list']);
   }
+  
 
   navigateDetail(id:string){
     this.router.navigate(['detail',id])

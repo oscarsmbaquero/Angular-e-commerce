@@ -15,6 +15,7 @@ export class CartComponent {
    */
   carts: IProduct[]=[];
 
+  unidades: number = 0;
   units: number = 1; // Inicialmente, las unidades serán 1
 
   total: number = 0; // Inicializamos el total en 0
@@ -28,6 +29,10 @@ export class CartComponent {
 
   ngOnInit(){
     this.carts = this.storeService.getCart();
+    const unidadesCart = this.carts.map((element)=>{
+      this.unidades = element.unidades;
+      console.log(element.unidades);
+    })
     //this.calculateTotal(); // Calculamos el total al inicializar el componente
      // Inicializamos totalPrice para todos los artículos en la cesta
      this.carts.forEach(car => {
@@ -49,24 +54,24 @@ export class CartComponent {
 
  // Función para incrementar las unidades
   // Función para incrementar las unidades y actualizar el precio total
-  incrementUnits(car: IProduct) {
-    this.units++;
-    if (car.precio && this.units > 0) {
-      car.totalPrice = car.precio * this.units; // Actualizamos el precio tota
-      this.calculateTotal(); // Calculamos el total al inicializar el componentel
+  incrementUnits(car: IProduct, index: number) {
+    if (car.unidades >= 0) {
+      this.carts[index].unidades++;
+      this.carts[index].totalPrice = car.precio * car.unidades;
+      this.calculateTotal(); // Si es necesario calcular el total general
     }
   }
-
-  // Función para decrementar las unidades (con límite mínimo de 1) y actualizar el precio total
-  decrementUnits(car: IProduct) {
-    if (this.units > 1) {
-      this.units--;
-      if (car.precio && this.units > 0) {
-        car.totalPrice = car.precio * this.units; // Actualizamos el precio total
-        this.calculateTotal(); // Calculamos el total al inicializar el componente
-      }
+  
+  decrementUnits(car: IProduct, index: number) {
+    if (car.unidades > 1) {
+      this.carts[index].unidades--;
+      this.carts[index].totalPrice = car.precio * car.unidades;
+      this.calculateTotal(); // Si es necesario calcular el total general
+    } else if (car.unidades === 1) {
+      this.deleteId(car.id);
     }
   }
+  
 
   calculateTotal() {
     this.total = this.carts.reduce((accumulator, car) => accumulator + (car.totalPrice || 0), 0);

@@ -25,7 +25,7 @@ export class ConfirmCartService {
   }
   setProduct(product: any) {
     this.product = product;
-    console.log(this.product,'service')
+    // console.log(this.product,'service')
   }
 
   getProduct(): any {

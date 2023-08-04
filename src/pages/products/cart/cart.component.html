@@ -1,7 +1,7 @@
 <div *ngIf="carts" class="cart">
   <img src="assets/images/bolsa.png" width="30" height="30" alt="" />&nbsp;
   <div
-    *ngFor="let car of carts"
+    *ngFor="let car of carts let i = index"
     style="border: 1px solid rgb(225, 217, 217); border-radius: 12px"
   >
     <div class="header">
@@ -16,9 +16,9 @@
         <div class="price-units">
           <h4>{{ car.precio }} € u</h4>
           <div class="unit-controls">
-            <button (click)="decrementUnits(car)">-</button>
-            <span>{{ units }}</span>
-            <button (click)="incrementUnits(car)">+</button>
+            <button (click)="decrementUnits(car,i)">-</button>
+            <span>{{ car.unidades }}</span>
+            <button (click)="incrementUnits(car,i)">+</button>
           </div>
         </div>
         <button (click)="deleteId(car.id)" class="button">
