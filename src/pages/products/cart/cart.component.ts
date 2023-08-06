@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { StoreService } from 'src/core/services/store/store.service';
 import { IProduct } from 'src/core/services/models/product.models';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
+import { environment } from '../../../enviroment/environment'; // Ajusta la ruta según tu estructura de carpetas
+
 
 
 declare var paypal: any;
@@ -92,66 +94,159 @@ export class CartComponent  implements OnInit{
   pay(){
 
   }
+  //primera funcion, comentada temporalmente 
+  // private initConfig(): void {
 
+  // const storeItems = JSON.parse(sessionStorage.getItem('cart') || '') ;
+  // console.log(storeItems,'storeItems');
+
+  // const purchaseUnits = storeItems.map((item: any) => ({
+  //   items: [{
+  //     name: item.name,
+  //     quantity: item.totalPrice,
+  //     category: 'QUADLOCK',
+  //     unit_amount: {
+  //       currency_code: 'EUR',
+  //       value: item.precio,
+  //     }
+  //   }],
+  //   amount: {
+  //     currency_code: 'EUR',
+  //     value: (parseFloat(item.price) * parseInt(item.quantity)).toFixed(2),
+  //     breakdown: {
+  //       item_total: {
+  //         currency_code: 'EUR',
+  //         value: (parseFloat(item.price) * parseInt(item.quantity)).toFixed(2),
+  //       }
+  //     }
+  //   }
+  // }));
+
+  //   this.payPalConfig = {
+  //   currency: 'EUR',
+  //   clientId: 'AVI2mSi1HfwSJTe-jsOhY3gFkIKbIBXMcnmmumzgregsNeuGmM-VqBJODQpUUsnQmGM-RKggWI9N8axD',
+  //   createOrderOnClient: (data) => <ICreateOrderRequest>{
+  //     intent: 'CAPTURE',
+  //     purchase_units: [
+  //       {
+  //         amount: {
+  //           currency_code: 'EUR',
+  //           value: '9.99',
+  //           breakdown: {
+  //             item_total: {
+  //               currency_code: 'EUR',
+  //               value: '9.99'
+  //             }
+  //           }
+  //         },
+  //         items: [
+  //           {
+  //             name: 'Enterprise Subscription',
+  //             quantity: '1',
+  //             category: 'DIGITAL_GOODS',
+  //             unit_amount: {
+  //               currency_code: 'EUR',
+  //               value: '9.99',
+  //             },
+  //           }
+  //         ]
+  //       }
+  //     ]
+  //   },
+  //   advanced: {
+  //     commit: 'true'
+  //   },
+  //   style: {
+  //     label: 'paypal',
+  //     layout: 'vertical'
+  //   },
+    
+    
+    
+    
+    
+    
+    
+  //   onApprove: (data, actions) => {
+  //     console.log('onApprove - transaction was approved, but not authorized', data, actions);
+  //     actions.order.get().then((details: any) => {
+  //       console.log('onApprove - you can get full order details inside onApprove: ', details);
+  //     });
+  //   },
+  //   onClientAuthorization: (data) => {
+  //     console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+  //     this.showSuccess = true;
+  //   },
+  //   onCancel: (data, actions) => {
+  //     console.log('OnCancel', data, actions);
+  //   },
+  //   onError: err => {
+  //     console.log('OnError', err);
+  //   },
+  //   onClick: (data, actions) => {
+  //     console.log('onClick', data, actions);
+  //   },
+  // };
+  // }
   private initConfig(): void {
-    this.payPalConfig = {
-    currency: 'EUR',
-    clientId: 'sb',
-    createOrderOnClient: (data) => <ICreateOrderRequest>{
-      intent: 'CAPTURE',
-      purchase_units: [
-        {
-          amount: {
-            currency_code: 'EUR',
-            value: '9.99',
-            breakdown: {
-              item_total: {
-                currency_code: 'EUR',
-                value: '9.99'
-              }
-            }
-          },
-          items: [
-            {
-              name: 'Enterprise Subscription',
-              quantity: '1',
-              category: 'DIGITAL_GOODS',
-              unit_amount: {
-                currency_code: 'EUR',
-                value: '9.99',
-              },
-            }
-          ]
+    const storeItems = JSON.parse(sessionStorage.getItem('cart') || '');
+   console.log(storeItems,'storeItems');
+    const purchaseUnits = storeItems.map((item: any) => ({
+      items: [{
+        name: item.name,
+        quantity: item.unidades.toString(), //de unidades del artículo
+        category: 'QUADLOCK', // Puedes cambiar la categoría según tus necesidades
+        unit_amount: {
+          currency_code: 'EUR',
+          value: item.precio,
         }
-      ]
-    },
-    advanced: {
-      commit: 'true'
-    },
-    style: {
-      label: 'paypal',
-      layout: 'vertical'
-    },
-    onApprove: (data, actions) => {
-      console.log('onApprove - transaction was approved, but not authorized', data, actions);
-      actions.order.get().then((details: any) => {
-        console.log('onApprove - you can get full order details inside onApprove: ', details);
-      });
-    },
-    onClientAuthorization: (data) => {
-      console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-      this.showSuccess = true;
-    },
-    onCancel: (data, actions) => {
-      console.log('OnCancel', data, actions);
-    },
-    onError: err => {
-      console.log('OnError', err);
-    },
-    onClick: (data, actions) => {
-      console.log('onClick', data, actions);
-    },
-  };
+      }],
+      amount: {
+        currency_code: 'EUR',
+        value: (parseFloat(item.precio) * parseInt(item.unidades)).toFixed(2),
+        breakdown: {
+          item_total: {
+            currency_code: 'EUR',
+            value: (parseFloat(item.precio) * parseInt(item.unidades)).toFixed(2),
+          }
+        }
+      }
+    }));
+  
+    this.payPalConfig = {
+      currency: 'EUR',
+      clientId: environment.paypalClientId,
+      createOrderOnClient: (data) => <ICreateOrderRequest>{
+        intent: 'CAPTURE',
+        purchase_units: purchaseUnits,
+      },
+      advanced: {
+        commit: 'true'
+      },
+      style: {
+        label: 'paypal',
+        layout: 'vertical'
+      },
+      onApprove: (data, actions) => {
+        console.log('onApprove - transaction was approved, but not authorized', data, actions);
+        actions.order.get().then((details: any) => {
+          console.log('onApprove - you can get full order details inside onApprove: ', details);
+        });
+      },
+      onClientAuthorization: (data) => {
+        console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+        this.showSuccess = true;
+      },
+      onCancel: (data, actions) => {
+        console.log('OnCancel', data, actions);
+      },
+      onError: err => {
+        console.log('OnError', err);
+      },
+      onClick: (data, actions) => {
+        console.log('onClick', data, actions);
+      },
+    }
   }
 }
 

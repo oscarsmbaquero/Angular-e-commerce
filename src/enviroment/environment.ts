@@ -4,7 +4,8 @@
 
 export const environment = {
     production: false,
-    apiUrl: 'https://63961d9490ac47c6807dc9d2.mockapi.io/'
+    apiUrl: 'https://63961d9490ac47c6807dc9d2.mockapi.io/',
+    paypalClientId: 'AVI2mSi1HfwSJTe-jsOhY3gFkIKbIBXMcnmmumzgregsNeuGmM-VqBJODQpUUsnQmGM-RKggWI9N8axD',
     //apiUrl: 'http://localhost:5000/'
   };
   
