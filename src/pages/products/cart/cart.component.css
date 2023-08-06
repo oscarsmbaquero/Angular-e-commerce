@@ -81,3 +81,24 @@ h6 {
     border-radius: 30px;
     padding: 7px;
 }
+.total{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+.total >div{
+    padding: 50px;
+    
+}    
+@media (max-width: 768px) {
+    .total {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .total > div {
+        padding: 20px;
+    }
+}

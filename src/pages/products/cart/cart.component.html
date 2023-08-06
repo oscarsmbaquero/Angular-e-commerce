@@ -1,7 +1,7 @@
 <div *ngIf="carts.length; else noCarts" class="cart">
   <img src="assets/images/bolsa.png" width="30" height="30" alt="" />&nbsp;
   <div
-    *ngFor="let car of carts let i = index"
+    *ngFor="let car of carts; let i = index"
     style="border: 1px solid rgb(225, 217, 217); border-radius: 12px"
   >
     <div class="header">
@@ -16,9 +16,9 @@
         <div class="price-units">
           <h4>{{ car.precio }} € u</h4>
           <div class="unit-controls">
-            <button (click)="decrementUnits(car,i)">-</button>
+            <button (click)="decrementUnits(car, i)">-</button>
             <span>{{ car.unidades }}</span>
-            <button (click)="incrementUnits(car,i)">+</button>
+            <button (click)="incrementUnits(car, i)">+</button>
           </div>
         </div>
         <button (click)="deleteId(car.id)" class="button">
@@ -33,21 +33,29 @@
     </div>
   </div>
   <div class="total">
-    <h3>Total: {{ total }}</h3>
-    <button (click)="pay()">Pagar</button>
+    <div>
+      <h3>Total: {{ total }}</h3>
+    </div>
+    <div>
+      <!-- <button (click)="pay()">Pagar</button> -->
+      <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+    </div>
+    
+    
   </div>
 </div>
 <ng-template #noCarts>
   <div class="no-products">
     <div>
-      <h4 style="font-weight: bold;">No hay productos en la cesta</h4>
+      <h4 style="font-weight: bold">No hay productos en la cesta</h4>
     </div>
     <div>
-      <button  (click)="navigateList()"   class="button-navigate">Volver a la tienda</button>
+      <button (click)="navigateList()" class="button-navigate">
+        Volver a la tienda
+      </button>
     </div>
   </div>
 </ng-template>
-
 
 <!-- <div *ngIf="carts">
   <button (click)="delete()">Elimiar Cesta Completa</button>
