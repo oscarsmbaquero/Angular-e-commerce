@@ -2,10 +2,10 @@
   <img src="assets/images/bolsa.png" width="30" height="30" alt="" />&nbsp;
   <div
     *ngFor="let car of carts; let i = index"
-    style="border: 1px solid rgb(225, 217, 217); border-radius: 12px"
+    style="border: 2px solid rgb(225, 217, 217); border-radius: 12px; margin-bottom: 6px;"
   >
     <div class="header">
-      <p style="font-weight: bold">{{ car.name }}</p>
+      <p style="font-weight: bold; color: blue" >{{ car.name }}</p>
     </div>
     <div class="content">
       <div class="description">
@@ -14,7 +14,7 @@
       <div class="data">
         <h5>Total: {{ car.totalPrice }}</h5>
         <div class="price-units">
-          <h4>{{ car.precio }} € u</h4>
+          <h4><span style="font-weight: bold;">{{ car.precio }}</span>€ u</h4>
           <div class="unit-controls">
             <button (click)="decrementUnits(car, i)">-</button>
             <span>{{ car.unidades }}</span>
@@ -34,7 +34,7 @@
   </div>
   <div class="total">
     <div>
-      <h3>Total: {{ total }}</h3>
+      <h3>Total: <span class="price-total">{{ total }}</span></h3>
     </div>
     <div>
       <!-- <button (click)="pay()">Pagar</button> -->

@@ -13,7 +13,7 @@ export class ConfirmCartComponent {
 
    showEnvio= false;
 
-   textEnvio='Si tienes mas articulos en la cesta por valor mayor de 50 €, el envío es gratis';
+   textEnvio='Si tienes mas articulos en la cesta por valor superior a 50 €, el envío es gratis';
 
   constructor(
     private confirmCartComponent: ConfirmCartService,
@@ -30,10 +30,11 @@ export class ConfirmCartComponent {
   closeModal(event?:Event){
     this.confirmCartComponent.closeModal();
     event?.stopPropagation();
+    this.router.navigate(['list'])
   }
   goCart(event: Event) {
-    this.router.navigate(['cesta']);
     this.closeModal(event);
+    this.router.navigate(['cesta']);
   }
 
   calcularPrecioConEnvio(precioProducto: number): number {

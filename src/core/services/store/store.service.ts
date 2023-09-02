@@ -1,48 +1,79 @@
 import { IProduct } from '../models/product.models';
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/enviroment/environment';
+import { BehaviorSubject } from 'rxjs';
 import { OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StoreService {
-
   private cartKey = 'cart'; // Nombre para la clave en sessionStorage
-  private cart='';
-   
-  constructor(private httpClient: HttpClient) { }
-/**
- * Obtener productos
- * @returns 
- */
-  public getProducts():Observable<IProduct[]> {
+  private cart = '';
+  private cartDataSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(
+    []
+  );
+
+  constructor(private httpClient: HttpClient) {
+    const cartData = sessionStorage.getItem(this.cartKey);
+    const initialCart = cartData ? JSON.parse(cartData) : [];
+    this.cartDataSubject.next(initialCart);
+  }
+  /**
+   * Obtener productos
+   * @returns
+   */
+  public getProducts(): Observable<IProduct[]> {
     return this.httpClient.get<IProduct[]>(`${environment.apiUrl}banks`);
   }
   /**
    * Añadir a la cesta
-   * @param item 
+   * @param item
    */
-  addToCart(item: any): void {
-    const cart = this.getCart();
-    cart.push(item);
-    this.saveCart(cart);
+  // addToCart(item: any): void {
+  //   const cart = this.getCart();
+  //   cart.push(item);
+  //   this.saveCart(cart);
+  // }
+
+  getCartObservable(): Observable<any[]> {
+    return this.cartDataSubject.asObservable();
   }
   /**
    * obtener cesta
-   * @returns 
+   * @returns
    */
   getCart(): any[] {
-    const cartData = sessionStorage.getItem(this.cartKey);
-    return cartData ? JSON.parse(cartData) : [];
+    return this.cartDataSubject.value;
   }
-/**
- * guarar en cesta
- * @param cart 
- */
+
+  addToCart(product: any): void {
+    const currentCart = this.getCart();
+    const existingProduct = currentCart.find((item) => item.id === product.id);
+
+    if (existingProduct) {
+      existingProduct.unidades++;
+      existingProduct.totalPrice =
+        existingProduct.precio * existingProduct.unidades;
+    } else {
+      product.unidades = 1;
+      product.totalPrice = product.precio;
+      currentCart.push(product);
+    }
+
+    this.updateCart(currentCart);
+  }
+  private updateCart(cart: any[]): void {
+    this.cartDataSubject.next(cart);
+    sessionStorage.setItem(this.cartKey, JSON.stringify(cart));
+  }
+  /**
+   * guarar en cesta
+   * @param cart
+   */
   saveCart(cart: any[]): void {
     sessionStorage.setItem(this.cartKey, JSON.stringify(cart));
   }
@@ -60,17 +91,13 @@ export class StoreService {
 
     if (cartDataString) {
       try {
-        // Parse the cart data from JSON string to an array of objects
         const cartData: any[] = JSON.parse(cartDataString);
 
-        // Find the index of the cart with the provided ID
         const cartIndex = cartData.findIndex((item) => item.id === cartId);
 
         if (cartIndex !== -1) {
-          // If the cart with the provided ID is found, remove it from the cartData array
           cartData.splice(cartIndex, 1);
 
-          // Save the updated cartData back to sessionStorage
           sessionStorage.setItem(this.cartKey, JSON.stringify(cartData));
         }
       } catch (error) {
@@ -78,5 +105,4 @@ export class StoreService {
       }
     }
   }
-  
 }

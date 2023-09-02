@@ -21,6 +21,8 @@ export class CartComponent  implements OnInit{
    */
   carts: IProduct[]=[];
 
+  hostia: number =0;
+
   unidades: number = 0;
   units: number = 1; // Inicialmente, las unidades serán 1
 
@@ -37,16 +39,16 @@ export class CartComponent  implements OnInit{
 
   ngOnInit(){
     this.carts = this.storeService.getCart();
-    const unidadesCart = this.carts.map((element)=>{
+    this.carts.map((element)=>{
       this.unidades = element.unidades;
       console.log(element.unidades);
 
-    })
-    //this.calculateTotal(); // Calculamos el total al inicializar el componente
+    });
      // Inicializamos totalPrice para todos los artículos en la cesta
      this.carts.forEach(car => {
       car.totalPrice = car.precio * this.units;
     });
+    this.calculateTotal(); // Calculamos el total al inicializar el componente
     this.initConfig();
   }
   /**
@@ -82,8 +84,13 @@ export class CartComponent  implements OnInit{
     }
   }
 
-  calculateTotal() {
+  calculateTotal(): void {
     this.total = this.carts.reduce((accumulator, car) => accumulator + (car.totalPrice || 0), 0);
+    // console.log( typeof this.total);
+    // const precio = this.total;
+    // console.log(precio.toFixed(2));
+   
+    
   }
 
   navigateList(){

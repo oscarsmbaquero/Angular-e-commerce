@@ -23,8 +23,11 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.storeService.getCartObservable().subscribe((cartData) =>{
+      this.carts = cartData.length;
+    })
     // Obtener el número de carritos desde el storeService
-    this.carts = this.storeService.getCart().length;
+    //this.carts = this.storeService.getCart().length;
   }
 
 
