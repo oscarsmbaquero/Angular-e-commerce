@@ -13,6 +13,8 @@ export class ConfirmCartComponent {
 
    showEnvio= false;
 
+   showConfirm = false;
+
    textEnvio='Si tienes mas articulos en la cesta por valor superior a 50 €, el envío es gratis';
 
   constructor(
@@ -21,12 +23,13 @@ export class ConfirmCartComponent {
   ){}
   ngOnInit() {
     this.getProductCart();
+    setTimeout(() => {
+      this.showConfirm = true;
+    }, 700);
   }
   getProductCart(){
     this.product = this.confirmCartComponent.getProduct();
-
   }
-
   closeModal(event?:Event){
     this.confirmCartComponent.closeModal();
     event?.stopPropagation();
@@ -48,7 +51,6 @@ export class ConfirmCartComponent {
     }else{
       this.showEnvio= true;
       return precioProducto + 12;
-      
     }
   }
   // calcularPrecioFinal(precioProducto: number): number {

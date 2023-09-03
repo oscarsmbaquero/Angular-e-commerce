@@ -10,31 +10,31 @@
 }
 .flex-container {
     margin-top: 5px;
-    display: flex;
     flex-direction: column;
     height: 300px; 
     position: absolute;
+    align-items: center;
     border-radius: 12px;
   }
   
   .flex-item {
-    flex: 1; /* Esto hace que cada div tome el espacio disponible */
-   
-   
+    flex: 1; /* Esto hace que cada div tome el espacio disponible */   
     margin: 5px; /* Solo para agregar un pequeño espacio entre los divs */
   }
   .flex-item-title {
     color: #0c0b0b; /* Cambia el color de texto del primer hijo */
     font-weight: bold;
     margin: 10px;
+    
     >h6{
         font-size: 14px;
         font-weight: bold;
+        color:red;
     }
   }
   .flex-item-body {
     display: flex;
-    justify-content: row;
+    /* justify-content: row; */
     justify-content: center;
     align-items: center;
     color: #000000; /* Cambia el color de texto del segundo hijo */
@@ -48,10 +48,17 @@
     font-weight: bold;
   } 
   .flex-item-data{
-    margin: 15px;
+    margin-left: 45px;
     padding: 20px;
     background-color: rgb(231, 224, 224);
     border-radius: 12px;
+  }
+  @media (max-width: 767px) {
+    .flex-item-data {
+      margin-left: 0;
+      margin-bottom: 0;
+      padding: 10; /* Elimina los márgenes y el relleno en dispositivos móviles */
+    }
   }
   .flex-item-data  >p{
     margin:1px;
@@ -60,13 +67,19 @@
     /* background-color: rgb(231, 224, 224); */
   }
   .flex-item-action{
-    margin:10px;
+    margin-left:45px;
     margin-bottom: 10px;
     padding: 20px;
     display: flex;
     justify-content: center;
     flex-direction: column;
-
+  }
+  @media (max-width: 767px) {
+    .flex-item-action {
+      margin-left: 0;
+      margin-bottom: 0;
+      padding: 0; /* Elimina los márgenes y el relleno en dispositivos móviles */
+    }
   }
   .flex-item-action >button{
     border-radius: 20px;

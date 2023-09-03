@@ -1,7 +1,8 @@
 <button class="close-button" (click)="closeModal()">X</button>
 
 <div class="flex-container">
-  <div class="flex-item-title">
+  
+  <div *ngIf="showConfirm" class="flex-item-title">
     <h6>Producto añadido correctamente</h6>
   </div>
   <div class="flex-item-body">

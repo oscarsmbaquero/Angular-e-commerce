@@ -2,7 +2,7 @@
   <img src="assets/images/bolsa.png" width="30" height="30" alt="" />&nbsp;
   <div
     *ngFor="let car of carts; let i = index"
-    style="border: 2px solid rgb(225, 217, 217); border-radius: 12px; margin-bottom: 6px;"
+    style="border: 2px solid rgb(225, 217, 217); border-radius: 12px; margin-bottom: 6px; padding:15px;"
   >
     <div class="header">
       <p style="font-weight: bold; color: blue" >{{ car.name }}</p>
@@ -34,7 +34,7 @@
   </div>
   <div class="total">
     <div>
-      <h3>Total: <span class="price-total">{{ total }}</span></h3>
+      <h3>Total: <span class="price-total">{{ total }}</span>&nbsp;€</h3>
     </div>
     <div>
       <!-- <button (click)="pay()">Pagar</button> -->

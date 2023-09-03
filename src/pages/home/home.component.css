@@ -1,44 +1,52 @@
-
-.home{
-    margin-top: 0;
-    background-color: black;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
+/* Estilos para pantallas grandes */
+.home {
+  margin-top: 0;
+  background-color: black;
+  min-height: 81vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
 
 .video-container {
-    display: flex;    
-    /* margin: 10px; */
-    width: 100%;
-    height: 100%;    
-    overflow: hidden; /* Para ocultar cualquier desbordamiento */
+  display: flex;
+  flex-direction: column; /* Cambiamos la dirección de la columna en dispositivos móviles */
+  align-items: center; /* Centramos el contenido verticalmente */
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  margin-right: 0; /* Eliminamos el margen derecho en dispositivos móviles */
+}
+
+.custom-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 767px) {
+  .video-container {
+    height: 70vh; /* Ajusta la altura en dispositivos móviles según tus necesidades */
   }
-  
-  .video-container video {
-    width: 100%;
-    height: auto;
-    margin-right: 35px; /* Eliminar cualquier margen */
-  }
+
   .custom-button {
-    position: absolute;
-    top: 50%; /* Alinea verticalmente en el centro */
-    left: 50%; /* Alinea horizontalmente en el centro */
-    transform: translate(-50%, -50%); /* Centra el botón correctamente */
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    border-radius: 12px;
+    width: 100%; /* El botón ocupará todo el ancho disponible */
+    left: 0; /* Reiniciamos la posición izquierda para ocupar todo el ancho */
+    transform: none; /* Eliminamos la transformación de centrado */
   }
-  
-  /* Estilos para pantallas pequeñas (móviles) */
-@media (max-width: 767px) { /* Cambia el valor según tus necesidades */
-    .video-container {
-      height: 100%; /* Altura ajustada para pantallas pequeñas */
-    }
-  }
+}
