@@ -36,6 +36,10 @@ export class ConfirmCartComponent {
     this.closeModal(event);
     this.router.navigate(['cesta']);
   }
+  goList(event: Event) {
+    this.closeModal(event);
+    this.router.navigate(['list']);
+  }
 
   calcularPrecioConEnvio(precioProducto: number): number {
     if(precioProducto > 49){
