@@ -89,9 +89,6 @@ export class CartComponent  implements OnInit{
 
   calculateTotal(precioEnvio?: number): void {
     this.total = this.carts.reduce((accumulator, car) => accumulator + (car.totalPrice || 0), 0) + (precioEnvio || 0);
-    // console.log( typeof this.total);
-    // const precio = this.total;
-    // console.log(precio.toFixed(2));
    
     
   }
@@ -101,103 +98,7 @@ export class CartComponent  implements OnInit{
     this.router.navigate(['list']);
   }
 
-  pay(){
-   this.showPaypal = !this.showPaypal;
-  }
-  //primera funcion, comentada temporalmente 
-  // private initConfig(): void {
-
-  // const storeItems = JSON.parse(sessionStorage.getItem('cart') || '') ;
-  // console.log(storeItems,'storeItems');
-
-  // const purchaseUnits = storeItems.map((item: any) => ({
-  //   items: [{
-  //     name: item.name,
-  //     quantity: item.totalPrice,
-  //     category: 'QUADLOCK',
-  //     unit_amount: {
-  //       currency_code: 'EUR',
-  //       value: item.precio,
-  //     }
-  //   }],
-  //   amount: {
-  //     currency_code: 'EUR',
-  //     value: (parseFloat(item.price) * parseInt(item.quantity)).toFixed(2),
-  //     breakdown: {
-  //       item_total: {
-  //         currency_code: 'EUR',
-  //         value: (parseFloat(item.price) * parseInt(item.quantity)).toFixed(2),
-  //       }
-  //     }
-  //   }
-  // }));
-
-  //   this.payPalConfig = {
-  //   currency: 'EUR',
-  //   clientId: 'AVI2mSi1HfwSJTe-jsOhY3gFkIKbIBXMcnmmumzgregsNeuGmM-VqBJODQpUUsnQmGM-RKggWI9N8axD',
-  //   createOrderOnClient: (data) => <ICreateOrderRequest>{
-  //     intent: 'CAPTURE',
-  //     purchase_units: [
-  //       {
-  //         amount: {
-  //           currency_code: 'EUR',
-  //           value: '9.99',
-  //           breakdown: {
-  //             item_total: {
-  //               currency_code: 'EUR',
-  //               value: '9.99'
-  //             }
-  //           }
-  //         },
-  //         items: [
-  //           {
-  //             name: 'Enterprise Subscription',
-  //             quantity: '1',
-  //             category: 'DIGITAL_GOODS',
-  //             unit_amount: {
-  //               currency_code: 'EUR',
-  //               value: '9.99',
-  //             },
-  //           }
-  //         ]
-  //       }
-  //     ]
-  //   },
-  //   advanced: {
-  //     commit: 'true'
-  //   },
-  //   style: {
-  //     label: 'paypal',
-  //     layout: 'vertical'
-  //   },
-    
-    
-    
-    
-    
-    
-    
-  //   onApprove: (data, actions) => {
-  //     console.log('onApprove - transaction was approved, but not authorized', data, actions);
-  //     actions.order.get().then((details: any) => {
-  //       console.log('onApprove - you can get full order details inside onApprove: ', details);
-  //     });
-  //   },
-  //   onClientAuthorization: (data) => {
-  //     console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-  //     this.showSuccess = true;
-  //   },
-  //   onCancel: (data, actions) => {
-  //     console.log('OnCancel', data, actions);
-  //   },
-  //   onError: err => {
-  //     console.log('OnError', err);
-  //   },
-  //   onClick: (data, actions) => {
-  //     console.log('onClick', data, actions);
-  //   },
-  // };
-  // }
+  
   private initConfig(): void {
     const storeItems = JSON.parse(sessionStorage.getItem('cart') || '');
    console.log(storeItems,'storeItems');

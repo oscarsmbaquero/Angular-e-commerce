@@ -9,7 +9,8 @@
         (click)="precioEnvio(envio.precio)"
       />
       <label class="form-check-label" for="flexRadioDefault{{ i }}">
-        {{ envio.label }}
+        <span style="font-weight: bold;">{{ envio.label }}</span><br/>
+        {{envio.text}}
       </label>
     </div>
   </div>

@@ -22,22 +22,13 @@
           <li class="nav-item" routerLinkActive="active">
             <a
               class="nav-link"
-              [routerLink]="['/cesta']"
+              [routerLink]="['']"
               data-toggle="collapse"
               data-target=".navbar-collapse.show"
-              >
-              <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home">{{carts}}</mat-icon> -->
-              <!-- <mat-icon matBadge="{{cart}}" matBadgeColor="warn" class="badge"></mat-icon> -->
-              <img
-                      src="assets/images/bolsa.png"
-                      width="25"
-                      height="20"
-                      alt=""
-                    />&nbsp;
-              <span class="text-black">&nbsp;{{ totalUnidades }}</span></a
+              ><span class="text-black">Home</span></a
             >
           </li>
-          <hr />
+          <hr class="fading-hr"/>
           <li class="nav-item" routerLinkActive="active">
             <a
               class="nav-link"
@@ -47,37 +38,35 @@
               ><span class="text-black">Productos</span></a
             >
           </li>
+          <hr class="fading-hr"/>
           <li class="nav-item" routerLinkActive="active">
-            <!-- <a class="nav-link" [routerLink]="['/gsvsin']" data-toggle="collapse" data-target=".navbar-collapse.show"><span class="text-white">Gráficas</span></a> -->
+            <!-- <a
+              class="nav-link"
+              [routerLink]="['/cesta']"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+            > -->
+            <button
+              type="button"
+              class="btn btn-transparent position-relative;"
+              [routerLink]="['/cesta']"
+              style="padding-left: 0;" 
+            >
+              <img
+                src="assets/images/bolsa.png"
+                width="30"
+                height="25"
+                alt=""
+              />               
+                <span class="badge rounded-pill badge-notification bg-primary">{{totalUnidades}}</span>
+            </button>
+            <!-- </a> -->
           </li>
-          <li class="nav-item" routerLinkActive="active">
-            <!-- <a class="nav-link" [routerLink]="['/tareas']" data-toggle="collapse" data-target=".navbar-collapse.show"><span class="text-white">Tareas </span> -->
-            <!-- <mat-icon matBadge="{{numeroTareas}}" matBadgeColor="warn" class="badge"></mat-icon> -->
-            <!-- </a>         -->
-          </li>
-          <hr />
-          <!-- <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/compra']" data-toggle="collapse" data-target=".navbar-collapse.show">Compra</a>
-      </li>              -->
+          <hr class="fading-hr"/>
+          
+          
         </ul>
       </div>
-      <!-- <div class="navbar-right">
-        <ul class="navbar-nav ms-auto px-3 flex-column flex-md-row">
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['/ingresos']"
-              ><span class="text-black">Login</span></a
-            >
-          </li>
-          <hr />
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['/list']"
-              ><span class="text-black">Sigin</span></a
-            >
-          </li>
-     
-        </ul>
-      </div> -->
     </div>
-    <!-- <app-panel-control></app-panel-control> -->
   </div>
 </nav>
