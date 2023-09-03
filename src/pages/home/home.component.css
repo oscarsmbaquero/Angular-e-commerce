@@ -1,8 +1,8 @@
 /* Estilos para pantallas grandes */
 .home {
   margin-top: 0;
-  background-color: black;
-  min-height: 81vh;
+  /* background-color: black; */
+  /* min-height: 81vh; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,20 +13,20 @@
   display: flex;
   flex-direction: column; /* Cambiamos la dirección de la columna en dispositivos móviles */
   align-items: center; /* Centramos el contenido verticalmente */
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
   overflow: hidden;
 }
 
 .video-container video {
-  width: 100%;
-  height: auto;
+  /* width: 100%;*/
+  height: 100%; 
   margin-right: 0; /* Eliminamos el margen derecho en dispositivos móviles */
 }
 
 .custom-button {
   position: absolute;
-  top: 50%;
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #007bff;
@@ -41,12 +41,13 @@
 /* Estilos para pantallas pequeñas (móviles) */
 @media (max-width: 767px) {
   .video-container {
-    height: 70vh; /* Ajusta la altura en dispositivos móviles según tus necesidades */
+    height: 100vh; /* Ajusta la altura en dispositivos móviles según tus necesidades */
   }
 
   .custom-button {
-    width: 100%; /* El botón ocupará todo el ancho disponible */
-    left: 0; /* Reiniciamos la posición izquierda para ocupar todo el ancho */
-    transform: none; /* Eliminamos la transformación de centrado */
+    
+    display:flex;
+    justify-content: center;
+    align-items: center;
   }
 }

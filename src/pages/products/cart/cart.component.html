@@ -2,10 +2,15 @@
   <img src="assets/images/bolsa.png" width="30" height="30" alt="" />&nbsp;
   <div
     *ngFor="let car of carts; let i = index"
-    style="border: 2px solid rgb(225, 217, 217); border-radius: 12px; margin-bottom: 6px; padding:15px;"
+    style="
+      border: 2px solid rgb(225, 217, 217);
+      border-radius: 12px;
+      margin-bottom: 6px;
+      padding: 15px;
+    "
   >
     <div class="header">
-      <p style="font-weight: bold; color: blue" >{{ car.name }}</p>
+      <p style="font-weight: bold; color: blue">{{ car.name }}</p>
     </div>
     <div class="content">
       <div class="description">
@@ -14,7 +19,10 @@
       <div class="data">
         <h5>Total: {{ car.totalPrice }}</h5>
         <div class="price-units">
-          <h4><span style="font-weight: bold;">{{ car.precio }}</span>€ u</h4>
+          <h4>
+            <span style="font-weight: bold">{{ car.precio }}</span
+            >€ u
+          </h4>
           <div class="unit-controls">
             <button (click)="decrementUnits(car, i)">-</button>
             <span>{{ car.unidades }}</span>
@@ -34,14 +42,33 @@
   </div>
   <div class="total">
     <div>
-      <h3>Total: <span class="price-total">{{ total }}</span>&nbsp;€</h3>
+      <h3>
+        Total: <span class="price-total">{{ total }}</span
+        >&nbsp;€
+      </h3>
     </div>
     <div>
-      <!-- <button (click)="pay()">Pagar</button> -->
-      <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+      <div >
+        <button (click)="shipment()" class="custom-button"> 
+          <img src="assets/images/camion.png" width="40" height="40" alt="" />&nbsp;  
+        </button>
+      </div>
+      <div *ngIf="showShipment">
+        <app-shipment (priceShipment)="priceShipment($event)"></app-shipment>
+        
+      </div>
     </div>
-    
-    
+    <div *ngIf="showPaypal">
+      <!-- <div>
+        <button (click)="pay()" class="custom-button">Pagar</button>
+      </div> -->
+      <div>
+        <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+      </div>
+      
+      
+      
+    </div>
   </div>
 </div>
 <ng-template #noCarts>

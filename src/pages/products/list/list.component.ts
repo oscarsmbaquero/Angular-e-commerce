@@ -68,12 +68,13 @@ export class ListComponent {
   
 
   navigateDetail(id:string){
-    this.router.navigate(['detail',id])
+    this.router.navigate(['detail',id]);
   }
 
   openConfirmCart(product:any){
     this.confirmCartService.openModal();
     this.confirmCartService.setProduct(product);
+    this.router.navigate(['list']);
   }
 
 }

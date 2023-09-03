@@ -28,6 +28,9 @@ export class CartComponent  implements OnInit{
 
   total: number = 0; // Inicializamos el total en 0
   showSuccess: boolean | undefined;
+  showPaypal: boolean = false;
+  showShipment: boolean = false;
+  priceShipme: number = 0;
 
   constructor(
     private storeService: StoreService,
@@ -84,8 +87,8 @@ export class CartComponent  implements OnInit{
     }
   }
 
-  calculateTotal(): void {
-    this.total = this.carts.reduce((accumulator, car) => accumulator + (car.totalPrice || 0), 0);
+  calculateTotal(precioEnvio?: number): void {
+    this.total = this.carts.reduce((accumulator, car) => accumulator + (car.totalPrice || 0), 0) + (precioEnvio || 0);
     // console.log( typeof this.total);
     // const precio = this.total;
     // console.log(precio.toFixed(2));
@@ -99,7 +102,7 @@ export class CartComponent  implements OnInit{
   }
 
   pay(){
-
+   this.showPaypal = !this.showPaypal;
   }
   //primera funcion, comentada temporalmente 
   // private initConfig(): void {
@@ -254,6 +257,19 @@ export class CartComponent  implements OnInit{
         console.log('onClick', data, actions);
       },
     }
+  }
+
+
+  shipment(){
+    this.showShipment = !this.showShipment;
+    this.showPaypal = false;
+  }
+
+  priceShipment(precio: number){
+    this.showPaypal = true;
+    this.priceShipme = precio;
+    console.log(this.priceShipme);
+    this.calculateTotal(this.priceShipme);
   }
 }
 
