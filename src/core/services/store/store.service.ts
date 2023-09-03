@@ -1,7 +1,7 @@
 import { IProduct } from '../models/product.models';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { environment } from 'src/enviroment/environment';
 import { BehaviorSubject } from 'rxjs';
 import { OnInit } from '@angular/core';
@@ -13,6 +13,8 @@ import { map } from 'rxjs/operators';
 export class StoreService {
   private cartKey = 'cart'; // Nombre para la clave en sessionStorage
   private cart = '';
+
+  private totalUnidades: number =0;
   private cartDataSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(
     []
   );
@@ -29,15 +31,6 @@ export class StoreService {
   public getProducts(): Observable<IProduct[]> {
     return this.httpClient.get<IProduct[]>(`${environment.apiUrl}banks`);
   }
-  /**
-   * Añadir a la cesta
-   * @param item
-   */
-  // addToCart(item: any): void {
-  //   const cart = this.getCart();
-  //   cart.push(item);
-  //   this.saveCart(cart);
-  // }
 
   getCartObservable(): Observable<any[]> {
     return this.cartDataSubject.asObservable();
@@ -66,6 +59,7 @@ export class StoreService {
 
     this.updateCart(currentCart);
   }
+
   private updateCart(cart: any[]): void {
     this.cartDataSubject.next(cart);
     sessionStorage.setItem(this.cartKey, JSON.stringify(cart));

@@ -12,7 +12,8 @@ import { StoreService } from 'src/core/services/store/store.service';
 })
 export class NavbarComponent implements OnInit {
   
-  carts:number =0;
+  carts: number = 0;
+  totalUnidades: number = 0;
 
   constructor(
     private router: Router,
@@ -24,8 +25,15 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.storeService.getCartObservable().subscribe((cartData) =>{
+
+      console.log(cartData);
       this.carts = cartData.length;
-    })
+      this.totalUnidades = cartData.reduce((total, producto) => total + producto.unidades, 0);
+      });
+      // this.storeService.totalProducts().subscribe(result => {
+      //   this.totalUnidades = result;
+      //   console.log(this.totalUnidades);
+      // });
     // Obtener el número de carritos desde el storeService
     //this.carts = this.storeService.getCart().length;
   }
