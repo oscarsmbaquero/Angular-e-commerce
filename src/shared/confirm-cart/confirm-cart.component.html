@@ -11,20 +11,33 @@
     </div>
   </div>
   <div class="flex-item-data">
-    <p>Total parcial:<span style="font-weight: bold;">&nbsp;{{ product.precio }}&nbsp;€</span></p>
-    <div *ngIf="showEnvio"  class="centered-text"> <!-- Agregar un div que envuelva las etiquetas p con *ngIf -->
-      <p>Envío: <span style="font-weight: bold;">12 €</span></p>
-      <h6 class="text-h6">{{ textEnvio }}</h6> <!-- Aquí se mostrará el texto del envío en otra línea -->
+    <p>
+      Total parcial:<span style="font-weight: bold"
+        >&nbsp;{{ product.precio }}&nbsp;€</span
+      >
+    </p>
+    <div *ngIf="showEnvio" class="centered-text">
+      <!-- Agregar un div que envuelva las etiquetas p con *ngIf -->
+      <p>Envío: <span style="font-weight: bold">12 €</span></p>
+      <h6 class="text-h6">{{ textEnvio }}</h6>
+      <!-- Aquí se mostrará el texto del envío en otra línea -->
     </div>
-    <div *ngIf="!showEnvio"  class="centered-text"> <!-- Agregar un div que envuelva las etiquetas p con *ngIf -->
-      <p>Envío: <span style="font-weight: bold; color:red">Gratis</span></p>
+    <div *ngIf="!showEnvio" class="centered-text">
+      <!-- Agregar un div que envuelva las etiquetas p con *ngIf -->
+      <p>Envío: <span style="font-weight: bold; color: red">Gratis</span></p>
     </div>
-    <p>Total: <span style="font-weight: bold;">{{ calcularPrecioConEnvio(product.precio)}}&nbsp;€</span></p>
+    <p>
+      Total:
+      <span style="font-weight: bold"
+        >{{ calcularPrecioConEnvio(product.precio) }}&nbsp;€</span
+      >
+    </p>
     <!-- <p>Total Impuestos:<span style="font-weight: bold;">{{ calcularPrecioFinal(product.precio)}}&nbsp;€</span></p> -->
   </div>
   <div class="flex-item-action">
-    <button
-    (click)="closeModal($event)">Seguir Comprando</button>
-    <button (click)="goCart($event)">Cesta</button>
+    <button (click)="closeModal($event)" class="custom-button">
+      Seguir Comprando
+    </button>
+    <button (click)="goCart($event)" class="custom-button">Cesta</button>
   </div>
 </div>

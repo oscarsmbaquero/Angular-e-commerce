@@ -1,0 +1,44 @@
+
+.home{
+    margin-top: 0;
+    background-color: black;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.video-container {
+    display: flex;    
+    /* margin: 10px; */
+    width: 100%;
+    height: 100%;    
+    overflow: hidden; /* Para ocultar cualquier desbordamiento */
+  }
+  
+  .video-container video {
+    width: 100%;
+    height: auto;
+    margin-right: 35px; /* Eliminar cualquier margen */
+  }
+  .custom-button {
+    position: absolute;
+    top: 50%; /* Alinea verticalmente en el centro */
+    left: 50%; /* Alinea horizontalmente en el centro */
+    transform: translate(-50%, -50%); /* Centra el botón correctamente */
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    border-radius: 12px;
+  }
+  
+  /* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 767px) { /* Cambia el valor según tus necesidades */
+    .video-container {
+      height: 100%; /* Altura ajustada para pantallas pequeñas */
+    }
+  }
