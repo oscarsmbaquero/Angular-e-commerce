@@ -29,7 +29,7 @@
           <div>
             <div class="product-action">
               <p class="product-price">{{ product.precio }}0&nbsp;€</p>
-              <button
+              <!-- <button
                 class="button"
                 (click)="confirmAndAddtoCart(product)"
                 routerLink="/"
@@ -40,7 +40,18 @@
                   height="55"
                   alt=""
                 />&nbsp;
-              </button>
+              </button> -->
+              <div class="card">
+                <p-toast ></p-toast>
+                <button type="button" pButton pRipple (click)="confirmAndAddtoCart(product)" label="Show" class="p-button-success">
+                  <img
+                  src="assets/images/cart.png"
+                  width="55"
+                  height="55"
+                  alt=""
+                />
+                </button>
+            </div>
               <button class="button" (click)="navigateDetail(product.id)">
                 <img 
                   src="assets/images/info.png"
@@ -55,7 +66,14 @@
       </div>
     </div>
   </div>
-  <!-- <div class="row" style="margin-top: 25px">
+ 
+</div>
+<!-- </div> -->
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>
+
+ <!-- <div class="row" style="margin-top: 25px">
     <div
       *ngFor="let car of products; let i = index"
       class="col-lg-3 col-md-6 col-12 mx-auto"
@@ -102,8 +120,3 @@
       </div>
     </div>
   </div> -->
-</div>
-<!-- </div> -->
-<ng-template #loading>
-  <app-loading></app-loading>
-</ng-template>

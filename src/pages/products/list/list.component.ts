@@ -4,11 +4,14 @@ import { Router } from '@angular/router';
 import { IProduct } from 'src/core/services/models/product.models';
 //servicio  modal
 import { ConfirmCartService } from 'src/core/services/confirmCart/confirm-cart.service';
+import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'] ,
+  providers: [MessageService]
 })
 export class ListComponent {
 
@@ -18,7 +21,8 @@ export class ListComponent {
   constructor(
     private storeService: StoreService,
     private router: Router,
-    private confirmCartService: ConfirmCartService
+    private confirmCartService: ConfirmCartService,
+    private messageService: MessageService
   ){
 
   }
@@ -35,8 +39,9 @@ export class ListComponent {
   }
 
   confirmAndAddtoCart(product: any){
-    this.addToCart(product);
-    this.openConfirmCart(product);
+    //this.addToCart(product);
+    //this.openConfirmCart(product);
+    this.show();
 
   }
 
@@ -77,5 +82,10 @@ export class ListComponent {
     this.confirmCartService.setProduct(product);
     this.router.navigate(['list']);
   }
+
+  show() {
+    console.log('Entro');
+    this.messageService.add({ severity: 'success', summary: '', detail: 'Producto añadido correctamente' });
+}
 
   }

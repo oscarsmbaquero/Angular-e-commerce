@@ -7,6 +7,8 @@ import { DataViewModule, DataViewLayoutOptions } from 'primeng/dataview';
 import { RatingModule } from 'primeng/rating';
 import { TagModule } from 'primeng/tag';
 import { FormsModule } from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Importa BrowserAnimationsModule
 
 
 
@@ -21,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     DataViewModule,
     RatingModule,
     FormsModule,
-    TagModule
+    TagModule,
+    ToastModule,
     
     
     
