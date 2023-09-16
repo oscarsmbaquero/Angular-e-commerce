@@ -15,6 +15,8 @@ import { CoreModule } from 'src/core/core.module';
 import { SharedModule } from 'src/shared/shared.module';
 import { NgxPayPalModule } from 'ngx-paypal';
 
+
+
 @NgModule({
   declarations: [
     AppComponent
