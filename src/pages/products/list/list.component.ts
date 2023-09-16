@@ -25,6 +25,7 @@ export class ListComponent {
 
   ngOnInit(){
    this.getProducts();
+  
   }
 
   private getProducts() {
@@ -77,4 +78,4 @@ export class ListComponent {
     this.router.navigate(['list']);
   }
 
-}
+  }

@@ -50,15 +50,15 @@
               type="button"
               class="btn btn-transparent position-relative;"
               [routerLink]="['/cesta']"
-              style="padding-left: 0;" 
+              style="padding-left: 0; background-color: transparent;" 
             >
               <img
                 src="assets/images/bolsa.png"
                 width="30"
                 height="25"
                 alt=""
-              />               
-                <span class="badge rounded-pill badge-notification bg-primary">{{totalUnidades}}</span>
+              /><i class="pi pi-bell text-3xl" pBadge value="{{totalUnidades}}" severity="info"></i>
+                <!-- <span class="badge rounded-pill badge-notification bg-primary">{{totalUnidades}}</span> -->
             </button>
             <!-- </a> -->
           </li>

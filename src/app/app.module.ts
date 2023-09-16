@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+// import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router'; // Import the RouterModule here
 import { HttpClientModule } from '@angular/common/http';
@@ -14,8 +14,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from 'src/core/core.module';
 import { SharedModule } from 'src/shared/shared.module';
 import { NgxPayPalModule } from 'ngx-paypal';
-
-
+import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [
