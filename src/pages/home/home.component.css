@@ -13,15 +13,16 @@
   display: flex;
   flex-direction: column; /* Cambiamos la dirección de la columna en dispositivos móviles */
   align-items: center; /* Centramos el contenido verticalmente */
-  /* width: 100%;
-  height: 100%; */
+  width: 100vw;
+  height: 100%;
   overflow: hidden;
 }
 
 .video-container video {
-  /* width: 100%;*/
-  height: 100%; 
-  margin-right: 0; /* Eliminamos el margen derecho en dispositivos móviles */
+  width: 100%;
+  /* height: 100%;  */
+  /* margin-right: 0; */
+   /* Eliminamos el margen derecho en dispositivos móviles */
 }
 
 .custom-button {
@@ -41,7 +42,7 @@
 /* Estilos para pantallas pequeñas (móviles) */
 @media (max-width: 767px) {
   .video-container {
-    height: 100vh; /* Ajusta la altura en dispositivos móviles según tus necesidades */
+    height: 100vh; 
   }
 
   .custom-button {
