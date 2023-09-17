@@ -173,12 +173,14 @@ export class CartComponent  implements OnInit{
     this.calculateTotal(this.priceShipme);
   }
 
+
+  /**
+   * Metodo para pintar solo dos decimales
+   * @param price 
+   * @returns 
+   */
   getFixed(price: number){
-
      return price.toFixed(2);
-
-
-
   }
 }
 

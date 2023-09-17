@@ -17,16 +17,26 @@
         <img src="{{ car.image }}" width="55" height="55" alt="" />
       </div>
       <div class="data">
-        <h5>Total: {{getFixed(car.totalPrice)}}&nbsp;€</h5>
+        <h5>Total: {{ getFixed(car.totalPrice) }}&nbsp;€</h5>
         <div class="price-units">
           <h4>
             <span style="font-weight: bold">{{ car.precio }}</span
-            >€ 
+            >€
           </h4>
           <div class="unit-controls">
-            <button (click)="decrementUnits(car, i)" style="background-color: red;"><span style="font-weight: bold;">-</span></button>
-            <span >{{ car.unidades }}</span>
-            <button (click)="incrementUnits(car, i)" style="background-color: green;"><span style="font-weight: bold;">+</span></button>
+            <button
+              (click)="decrementUnits(car, i)"
+              style="background-color: red"
+            >
+              <span style="font-weight: bold">-</span>
+            </button>
+            <span>{{ car.unidades }}</span>
+            <button
+              (click)="incrementUnits(car, i)"
+              style="background-color: green"
+            >
+              <span style="font-weight: bold">+</span>
+            </button>
           </div>
           <button (click)="deleteId(car.id)" class="button">
             <img
@@ -37,20 +47,29 @@
             />&nbsp;
           </button>
         </div>
-       
       </div>
     </div>
   </div>
   <div class="total">
     <div>
       <h3>
-        Total: <span style="font-weight: bold;">{{getFixed(total)}}</span>&nbsp;€
+        Total: <span style="font-weight: bold">{{ getFixed(total) }}</span
+        >&nbsp;€
       </h3>
     </div>
     <div>
-      <div >
-        <button (click)="shipment()" class="custom-button" style="margin-top: 25px;"> 
-          <img src="assets/images/camion.png" width="40" height="40" alt="" />&nbsp;  
+      <div>
+        <button
+          (click)="shipment()"
+          class="custom-button"
+          style="margin-top: 25px"
+        >
+          <img
+            src="assets/images/camion.png"
+            width="40"
+            height="40"
+            alt=""
+          />&nbsp;
         </button>
       </div>
       <div *ngIf="showShipment">
@@ -64,6 +83,7 @@
     </div>
   </div>
 </div>
+
 <ng-template #noCarts>
   <div class="no-products">
     <div>
