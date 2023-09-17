@@ -172,6 +172,14 @@ export class CartComponent  implements OnInit{
     console.log(this.priceShipme);
     this.calculateTotal(this.priceShipme);
   }
+
+  getFixed(price: number){
+
+     return price.toFixed(2);
+
+
+
+  }
 }
 
 

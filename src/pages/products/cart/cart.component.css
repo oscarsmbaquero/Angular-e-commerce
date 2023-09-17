@@ -51,6 +51,17 @@
 .unit-controls {
     display: flex;
     align-items: center;
+    padding: 0;
+    flex-direction: column-reverse;
+
+    > button{
+        width: 30px;
+        height: 30px;
+        padding: 10px;
+        border-radius: 8px;
+        
+
+    }
 }
 
 .unit-controls button {
@@ -104,18 +115,25 @@ h6 {
 }    
 @media (max-width: 768px) {
     .total {
+        display: flex;
         flex-direction: column;
+        justify-content: center;
+
         /* text-align: center; */
     }
 
     .total > div {
         padding: 20px;
+        justify-content: center;
     }
 }
 .custom-button {
     /* margin-top: 35px; */
     position: relative;
-    top: 30%; /* Alinea verticalmente en el centro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%; /* Alinea verticalmente en el centro */
     left: 50%; /* Alinea horizontalmente en el centro */
     transform: translate(-50%, -50%); /* Centra el botón correctamente */
     background-color: #007bff;
@@ -124,4 +142,16 @@ h6 {
     border: none;
     cursor: pointer;
     border-radius: 12px;
+    animation: pulse 2s infinite; /* Nombre de la animación y duración */
+  }
+  @keyframes pulse {
+    0% {
+      transform: scale(0.8); /* Escala normal al inicio */
+    }
+    50% {
+      transform: scale(1.0); /* Escala más grande a la mitad de la animación */
+    }
+    100% {
+      transform: scale(0.8); /* Volver a la escala normal al final */
+    }
   }

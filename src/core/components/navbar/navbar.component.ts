@@ -2,8 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IProduct } from 'src/core/services/models/product.models';
 import { StoreService } from 'src/core/services/store/store.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
-
+interface City {
+  name: string;
+  code: string;
+}
 
 
 @Component({
@@ -12,9 +16,12 @@ import { StoreService } from 'src/core/services/store/store.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+
+  formGroup: FormGroup | undefined;
   
   carts: number = 0;
   totalUnidades: number = 0;
+  cities: City[] | undefined;
 
   constructor(
     private router: Router,
@@ -37,7 +44,19 @@ export class NavbarComponent implements OnInit {
       // });
     // Obtener el número de carritos desde el storeService
     //this.carts = this.storeService.getCart().length;
+    this.cities = [
+      { name: 'New York', code: 'NY' },
+      { name: 'Rome', code: 'RM' },
+      { name: 'London', code: 'LDN' },
+      { name: 'Istanbul', code: 'IST' },
+      { name: 'Paris', code: 'PRS' }
+  ];
+
+  this.formGroup = new FormGroup({
+      selectedCity: new FormControl<City | null>(null)
+  });
+}
   }
 
 
-}
+

@@ -4,6 +4,8 @@ import { CartComponent } from './cart.component';
 import { CartRoutingModule } from './cart-routing.module';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { ShipmentModule } from 'src/pages/shipment/shipment.module';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { FormsModule } from '@angular/forms'; // Importa FormsModule
 
 
 
@@ -16,7 +18,9 @@ import { ShipmentModule } from 'src/pages/shipment/shipment.module';
     CommonModule,
     CartRoutingModule,
     NgxPayPalModule,
-    ShipmentModule
+    ShipmentModule,
+    InputNumberModule,
+    FormsModule
   ]
 })
 export class CartModule { }

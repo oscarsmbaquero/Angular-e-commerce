@@ -17,33 +17,34 @@
         <img src="{{ car.image }}" width="55" height="55" alt="" />
       </div>
       <div class="data">
-        <h5>Total: {{ car.totalPrice }}</h5>
+        <h5>Total: {{getFixed(car.totalPrice)}}&nbsp;€</h5>
         <div class="price-units">
           <h4>
             <span style="font-weight: bold">{{ car.precio }}</span
-            >€ u
+            >€ 
           </h4>
           <div class="unit-controls">
-            <button (click)="decrementUnits(car, i)">-</button>
-            <span>{{ car.unidades }}</span>
-            <button (click)="incrementUnits(car, i)">+</button>
+            <button (click)="decrementUnits(car, i)" style="background-color: red;"><span style="font-weight: bold;">-</span></button>
+            <span >{{ car.unidades }}</span>
+            <button (click)="incrementUnits(car, i)" style="background-color: green;"><span style="font-weight: bold;">+</span></button>
           </div>
+          <button (click)="deleteId(car.id)" class="button">
+            <img
+              src="assets/images/basura.png"
+              width="25"
+              height="25"
+              alt=""
+            />&nbsp;
+          </button>
         </div>
-        <button (click)="deleteId(car.id)" class="button">
-          <img
-            src="assets/images/basura.png"
-            width="25"
-            height="25"
-            alt=""
-          />&nbsp;
-        </button>
+       
       </div>
     </div>
   </div>
   <div class="total">
     <div>
       <h3>
-        Total: <span style="font-weight: bold;">{{ total }}</span>&nbsp;€
+        Total: <span style="font-weight: bold;">{{getFixed(total)}}</span>&nbsp;€
       </h3>
     </div>
     <div>

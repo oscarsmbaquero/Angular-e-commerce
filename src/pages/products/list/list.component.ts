@@ -39,7 +39,7 @@ export class ListComponent {
   }
 
   confirmAndAddtoCart(product: any){
-    //this.addToCart(product);
+    this.addToCart(product);
     //this.openConfirmCart(product);
     this.show();
 

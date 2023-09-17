@@ -85,6 +85,6 @@
   width: 100%;
   height: 1px; /* Grosor de la línea */
   background: linear-gradient(to right, transparent, #000, transparent); /* Degradado de fondo */
-  margin: 20px 0; /* Espacio alrededor del hr */
+  margin: 0; /* Espacio alrededor del hr */
   border: none; /* Elimina el borde */
 }
