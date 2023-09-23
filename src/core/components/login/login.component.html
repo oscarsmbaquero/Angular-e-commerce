@@ -1,0 +1,38 @@
+<div class="container" data-aos="flip-up">
+    <mat-card>
+      <mat-card-content>
+        <img
+          src="../../../assets/images/logo.jpg"
+          width="130"
+          height="90"
+          alt=""
+          style="margin-left: 40px"
+        />
+        <form novalidate (ngSubmit)="onSubmit()" [formGroup]="loginUser">
+          <mat-form-field appearance="fill">
+            <mat-label>Usuario:</mat-label>
+            <input matInput formControlName="user" />
+            <mat-error *ngIf="loginUser.get('user')?.invalid">
+              El usuario es requerido.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Password:</mat-label>
+            <input matInput formControlName="password" />
+            <mat-error *ngIf="loginUser.get('password')?.invalid">
+              La password es requerida.
+            </mat-error>
+          </mat-form-field>
+          <mat-card-content>
+            <button
+              mat-raised-button
+              color="primary"
+            >
+              Enviar
+            </button>
+          </mat-card-content>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

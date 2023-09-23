@@ -9,6 +9,10 @@ const routes: Routes = [
     pathMatch:'full',//coincida nombre exacto
     loadChildren: () => import('src/pages/home/home.module').then(m => m.HomeModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('src/core/components/login/login.module').then(m => m.LoginModule)
+  },
    {
     path: "list",
     loadChildren: () => import('src/pages/products/list/list.module').then(m => m.ListModule)
