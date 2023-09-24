@@ -14,7 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 //primeng
-
+import { MessagesModule } from 'primeng/messages';
 import { InputSwitchModule } from 'primeng/inputswitch';
 
 
@@ -42,7 +42,8 @@ import { RegisterComponent } from './register/register.component';
     MatSelectModule,
     MatButtonModule,
     MatInputModule,
-    InputSwitchModule
+    InputSwitchModule,
+    MessagesModule
 
   ]
 })

@@ -40,9 +40,9 @@
             >
           </li>
           <hr class="fading-hr" />
-          <div *ngIf="activeUser else logOn">
+          
             <!-- Cesta -->
-            <li class="nav-item" routerLinkActive="active">
+            <li  *ngIf="activeUser" class="nav-item" routerLinkActive="active">
               <button
                 type="button"
                 class="btn btn-transparent position-relative;"
@@ -68,7 +68,7 @@
             </li>
             <hr class="fading-hr" />
             <!-- Login -->
-            <li class="nav-item" routerLinkActive="active">
+            <li *ngIf="activeUser" class="nav-item" routerLinkActive="active">
               <a
                 class="nav-link"
                 [routerLink]="['/user']"
@@ -77,9 +77,8 @@
                 ><span class="text-black" (click)="logout()">Logout</span></a
               >
             </li>
-          </div>
-          <ng-template #logOn>
-            <li class="nav-item" routerLinkActive="active">
+          
+            <li *ngIf="!activeUser" class="nav-item" routerLinkActive="active">
               <a
                 class="nav-link"
                 [routerLink]="['/user']"
@@ -88,7 +87,7 @@
                 ><span class="text-black">LogIn</span></a
               >
             </li>
-          </ng-template>
+
         </ul>
       </div>
     </div>

@@ -15,8 +15,13 @@ import { MessageService } from 'primeng/api';
 })
 export class ListComponent {
 
+  activeUser: any;
+
   products:IProduct[]=[];
 
+  messageLogin = true;
+
+  
 
   constructor(
     private storeService: StoreService,
@@ -28,9 +33,15 @@ export class ListComponent {
   }
 
   ngOnInit(){
-   this.getProducts();
+    this.activeUser = localStorage.getItem('user');
+    console.log(this.activeUser);
+    this.getProducts();
+   
   
   }
+
+  
+
 
   private getProducts() {
     this.storeService.getProducts().subscribe((products) => {
@@ -39,9 +50,17 @@ export class ListComponent {
   }
 
   confirmAndAddtoCart(product: any){
-    this.addToCart(product);
+    if(this.activeUser){
+      console.log('Si lo hay');
+      this.addToCart(product);
+      this.show();
+    }else{
+      sessionStorage.setItem('messageLogin', JSON.stringify(this.messageLogin));
+      this.router.navigate(['user']);
+    }
+    
     //this.openConfirmCart(product);
-    this.show();
+    
 
   }
 

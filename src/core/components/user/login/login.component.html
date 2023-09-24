@@ -1,3 +1,8 @@
+<div *ngIf="messageLogin">
+<div  *ngIf="messages1" class="card">
+  <p-messages [(value)]="messages1" [enableService]="false" [closable]="true"></p-messages>
+</div>
+</div>
 <div data-aos="flip-up">
   <mat-card>
     <mat-card-content>

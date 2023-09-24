@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IUser } from 'src/core/services/models/user-models';
 import { UsersService } from 'src/core/services/users/users.service';
 import * as AOS from 'aos';
+import { MessageService } from 'primeng/api';
+import { Message } from 'primeng/api';
 
 import { Router } from '@angular/router';
 import {
@@ -18,9 +20,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [MessageService]
 })
 export class LoginComponent {
+
+  messages1: Message[] | undefined;
 
   public loginUser: FormGroup;
   public submitted: boolean = false;
@@ -31,11 +36,14 @@ export class LoginComponent {
    */
   showRegister = false;
 
+  messageLogin= false;
+
   constructor(
     private formBuilder: FormBuilder,
     private userServices: UsersService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private messageService: MessageService
     
   ) {
     this.loginUser = this.formBuilder.group({
@@ -45,6 +53,11 @@ export class LoginComponent {
   }
   
   ngOnInit() {
+    this.messages1 = [
+      { severity: 'error', summary: 'Error', detail: 'Debe de registrarse o acceder con tu usuario' },
+  ];
+    this.messageLogin = sessionStorage.getItem('messageLogin') === 'true';
+    
     AOS.init({
       duration: 1550,
       delay: 550,
