@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
-import { LoginRoutingModule } from './login-routing.module';
+import { UserRoutingModule } from './user-routing.module';
 import { FormsModule } from '@angular/forms';
+import { UserComponent } from './user.component';
 
 //material
 import { MatCardModule } from '@angular/material/card';
@@ -25,12 +26,13 @@ import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    LoginRoutingModule,
+    UserRoutingModule,
     MatCardModule,
     MatFormFieldModule,
     ReactiveFormsModule,
@@ -43,4 +45,4 @@ import { RegisterComponent } from './register/register.component';
 
   ]
 })
-export class LoginModule { }
+export class UserModule { }

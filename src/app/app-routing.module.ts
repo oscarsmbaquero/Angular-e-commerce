@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'user',
-    loadChildren: () => import('src/core/components/user/login.module').then(m => m.LoginModule)
+    loadChildren: () => import('src/core/components/user/user.module').then(m => m.UserModule)
   },
    {
     path: "list",

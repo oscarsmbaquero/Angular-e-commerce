@@ -1,0 +1,23 @@
+<div
+  class="card flex justify-content-center"
+  style="padding: 20px; border: none"
+>
+  <div *ngIf="!showRegister; else labelLogin">
+    <label>Si no tienes cuenta, regístrate</label>
+  </div>
+  <ng-template #labelLogin>
+    <label>Si ya tienes cuenta, accede al Login</label>
+  </ng-template>
+  <p-inputSwitch
+    [(ngModel)]="checked"
+    (ngModelChange)="register()"
+  ></p-inputSwitch>
+</div>
+<div>
+  <div *ngIf="!showRegister; else registerTemplate">
+    <app-login></app-login>
+  </div>
+  <ng-template #registerTemplate>
+    <app-register></app-register>
+  </ng-template>
+</div>

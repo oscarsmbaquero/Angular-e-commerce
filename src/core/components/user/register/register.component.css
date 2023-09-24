@@ -1,0 +1,32 @@
+div[data-aos="flip-up"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  mat-card {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Centrar el logo horizontalmente */
+  img[src="../../../assets/images/logo.jpg"] {
+    margin: 0 auto;
+    display: block;
+  }
+  
+  /* Estilos para centrar los inputs horizontalmente */
+  mat-form-field {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos para centrar el botón horizontalmente */
+  button[mat-raised-button] {
+    display: block;
+    margin: 0 auto;
+  }

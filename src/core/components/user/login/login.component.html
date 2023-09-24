@@ -1,17 +1,4 @@
-<div class="card flex justify-content-center" style="padding: 50px; border:none">
-  <div *ngIf="showRegister; else labelLogin">
-    <label>Si no tienes cuenta, regístrate</label>
-  </div>
-  <ng-template #labelLogin>
-    <label>Si ya tienes cuenta, accede al Login</label>
-  </ng-template>  
-  <p-inputSwitch
-    [(ngModel)]="checked"
-    (ngModelChange)="register()"
-  ></p-inputSwitch>
-</div>
-
-<div *ngIf="!showRegister; else registerTemplate" class="container" data-aos="flip-up">
+<div data-aos="flip-up">
   <mat-card>
     <mat-card-content>
       <img
@@ -19,7 +6,7 @@
         width="130"
         height="90"
         alt=""
-        style="margin-left: 40px"
+       
       />
       <form novalidate (ngSubmit)="onSubmit()" [formGroup]="loginUser">
         <mat-form-field appearance="fill">
@@ -43,6 +30,4 @@
     </mat-card-content>
   </mat-card>
 </div>
-<ng-template #registerTemplate>
-  <app-register></app-register>
-</ng-template>
+
