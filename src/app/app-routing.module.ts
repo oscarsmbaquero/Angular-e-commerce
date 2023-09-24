@@ -10,8 +10,8 @@ const routes: Routes = [
     loadChildren: () => import('src/pages/home/home.module').then(m => m.HomeModule)
   },
   {
-    path: 'login',
-    loadChildren: () => import('src/core/components/login/login.module').then(m => m.LoginModule)
+    path: 'user',
+    loadChildren: () => import('src/core/components/user/login.module').then(m => m.LoginModule)
   },
    {
     path: "list",

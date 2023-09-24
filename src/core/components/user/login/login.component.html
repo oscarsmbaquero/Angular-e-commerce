@@ -1,5 +1,5 @@
 <div class="card flex justify-content-center" style="padding: 50px; border:none">
-  <div *ngIf="!showRegister; else labelLogin">
+  <div *ngIf="showRegister; else labelLogin">
     <label>Si no tienes cuenta, regístrate</label>
   </div>
   <ng-template #labelLogin>
