@@ -37,10 +37,9 @@
             </mat-error>
           </mat-form-field>
           <mat-card-content>
-            <button
+            <button *ngIf="registerUser.valid"
               mat-raised-button
-              color="primary"
-            >
+              color="primary">
               Enviar
             </button>
           </mat-card-content>

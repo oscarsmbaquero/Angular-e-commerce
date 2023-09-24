@@ -24,7 +24,10 @@
           </mat-error>
         </mat-form-field>
         <mat-card-content>
-          <button mat-raised-button color="primary">Enviar</button>
+          <button *ngIf="loginUser.valid"
+          mat-raised-button color="primary" 
+                  >Enviar
+          </button>
         </mat-card-content>
       </form>
     </mat-card-content>

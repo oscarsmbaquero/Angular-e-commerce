@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-//import { IUser } from '../../services/models/user-models';
+import { IUser } from 'src/core/services/models/user-models';
+import { UsersService } from 'src/core/services/users/users.service';
 import * as AOS from 'aos';
 
 import { Router } from '@angular/router';
@@ -32,8 +33,9 @@ export class LoginComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    //private userServices: UsersService,
+    private userServices: UsersService,
     private router: Router,
+    private snackBar: MatSnackBar
     
   ) {
     this.loginUser = this.formBuilder.group({
@@ -60,22 +62,33 @@ export class LoginComponent {
         password: this.loginUser.get('password')?.value,
       };
       console.log(user, 46);
-      // this.userServices.login(user).subscribe(
-      //   (response) => {
-      //     console.log('Datos enviados con éxito');
-      //     // this.snackBar.open(
-      //     //   'El coche ha sido añadido correctamente',
-      //     //   'Cerrar',
-      //     //   {
-      //     //     duration: 3000,
-      //     //   }
-      //     // );
-      //     this.router.navigate(['list']);
-      //   },
-      //   (error) => {
-      //     console.error('Error al enviar los datos', error);
-      //   }
-      // );
+      this.userServices.login(user).subscribe(
+        (response) => {
+          console.log(response);
+          console.log('Datos enviados con éxito');
+          this.snackBar.open(
+            'Usurio Logueado Correctamente',
+            'Cerrar',
+            {
+              duration: 3000,
+            }
+          );
+          this.router.navigate(['list']);
+        },
+        (error) => {
+          console.error('Error al enviar los datos', error);
+          if(error.status !== 200){
+              this.snackBar.open(
+            'Usuario o contraseña incorrectas',
+            'Cerrar',
+            {
+              duration: 3000,
+            }
+          );
+          }
+          console.log(error.status,'status');
+        }
+      );
     }
   } 
 register(){

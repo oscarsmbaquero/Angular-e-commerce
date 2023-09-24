@@ -52,4 +52,13 @@
   }
   
   /* Añade estilos adicionales según tus preferencias */
-  
+ /* Estilos personalizados para el MatSnackBar */
+.custom-snackbar {
+  text-align: center; /* Centrar el texto */
+  background-color: #333; /* Color de fondo */
+  color: #fff; /* Color del texto */
+  border-radius: 8px; /* Bordes redondeados */
+  width: 300px; /* Ancho personalizado */
+  margin: 0 auto; /* Centrar horizontalmente */
+}
+ 
