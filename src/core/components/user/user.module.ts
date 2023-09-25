@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { UserRoutingModule } from './user-routing.module';
 import { FormsModule } from '@angular/forms';
 import { UserComponent } from './user.component';
+import { SharedModule } from 'src/shared/shared.module';
 
 //material
 import { MatCardModule } from '@angular/material/card';
@@ -34,6 +35,7 @@ import { RegisterComponent } from './register/register.component';
     CommonModule,
     FormsModule,
     UserRoutingModule,
+    SharedModule,
     MatCardModule,
     MatFormFieldModule,
     ReactiveFormsModule,

@@ -37,6 +37,10 @@ export class LoginComponent {
   showRegister = false;
 
   messageLogin= false;
+  /**
+   * flag para pintar el loader
+   */
+  loading= false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -65,6 +69,7 @@ export class LoginComponent {
   }
 
   public onSubmit(): void {
+    this.loading = true;
     // El usuario ha pulsado en submit->cambia a true submitted
     this.submitted = true;
     // Si el formulario es valido
@@ -77,6 +82,7 @@ export class LoginComponent {
       console.log(user, 46);
       this.userServices.login(user).subscribe(
         (response) => {
+          this.loading = false;
           console.log(response);
           console.log('Datos enviados con éxito');
           this.snackBar.open(
@@ -89,6 +95,7 @@ export class LoginComponent {
           this.router.navigate(['list']);
         },
         (error) => {
+          this.loading = false;
           console.error('Error al enviar los datos', error);
           if(error.status !== 200){
               this.snackBar.open(
