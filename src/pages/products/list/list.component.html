@@ -1,6 +1,6 @@
 <!-- <div class="product-card-container"> -->
 <div *ngIf="products; else loading">
-  <div class="row" style="margin-top: 85px margin-bottom 25px;">
+  <div class="row" style="margin-top: 85px margin-bottom 25px">
     <div *ngFor="let product of products" class="container">
       <div class="front side">
         <div class="content">
@@ -13,6 +13,9 @@
             />
           </div>
           <div>
+            <div>              
+              <p-badge value={{product.stock}} size="xlarge" [severity]="product.stockStatus"></p-badge>
+            </div>
             <p class="product-description">{{ product.description }}</p>
             <!-- <p class="product-price">{{ product.precio }}&nbsp;€</p> -->
           </div>
@@ -23,7 +26,9 @@
           <div>
             <h3 class="product-name_back">{{ product.name }}</h3>
             <div class="product-info_back">
-              <h6 class="product-description_back">{{ product.description }}</h6>
+              <h6 class="product-description_back">
+                {{ product.description }}
+              </h6>
             </div>
           </div>
           <div>
@@ -42,18 +47,25 @@
                 />&nbsp;
               </button> -->
               <div class="card">
-                <p-toast ></p-toast>
-                <button type="button" pButton pRipple (click)="confirmAndAddtoCart(product)" label="Show" class="p-button-success">
+                <p-toast></p-toast>
+                <button
+                  type="button"
+                  pButton
+                  pRipple
+                  (click)="confirmAndAddtoCart(product)"
+                  label="Show"
+                  class="p-button-success"
+                >
                   <img
-                  src="assets/images/cart.png"
-                  width="55"
-                  height="55"
-                  alt=""
-                />
+                    src="assets/images/cart.png"
+                    width="55"
+                    height="55"
+                    alt=""
+                  />
                 </button>
-            </div>
+              </div>
               <button class="button" (click)="navigateDetail(product.id)">
-                <img 
+                <img
                   src="assets/images/info.png"
                   width="50"
                   height="50"
@@ -66,14 +78,13 @@
       </div>
     </div>
   </div>
- 
 </div>
 <!-- </div> -->
 <ng-template #loading>
   <app-loading></app-loading>
 </ng-template>
 
- <!-- <div class="row" style="margin-top: 25px">
+<!-- <div class="row" style="margin-top: 25px">
     <div
       *ngFor="let car of products; let i = index"
       class="col-lg-3 col-md-6 col-12 mx-auto"

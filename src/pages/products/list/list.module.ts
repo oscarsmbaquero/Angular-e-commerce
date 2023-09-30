@@ -9,6 +9,7 @@ import { TagModule } from 'primeng/tag';
 import { FormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Importa BrowserAnimationsModule
+import { BadgeModule } from 'primeng/badge';
 
 
 
@@ -25,7 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
     FormsModule,
     TagModule,
     ToastModule,
-    
+    BadgeModule
     
     
   ],exports:[
