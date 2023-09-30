@@ -42,10 +42,10 @@ export class ListComponent {
           product.stock = 'Agotado';
           product.stockStatus = 'danger';
         } else if (product.unidades <= 50) {
-          product.stock = 'Pocas unidades';
+          product.stock = 'Stock';
           product.stockStatus = 'warning';
         } else {
-          product.stock = 'En stock';
+          product.stock = 'Stock';
           product.stockStatus = 'success'
         }
       });

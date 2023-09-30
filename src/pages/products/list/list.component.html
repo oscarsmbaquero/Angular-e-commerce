@@ -14,7 +14,7 @@
           </div>
           <div>
             <div>              
-              <p-badge value={{product.stock}} size="xlarge" [severity]="product.stockStatus"></p-badge>
+              <p-badge value={{product.stock}} [severity]="product.stockStatus"></p-badge>
             </div>
             <p class="product-description">{{ product.description }}</p>
             <!-- <p class="product-price">{{ product.precio }}&nbsp;€</p> -->
@@ -48,7 +48,7 @@
               </button> -->
               <div class="card">
                 <p-toast></p-toast>
-                <button
+                <button *ngIf="product.unidades > 0"
                   type="button"
                   pButton
                   pRipple
