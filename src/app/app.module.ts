@@ -15,6 +15,7 @@ import { SharedModule } from 'src/shared/shared.module';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BadgeModule } from 'primeng/badge';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RouterModule,
     HttpClientModule,
     MatBadgeModule,
-    MatIconModule
+    MatIconModule,
+    BadgeModule
     
   ],
   providers: [],

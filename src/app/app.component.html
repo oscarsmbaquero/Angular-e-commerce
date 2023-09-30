@@ -1,7 +1,19 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
 <div class="body">
-    <router-outlet></router-outlet>
+  <div *ngIf="showCart && activeUser" class="floating-button" (click)="redirigirACesta()">
+    <img src="assets/images/cart.png" width="55" height="55" alt="" />
+   <a
+   routerLink="/cesta"
+   >
+    <i
+      class="pi pi-bell text-3xl"
+      pBadge
+      value="{{ totalUnidades }}"
+      severity="success"
+    ></i></a> 
+  </div>
+  <router-outlet></router-outlet>
 </div>
 
 <app-footer></app-footer>
