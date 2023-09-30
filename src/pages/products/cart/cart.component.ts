@@ -98,7 +98,9 @@ export class CartComponent  implements OnInit{
     this.router.navigate(['list']);
   }
 
-  
+  /**
+   * configuracion de paypal
+   */
   private initConfig(): void {
     const storeItems = JSON.parse(sessionStorage.getItem('cart') || '');
    console.log(storeItems,'storeItems');

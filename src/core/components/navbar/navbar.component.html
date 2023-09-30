@@ -1,114 +1,126 @@
-<nav class="navbar navbar-expand-md navbar-light bg-transparent">
-  <button
-    class="navbar-toggler mr-auto"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand ms-3 ml-auto" routerLink="/">
-    <img src="assets/images/logo.jpg" width="70" height="50" alt="" />&nbsp;
-    <!-- <span class="text-secondary">O&J</span> -->
-  </a>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <div class="navbar-container">
-      <div class="navbar-left ml-auto">
-        <ul class="navbar-nav ms-auto px-3 flex-column flex-md-row">
-          <!-- Home -->
-          <li class="nav-item" routerLinkActive="active">
-            <a
-              class="nav-link"
-              [routerLink]="['']"
-              data-toggle="collapse"
-              data-target=".navbar-collapse.show"
-              ><span class="text-black">Home</span></a
-            >
-          </li>
-          <hr class="fading-hr" />
-          <!-- Productos -->
-          <li class="nav-item" routerLinkActive="active">
-            <a
-              class="nav-link"
+<nav class="navbar navbar-expand-md bg-light bg-transparent">
+  <div class="container-fluid">
+    <a class="navbar-brand"
+    [routerLink]="['']"
+    >
+      <img src="assets/images/logo.jpg" width="70" height="50" alt="" />&nbsp;
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarScroll"
+      aria-controls="navbarScroll"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul
+        class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+        style="--bs-scroll-height: 100px"
+      >
+        <li class="nav-item" routerLinkActive="active">
+          <a
+          class="nav-link"
+          [routerLink]="['']"
+          data-toggle="collapse"
+          data-target=".navbar-collapse.show"
+          ><span class="text-black">Home</span></a
+        >
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Productos
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a
+              class="dropdown-item"
               [routerLink]="['/list']"
-              data-toggle="collapse"
-              data-target=".navbar-collapse.show"
-              ><span class="text-black">Productos</span></a
-            >
-          </li>
-          <hr class="fading-hr" />
-
-          <!-- Cesta -->
-          <li *ngIf="activeUser" class="nav-item" routerLinkActive="active">
-            <button
-              type="button"
-              class="btn btn-transparent position-relative;"
-              [routerLink]="['/cesta']"
-              data-toggle="collapse"
-              data-target=".navbar-collapse.show"
-              style="padding-left: 0; background-color: transparent"
-            >
-              <img
-                src="assets/images/bolsa.png"
-                width="30"
-                height="25"
-                alt=""
-              /><i
-                class="pi pi-bell text-3xl"
-                pBadge
-                value="{{ totalUnidades }}"
-                severity="info"
-              ></i>
-              <!-- <span class="badge rounded-pill badge-notification bg-primary">{{totalUnidades}}</span> -->
-            </button>
-            <!-- </a> -->
-          </li>
-          <hr class="fading-hr" />
-          <!-- Login -->
-        </ul>
-      </div>
-      <div class="navbar-right mr-auto">
-        <ul class="navbar-nav ml-auto px-3 flex-column flex-md-row">
-          <li *ngIf="activeUser" class="nav-item" routerLinkActive="active">
-            <a
-              class="nav-link"
-              [routerLink]="['/user']"
-              data-toggle="collapse"
-              data-target=".navbar-collapse.show"
-              >
-              <img (click)="logout()" src="assets/images/logout.png" width="30" height="30" alt="" />&nbsp;
-              <!-- <span class="text-black" (click)="logout()">Logout</span> -->
+              ><span class="text-black">Quad Lock</span>
               </a
             >
-          </li>
-          <!-- <li  *ngIf="activeUser" class="nav-item" routerLinkActive="active">
-            <a
-              class="nav-link"
-              data-toggle="collapse"
-              data-target=".navbar-collapse.show"
-              ><span style="color: red">{{ activeUser.data.user }}</span></a
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#">Car Play</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#">Otros Productos</a></li>
+          </ul>
+        </li>
+        
+        <li 
+        *ngIf="activeUser"
+           class="nav-item" 
+           routerLinkActive="active"
+           
+           >
+          <button
+          type="button"
+          class="btn btn-transparent position-relative;"
+          [routerLink]="['/cesta']"
+          data-toggle="collapse"
+          data-target=".navbar-collapse.show"
+          style="padding-left: 0; background-color: transparent"
+        >
+          <img
+            src="assets/images/bolsa.png"
+            width="30"
+            height="25"
+            alt=""
+          /><i
+            class="pi pi-bell text-3xl"
+            pBadge
+            value="{{ totalUnidades }}"
+            severity="info"
+          ></i>
+          <!-- <span class="badge rounded-pill badge-notification bg-primary">{{totalUnidades}}</span> -->
+        </button>
+        </li>
+      </ul>
+      <!-- <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form> -->
+      <ul
+        class="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll"
+        style="--bs-scroll-height: 100px"
+      >
+      <li  *ngIf="activeUser; else notUser" class="nav-item">
+        <a
+        class="nav-link"
+        [routerLink]="['/user']"
+        data-toggle="collapse"
+        data-target=".navbar-collapse.show"
+        >
+        <img (click)="logout()" src="assets/images/logout2.png" width="150" height="60" alt="" />&nbsp;
+        <!-- <span class="text-black" (click)="logout()">Logout</span> -->
+        </a
+      >
+      </li>      
+      <ng-template #notUser>
+        <li class="nav-item" routerLinkActive="active">
+          <a
+            class="nav-link"
+            [routerLink]="['/user']"
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
             >
-          </li> -->
-
-          <li *ngIf="!activeUser" class="nav-item" routerLinkActive="active">
-            <a
-              class="nav-link"
-              [routerLink]="['/user']"
-              data-toggle="collapse"
-              data-target=".navbar-collapse.show"
-              >
-              <img src="assets/images/login.png" width="50" height="50" alt="" />&nbsp;
-              <!-- <span class="text-black">LogIn</span> -->
-
-              </a
-            >
-          </li>
-        </ul>
-      </div>
+            <img src="assets/images/login2.png" width="150" height="60" alt="" />&nbsp;
+            <!-- <span class="text-black" (click)="logout()">Logout</span> -->
+            </a
+          >
+        </li>
+      </ng-template>
+      
+      </ul>
     </div>
   </div>
 </nav>
-

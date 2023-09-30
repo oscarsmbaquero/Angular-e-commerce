@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 
 interface Envio {
@@ -17,7 +17,14 @@ interface Envio {
 
 export class ShipmentComponent {
 
+  @Input() total: number | undefined;
+
   @Output() priceShipment = new EventEmitter<number>();
+
+  ngOnInit(){
+    console.log(this.total);
+  }
+
 
   envios: Envio[]= [
     {

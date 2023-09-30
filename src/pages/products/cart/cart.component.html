@@ -73,7 +73,10 @@
         </button>
       </div>
       <div *ngIf="showShipment">
-        <app-shipment (priceShipment)="priceShipment($event)"></app-shipment>
+        <app-shipment 
+            (priceShipment)="priceShipment($event)"
+            [total]="total"
+        ></app-shipment>
       </div>
     </div>
     <div *ngIf="showPaypal">
