@@ -29,7 +29,7 @@ export class StoreService {
    * @returns
    */
   public getProducts(): Observable<IProduct[]> {
-    return this.httpClient.get<IProduct[]>(`${environment.apiUrlMock}banks`);
+    return this.httpClient.get<IProduct[]>(`${environment.apiUrlMock}products`);
   }
 
   getCartObservable(): Observable<any[]> {

@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit {
 
   carts: number = 0;
   activeUser: any;
+  activeUserName: any;
   totalUnidades: number = 0;
   cities: City[] | undefined;
 
@@ -43,7 +44,8 @@ export class NavbarComponent implements OnInit {
     });
     this.usersService.getCurrentUser().subscribe((user) => {
       this.activeUser = user;
-      console.log(this.activeUser, 'navbar');
+      this.activeUserName = user?.user;
+      console.log(this.activeUser.data.user, 'navbar');
     });
     // this.storeService.totalProducts().subscribe(result => {
     //   this.totalUnidades = result;

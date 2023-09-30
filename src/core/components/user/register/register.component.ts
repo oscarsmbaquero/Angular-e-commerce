@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UsersService } from 'src/core/services/users/users.service';
 //import { IUser } from '../../services/models/user-models';
 import * as AOS from 'aos';
 
@@ -22,7 +23,7 @@ export class RegisterComponent {
   
   constructor(
     private formBuilder: FormBuilder,
-    //private userServices: UsersService,
+    private userServices: UsersService,
     private router: Router,
     
   ) {
@@ -42,35 +43,51 @@ export class RegisterComponent {
   }
 
   public onSubmit(): void {
-    // El usuario ha pulsado en submit->cambia a true submitted
+    //this.loading = true;
+    // El usuario ha pulsado en submit -> cambia a true submitted
     this.submitted = true;
     // Si el formulario es valido
     if (this.registerUser.valid) {
-      // Creamos un Usuario y lo emitimos
+      // Crear un objeto de usuario con los datos del formulario
       const user: any = {
         user: this.registerUser.get('user')?.value,
         password: this.registerUser.get('password')?.value,
         mail: this.registerUser.get('mail')?.value,
         tlf: this.registerUser.get('tlf')?.value,
       };
-      console.log(user, 46);
-      // this.userServices.login(user).subscribe(
-      //   (response) => {
-      //     console.log('Datos enviados con éxito');
-      //     // this.snackBar.open(
-      //     //   'El coche ha sido añadido correctamente',
-      //     //   'Cerrar',
-      //     //   {
-      //     //     duration: 3000,
-      //     //   }
-      //     // );
-      //     this.router.navigate(['list']);
-      //   },
-      //   (error) => {
-      //     console.error('Error al enviar los datos', error);
-      //   }
-      // );
+      
+      // Llamar al servicio para registrar al usuario
+      this.userServices.register(user).subscribe(
+        (response) => {
+          //this.loading = false;
+          console.log('Datos enviados con éxito');
+          // this.snackBar.open(
+          //   'Usuario registrado correctamente',
+          //   'Cerrar',
+          //   {
+          //     duration: 3000,
+          //   }
+          // );
+          this.router.navigate(['list']);
+        },
+        (error) => {
+          //this.loading = false;
+          console.error('Error al enviar los datos', error);
+          if (error.status !== 200) {
+            // this.snackBar.open(
+            //   'Error al registrar al usuario',
+            //   'Cerrar',
+            //   {
+            //     duration: 3000,
+            //   }
+            // );
+          }
+          console.log(error.status, 'status');
+        }
+      );
     }
-  } 
+  }
+  
+  
 
 }

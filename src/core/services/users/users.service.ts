@@ -21,7 +21,24 @@ export class UsersService {
     this.currentUser$ = this.currentUserSubject.asObservable();
   }
   login(credentials: { user: string; password: string }): Observable<boolean> {
-    const endpoint = `${environment.apiUrl}users/login`;
+    console.log('Entro');
+    const endpoint = `${environment.apiUrlMock}users/login`;
+    return this.httpClient.post<IUser>(endpoint, credentials).pipe(
+      map((user) => {
+        if (user) {
+          this.currentUserSubject.next(user);
+          localStorage.setItem('user', JSON.stringify(user));
+          return true;
+        } else {
+          return false;
+        }
+      })
+    );
+  }
+
+  register(credentials: { user: string; password: string }): Observable<boolean> {
+    console.log('Entro');
+    const endpoint = `${environment.apiUrlMock}users/register`;
     return this.httpClient.post<IUser>(endpoint, credentials).pipe(
       map((user) => {
         if (user) {

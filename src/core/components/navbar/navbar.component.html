@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-transparent prueba">
+<nav class="navbar navbar-expand-md navbar-light bg-transparent">
   <button
     class="navbar-toggler mr-auto"
     type="button"
@@ -16,7 +16,7 @@
   </a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <div class="navbar-container">
-      <div class="navbar-left">
+      <div class="navbar-left ml-auto">
         <ul class="navbar-nav ms-auto px-3 flex-column flex-md-row">
           <!-- Home -->
           <li class="nav-item" routerLinkActive="active">
@@ -40,56 +40,68 @@
             >
           </li>
           <hr class="fading-hr" />
-          
-            <!-- Cesta -->
-            <li  *ngIf="activeUser" class="nav-item" routerLinkActive="active">
-              <button
-                type="button"
-                class="btn btn-transparent position-relative;"
-                [routerLink]="['/cesta']"
-                data-toggle="collapse"
-                data-target=".navbar-collapse.show"
-                style="padding-left: 0; background-color: transparent"
-              >
-                <img
-                  src="assets/images/bolsa.png"
-                  width="30"
-                  height="25"
-                  alt=""
-                /><i
-                  class="pi pi-bell text-3xl"
-                  pBadge
-                  value="{{ totalUnidades }}"
-                  severity="info"
-                ></i>
-                <!-- <span class="badge rounded-pill badge-notification bg-primary">{{totalUnidades}}</span> -->
-              </button>
-              <!-- </a> -->
-            </li>
-            <hr class="fading-hr" />
-            <!-- Login -->
-            <li *ngIf="activeUser" class="nav-item" routerLinkActive="active">
-              <a
-                class="nav-link"
-                [routerLink]="['/user']"
-                data-toggle="collapse"
-                data-target=".navbar-collapse.show"
-                ><span class="text-black" (click)="logout()">Logout</span></a
-              >
-            </li>
-          
-            <li *ngIf="!activeUser" class="nav-item" routerLinkActive="active">
-              <a
-                class="nav-link"
-                [routerLink]="['/user']"
-                data-toggle="collapse"
-                data-target=".navbar-collapse.show"
-                ><span class="text-black">LogIn</span></a
-              >
-            </li>
 
+          <!-- Cesta -->
+          <li *ngIf="activeUser" class="nav-item" routerLinkActive="active">
+            <button
+              type="button"
+              class="btn btn-transparent position-relative;"
+              [routerLink]="['/cesta']"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              style="padding-left: 0; background-color: transparent"
+            >
+              <img
+                src="assets/images/bolsa.png"
+                width="30"
+                height="25"
+                alt=""
+              /><i
+                class="pi pi-bell text-3xl"
+                pBadge
+                value="{{ totalUnidades }}"
+                severity="info"
+              ></i>
+              <!-- <span class="badge rounded-pill badge-notification bg-primary">{{totalUnidades}}</span> -->
+            </button>
+            <!-- </a> -->
+          </li>
+          <hr class="fading-hr" />
+          <!-- Login -->
+        </ul>
+      </div>
+      <div class="navbar-right mr-auto">
+        <ul class="navbar-nav ml-auto px-3 flex-column flex-md-row">
+          <li *ngIf="activeUser" class="nav-item" routerLinkActive="active">
+            <a
+              class="nav-link"
+              [routerLink]="['/user']"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              ><span class="text-black" (click)="logout()">Logout</span></a
+            >
+          </li>
+          <li  *ngIf="activeUser" class="nav-item" routerLinkActive="active">
+            <a
+              class="nav-link"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              ><span style="color: red">{{ activeUser.data.user }}</span></a
+            >
+          </li>
+
+          <li *ngIf="!activeUser" class="nav-item" routerLinkActive="active">
+            <a
+              class="nav-link"
+              [routerLink]="['/user']"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              ><span class="text-black">LogIn</span></a
+            >
+          </li>
         </ul>
       </div>
     </div>
   </div>
 </nav>
+
