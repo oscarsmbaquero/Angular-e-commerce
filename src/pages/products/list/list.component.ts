@@ -50,7 +50,7 @@ export class ListComponent {
         }
       });
       
-      this.stockStatus = this.products.map(product => product.stock!) as string[];// Puedes acceder a this.products con el campo 'stock' añadido
+      this.stockStatus = this.products.map(product => product.stock!) ;// Puedes acceder a this.products con el campo 'stock' añadido
       console.log(this.products);
     });
   }
