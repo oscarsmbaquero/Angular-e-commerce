@@ -56,12 +56,13 @@ export class ListComponent {
   }
 
   confirmAndAddtoCart(product: any) {
+    console.log(product);
     if (this.activeUser) {
       console.log('Si lo hay');
       this.addToCart(product);
       this.show();
     } else {
-      sessionStorage.setItem('messageLogin', JSON.stringify(this.messageLogin));
+      localStorage.setItem('messageLogin', JSON.stringify(this.messageLogin));
       this.router.navigate(['user']);
     }
 
@@ -73,7 +74,7 @@ export class ListComponent {
   //   this.router.navigate(['list']);
   // }
   // addToCart(product: any): void {
-  //   const storedCart = sessionStorage.getItem('cart');
+  //   const storedCart = localStorage.getItem('cart');
   //   let cart = storedCart ? JSON.parse(storedCart) : [];
 
   //   const existingProduct = cart.find((item: { id: any; }) => item.id === product.id);
@@ -87,7 +88,7 @@ export class ListComponent {
   //     cart.push(product);
   //   }
 
-  //   sessionStorage.setItem('cart', JSON.stringify(cart));
+  //   localStorage.setItem('cart', JSON.stringify(cart));
 
   //   this.router.navigate(['list']);
   // }

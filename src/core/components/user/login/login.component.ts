@@ -83,7 +83,7 @@ export class LoginComponent {
       this.userServices.login(user).subscribe(
         (response) => {
           this.loading = false;
-          console.log(response);
+          console.log(response,'response');
           console.log('Datos enviados con éxito');
           this.snackBar.open(
             'Usurio Logueado Correctamente',

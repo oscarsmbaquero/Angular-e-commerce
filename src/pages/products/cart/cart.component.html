@@ -81,7 +81,8 @@
     </div>
     <div *ngIf="showPaypal">
       <div>
-        <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+        <button (click)="buyProducts()"  >Comprar</button>
+        <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
       </div>
     </div>
   </div>

@@ -13,6 +13,7 @@ import { map } from 'rxjs/operators';
 export class StoreService {
   private cartKey = 'cart'; // Nombre para la clave en sessionStorage
   private cart = '';
+  idUser = '';
 
   private totalUnidades: number =0;
   private cartDataSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(
@@ -45,13 +46,15 @@ export class StoreService {
 
   addToCart(product: any): void {
     const currentCart = this.getCart();
-    const existingProduct = currentCart.find((item) => item.id === product.id);
+    const existingProduct = currentCart.find((item) => item._id === product._id);
 
     if (existingProduct) {
+      console.log('Ya existe');
       existingProduct.unidades++;
       existingProduct.totalPrice =
         existingProduct.precio * existingProduct.unidades;
     } else {
+      console.log('No existe');
       product.unidades = 1;
       product.totalPrice = product.precio;
       currentCart.push(product);
@@ -99,4 +102,28 @@ export class StoreService {
       }
     }
   }
+  buyProducts(products: IProduct[]){
+    const user = localStorage.getItem('user');
+    if(user !== null){      
+      const objetoJSON = JSON.parse(user);
+      this.idUser = objetoJSON.data.id;
+    }
+    const payload = {
+      idUser: this.idUser, // Agrega el ID de usuario al payload
+      products: products // Agrega los productos al payload
+    };
+
+    return this.httpClient.post<IProduct[]>(`${environment.apiUrlMock}products`,payload);
+    // this.articlesBuy = JSON.parse(sessionStorage.getItem('cart') || '');
+    // return this.httpClient.post<IProduct>(
+    //   `${environment.apiUrlMock}products`,
+    //   this.articlesBuy
+    // );
+
+    // this.articlesBuy = JSON.parse(sessionStorage.getItem('cart') || '');
+    // console.log(this.articlesBuy,'articulos compra');
+    // return this.httpClient.post<IProduct[]>(`${environment.apiUrlMock}products`,this.articlesBuy);
+    // console.log('Envio');
+  }
+  
 }

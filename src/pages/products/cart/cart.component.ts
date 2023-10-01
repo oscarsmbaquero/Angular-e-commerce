@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { StoreService } from 'src/core/services/store/store.service';
@@ -21,10 +22,12 @@ export class CartComponent  implements OnInit{
    */
   carts: IProduct[]=[];
 
-  hostia: number =0;
+  //hostia: number =0;
+
 
   unidades: number = 0;
   units: number = 1; // Inicialmente, las unidades serán 1
+  articlesBuy: IProduct[] = [];
 
   total: number = 0; // Inicializamos el total en 0
   showSuccess: boolean | undefined;
@@ -35,6 +38,7 @@ export class CartComponent  implements OnInit{
   constructor(
     private storeService: StoreService,
     private router: Router,
+    private httpClient: HttpClient
   ){
     // this.carts = this.storeService.getCart();
     //this.calculateTotal(); // Calculamos el total al inicializar el componente
@@ -183,6 +187,23 @@ export class CartComponent  implements OnInit{
    */
   getFixed(price: number){
      return price.toFixed(2);
+  }
+
+  buyProducts(){
+    this.articlesBuy = JSON.parse(sessionStorage.getItem('cart') || '');
+    this.storeService.buyProducts(this.articlesBuy).subscribe((respose)=>{
+      console.log('Datos enviados con éxito');
+    });
+    
+    // return this.httpClient.post<IProduct>(
+    //   `${environment.apiUrlMock}products`,
+    //   this.articlesBuy
+    // );
+
+    // this.articlesBuy = JSON.parse(sessionStorage.getItem('cart') || '');
+    // console.log(this.articlesBuy,'articulos compra');
+    // return this.httpClient.post<IProduct[]>(`${environment.apiUrlMock}products`,this.articlesBuy);
+    // console.log('Envio');
   }
 }
 

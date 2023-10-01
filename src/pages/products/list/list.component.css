@@ -183,6 +183,8 @@
     border-radius: 20px;
   }
   .content {
+    display: flex;
+    
     transform: translatez(70px) scale(0.8);
     line-height: 1.5em;
     display:flex;
