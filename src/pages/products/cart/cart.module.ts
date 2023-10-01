@@ -7,6 +7,7 @@ import { ShipmentModule } from 'src/pages/shipment/shipment.module';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { FormsModule } from '@angular/forms'; // Importa FormsModule
 import { BadgeModule } from 'primeng/badge';
+import { DialogModule } from 'primeng/dialog';
 
 
 
@@ -22,7 +23,8 @@ import { BadgeModule } from 'primeng/badge';
     ShipmentModule,
     InputNumberModule,
     FormsModule,
-    BadgeModule
+    BadgeModule,
+    DialogModule
   ]
 })
 export class CartModule { }

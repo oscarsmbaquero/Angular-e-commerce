@@ -114,16 +114,6 @@ export class StoreService {
     };
 
     return this.httpClient.post<IProduct[]>(`${environment.apiUrlMock}products`,payload);
-    // this.articlesBuy = JSON.parse(sessionStorage.getItem('cart') || '');
-    // return this.httpClient.post<IProduct>(
-    //   `${environment.apiUrlMock}products`,
-    //   this.articlesBuy
-    // );
-
-    // this.articlesBuy = JSON.parse(sessionStorage.getItem('cart') || '');
-    // console.log(this.articlesBuy,'articulos compra');
-    // return this.httpClient.post<IProduct[]>(`${environment.apiUrlMock}products`,this.articlesBuy);
-    // console.log('Envio');
   }
   
 }

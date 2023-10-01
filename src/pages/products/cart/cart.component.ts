@@ -1,3 +1,4 @@
+import { MessageService } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,7 +13,8 @@ declare var paypal: any;
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'] ,
+  providers: [MessageService],
 })
 export class CartComponent  implements OnInit{
 
@@ -34,11 +36,21 @@ export class CartComponent  implements OnInit{
   showPaypal: boolean = false;
   showShipment: boolean = false;
   priceShipme: number = 0;
+  /**
+   * flag para pintar el modal
+   */
+  visible: boolean = false;
+
+  /**
+   * almacenar el numero de pedido recibido 
+   */
+  numberOrder = '';
 
   constructor(
     private storeService: StoreService,
     private router: Router,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private messageService: MessageService
   ){
     // this.carts = this.storeService.getCart();
     //this.calculateTotal(); // Calculamos el total al inicializar el componente
@@ -191,21 +203,27 @@ export class CartComponent  implements OnInit{
 
   buyProducts(){
     this.articlesBuy = JSON.parse(sessionStorage.getItem('cart') || '');
-    this.storeService.buyProducts(this.articlesBuy).subscribe((respose)=>{
-      console.log('Datos enviados con éxito');
-    });
-    
-    // return this.httpClient.post<IProduct>(
-    //   `${environment.apiUrlMock}products`,
-    //   this.articlesBuy
-    // );
+    this.storeService.buyProducts(this.articlesBuy).subscribe((response: any)=>{
+      if (response.status === 201) {
+        this.numberOrder = response.data.orderNumber
+        this.visible = true;
+      } else {
+        console.error('La solicitud no fue exitosa (estado ' + response.status + ')');
+        
+      }
+    },
+    (error) => {
+      console.error('Error al enviar los datos:', error);
+    }
+  );
+     
+    }
 
-    // this.articlesBuy = JSON.parse(sessionStorage.getItem('cart') || '');
-    // console.log(this.articlesBuy,'articulos compra');
-    // return this.httpClient.post<IProduct[]>(`${environment.apiUrlMock}products`,this.articlesBuy);
-    // console.log('Envio');
+   
+    
+  
   }
-}
+
 
 
 

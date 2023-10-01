@@ -101,6 +101,16 @@
   </div>
 </ng-template>
 
+<div  *ngIf="visible" class="card flex justify-content-center">
+  <p-dialog header="" [(visible)]="visible" [style]="{width: '50vw'}">
+      <p>
+         Su pedido se ha realizado corerctamente. Su número de pedido es: <span style="color:red">{{numberOrder}}</span>
+        *****************Jorge deja de comprar que no usas la moto***********************
+      </p>
+  </p-dialog>
+</div>
+
+
 <!-- <div *ngIf="carts">
   <button (click)="delete()">Elimiar Cesta Completa</button>
   <div *ngFor="let cart of carts">
