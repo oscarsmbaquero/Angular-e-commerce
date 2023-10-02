@@ -47,7 +47,11 @@ export class UsersService {
       })
     );
   }
-
+/**
+ * registro de usuario
+ * @param credentials 
+ * @returns 
+ */
   register(credentials: { user: string; password: string }): Observable<boolean> {
     console.log('Entro');
     const endpoint = `${environment.apiUrlMock}users/register`;
