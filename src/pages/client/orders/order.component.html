@@ -1,5 +1,6 @@
-<div class="card flex justify-content-center orders">
-    <p-panel header="Pedido Nª" [toggleable]="true">
+<div  *ngFor="let pedido of pedidos" class="card flex justify-content-center orders">
+    <p-panel header="{{pedido.orderNumber}}" [toggleable]="true">
+        <h3>{{pedido.estadoPedido}}</h3>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
             consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

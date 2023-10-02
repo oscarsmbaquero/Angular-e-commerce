@@ -12,6 +12,8 @@ export class OrderComponent {
 
   user :any;
 
+  pedidos:any =[];
+
   constructor(
     private usersService : UsersService
   ){
@@ -33,16 +35,57 @@ export class OrderComponent {
   }
   
 
-  myOrders(userId: string){
-    console.log('entro');
-    this.usersService.getOrderClient(userId).subscribe((data) =>{
-    console.log(data,'data');
-    //const orderNumbers = data.pedidos.numeroPedido.map(element => element.orderNumber)
-    })
-    console.log(userId,'userId');
+  // myOrders(userId: string){
+  //   console.log('entro');
+  //   this.usersService.getOrderClient(userId).subscribe((data) =>{
+  //   console.log(data,'datas');
+  //   const orderNumbers = data.pedidos.numeroPedido.map((element: any) => element.orderNumber);
+  //   console.log(orderNumbers);
+  //   })
+  //   console.log(userId,'userId');
   
 
+  // }
+  myOrders(userId: string): void {
+    this.usersService.getOrderClient(userId).subscribe((response) => {
+      const data = response.data; // Accede al objeto "data"
+  
+      console.log(data, 'datas');
+      
+        if (data && data.pedidos && data.pedidos.numeroPedido) {
+          console.log('Entro');
+          const allOrdersArray = data.pedidos.numeroPedido.map((pedido:any) => {
+            const orderDetails = {
+              orderNumber: pedido.orderNumber,
+              userBuy: pedido.userBuy,
+              estadoPedido: pedido.estadoPedido,
+              products: pedido.products.map((producto:any) => ({
+                productName: producto.name,
+                productDescription: producto.description,
+                unidades: producto.unidades,
+                precio: producto.precio,
+                // Agregar más campos de producto si es necesario.
+              })),
+              // Agregar más campos de pedido si es necesario.
+            };
+            return orderDetails;
+          });
+    
+          // Ahora, tienes un solo array que contiene todos los detalles de cada pedido.
+          this.pedidos = allOrdersArray;
+          console.log(this.pedidos,'pedidos final');
+        } else {
+          console.error('No se encontraron datos válidos en la respuesta.');
+        }
+    
+     
+    });
+  
+    console.log(userId, 'userId');
   }
+  
+  
+  
 
 
 }
