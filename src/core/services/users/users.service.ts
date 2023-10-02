@@ -16,6 +16,7 @@ import { IProduct } from '../models/product.models';
 export class UsersService {
 
   activeUser= '';
+  
   private currentUserSubject = new BehaviorSubject<IUser | null>(null);
   public currentUser$: Observable<IUser | null>;
 

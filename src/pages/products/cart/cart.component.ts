@@ -68,7 +68,7 @@ export class CartComponent  implements OnInit{
       car.totalPrice = car.precio * this.units;
     });
     this.calculateTotal(); // Calculamos el total al inicializar el componente
-    this.initConfig();
+    //this.initConfig();
   }
   /**
    * borrar del sessionStorage
@@ -117,66 +117,66 @@ export class CartComponent  implements OnInit{
   /**
    * configuracion de paypal
    */
-  private initConfig(): void {
-    const storeItems = JSON.parse(sessionStorage.getItem('cart') || '');
-   console.log(storeItems,'storeItems');
-    const purchaseUnits = storeItems.map((item: any) => ({
-      items: [{
-        name: item.name,
-        quantity: item.unidades.toString(), //de unidades del artículo
-        category: 'QUADLOCK', // Puedes cambiar la categoría según tus necesidades
-        unit_amount: {
-          currency_code: 'EUR',
-          value: item.precio,
-        }
-      }],
-      amount: {
-        currency_code: 'EUR',
-        value: (parseFloat(item.precio) * parseInt(item.unidades)).toFixed(2),
-        breakdown: {
-          item_total: {
-            currency_code: 'EUR',
-            value: (parseFloat(item.precio) * parseInt(item.unidades)).toFixed(2),
-          }
-        }
-      }
-    }));
+  // private initConfig(): void {
+  //   const storeItems = JSON.parse(sessionStorage.getItem('cart') || '');
+  //  console.log(storeItems,'storeItems');
+  //   const purchaseUnits = storeItems.map((item: any) => ({
+  //     items: [{
+  //       name: item.name,
+  //       quantity: item.unidades.toString(), //de unidades del artículo
+  //       category: 'QUADLOCK', // Puedes cambiar la categoría según tus necesidades
+  //       unit_amount: {
+  //         currency_code: 'EUR',
+  //         value: item.precio,
+  //       }
+  //     }],
+  //     amount: {
+  //       currency_code: 'EUR',
+  //       value: (parseFloat(item.precio) * parseInt(item.unidades)).toFixed(2),
+  //       breakdown: {
+  //         item_total: {
+  //           currency_code: 'EUR',
+  //           value: (parseFloat(item.precio) * parseInt(item.unidades)).toFixed(2),
+  //         }
+  //       }
+  //     }
+  //   }));
   
-    this.payPalConfig = {
-      currency: 'EUR',
-      clientId: environment.paypalClientId,
-      createOrderOnClient: (data) => <ICreateOrderRequest>{
-        intent: 'CAPTURE',
-        purchase_units: purchaseUnits,
-      },
-      advanced: {
-        commit: 'true'
-      },
-      style: {
-        label: 'paypal',
-        layout: 'vertical'
-      },
-      onApprove: (data, actions) => {
-        console.log('onApprove - transaction was approved, but not authorized', data, actions);
-        actions.order.get().then((details: any) => {
-          console.log('onApprove - you can get full order details inside onApprove: ', details);
-        });
-      },
-      onClientAuthorization: (data) => {
-        console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-        this.showSuccess = true;
-      },
-      onCancel: (data, actions) => {
-        console.log('OnCancel', data, actions);
-      },
-      onError: err => {
-        console.log('OnError', err);
-      },
-      onClick: (data, actions) => {
-        console.log('onClick', data, actions);
-      },
-    }
-  }
+  //   this.payPalConfig = {
+  //     currency: 'EUR',
+  //     clientId: environment.paypalClientId,
+  //     createOrderOnClient: (data) => <ICreateOrderRequest>{
+  //       intent: 'CAPTURE',
+  //       purchase_units: purchaseUnits,
+  //     },
+  //     advanced: {
+  //       commit: 'true'
+  //     },
+  //     style: {
+  //       label: 'paypal',
+  //       layout: 'vertical'
+  //     },
+  //     onApprove: (data, actions) => {
+  //       console.log('onApprove - transaction was approved, but not authorized', data, actions);
+  //       actions.order.get().then((details: any) => {
+  //         console.log('onApprove - you can get full order details inside onApprove: ', details);
+  //       });
+  //     },
+  //     onClientAuthorization: (data) => {
+  //       console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+  //       this.showSuccess = true;
+  //     },
+  //     onCancel: (data, actions) => {
+  //       console.log('OnCancel', data, actions);
+  //     },
+  //     onError: err => {
+  //       console.log('OnError', err);
+  //     },
+  //     onClick: (data, actions) => {
+  //       console.log('onClick', data, actions);
+  //     },
+  //   }
+  // }
 
 
   shipment(){
@@ -205,6 +205,12 @@ export class CartComponent  implements OnInit{
     this.articlesBuy = JSON.parse(sessionStorage.getItem('cart') || '');
     this.storeService.buyProducts(this.articlesBuy).subscribe((response: any)=>{
       if (response.status === 201) {
+
+        setTimeout(() => {
+          this.delete();  
+        }, 5000);
+        
+        //localStorage.removeItem('user');
         this.numberOrder = response.data.orderNumber
         this.visible = true;
       } else {
