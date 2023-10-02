@@ -5,21 +5,32 @@ import { HttpClient } from '@angular/common/http';
 import { IUser } from '../models/user-models';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { IProduct } from '../models/product.models';
 
 @Injectable({
   providedIn: 'root',
 })
+
+
+
 export class UsersService {
+
+  activeUser= '';
   private currentUserSubject = new BehaviorSubject<IUser | null>(null);
   public currentUser$: Observable<IUser | null>;
 
   constructor(private httpClient: HttpClient) {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
+      this.activeUser = storedUser;
       this.currentUserSubject.next(JSON.parse(storedUser));
     }
     this.currentUser$ = this.currentUserSubject.asObservable();
   }
+
+  // ngOnInit(){
+  //   this.getOrderClient(this.activeUser);
+  // }
   login(credentials: { user: string; password: string }): Observable<boolean> {
     console.log('Entro');
     const endpoint = `${environment.apiUrlMock}users/login`;
@@ -64,5 +75,10 @@ export class UsersService {
   clearCurrentUser() {
     this.currentUserSubject.next(null);
     localStorage.removeItem('user');
+  }
+
+  getOrderClient(userId: string): Observable<any> {
+    //return this.httpClient.get(`URL_DE_TU_API/pedidos/${userId}`);
+    return this.httpClient.get<any[]>(`${environment.apiUrlMock}users/${userId}`);
   }
 }

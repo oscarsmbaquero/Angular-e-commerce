@@ -83,7 +83,6 @@ export class StoreService {
   }
 
   clearCartId(cartId: string): void {
-    // Get the cart data from sessionStorage
     const cartDataString = sessionStorage.getItem(this.cartKey);
 
     if (cartDataString) {
