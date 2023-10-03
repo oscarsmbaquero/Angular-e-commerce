@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { IUser } from 'src/core/services/models/user-models';
 //servisios
 import { UsersService } from 'src/core/services/users/users.service';
+//pipe fecha
+//import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-order',
@@ -57,6 +60,7 @@ export class OrderComponent {
           const allOrdersArray = data.pedidos.numeroPedido.map((pedido:any) => {
             const orderDetails = {
               orderNumber: pedido.orderNumber,
+              fechaPedido: pedido.createdAt,
               userBuy: pedido.userBuy,
               estadoPedido: pedido.estadoPedido,
               products: pedido.products.map((producto:any) => ({
@@ -72,6 +76,7 @@ export class OrderComponent {
           });
     
           // Ahora, tienes un solo array que contiene todos los detalles de cada pedido.
+          console.log(this.pedidos);
           this.pedidos = allOrdersArray;
           console.log(this.pedidos,'pedidos final');
         } else {

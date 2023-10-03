@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrderComponent } from './orders/order.component';
 import { ClientRoutingModule } from './client-routing.module';
+import { DatePipe } from '@angular/common';
+
 
 //primeng
 import { PanelModule } from 'primeng/panel';
@@ -22,6 +24,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     PanelModule,
     TableModule,
     MatBadgeModule
+  ], providers:[
+    DatePipe
   ]
 })
 export class ClientModule { }
