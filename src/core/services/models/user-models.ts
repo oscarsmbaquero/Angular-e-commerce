@@ -4,7 +4,7 @@ export interface IUser{
     password: string;
     mail: string;
     tlf:string;
-   
+    token?: string;
 }
  
 

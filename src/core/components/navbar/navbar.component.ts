@@ -67,6 +67,7 @@ export class NavbarComponent implements OnInit {
   }
   logout(): void {
     this.usersService.clearCurrentUser();
+    this.router.navigate(['/'])
  }
  
 }

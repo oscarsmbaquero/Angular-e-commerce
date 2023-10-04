@@ -5,7 +5,7 @@
 export const environment = {
     production: false,
     // apiUrlMock: 'https://63961d9490ac47c6807dc9d2.mockapi.io/',
-    paypalClientId:'EJFpQM4nzpjBjQ2GQDIkssmLTdeoc-C2JQwqhQxxGPkhRBEa0KIF1T8266MCgLc2Uzw08Lb9nSDvenk8',
+   
     //apiUrl: 'https://node-hot-weels.vercel.app/',
     apiUrlMock: 'https://node-e-commerce-nine.vercel.app/',
     //apiUrlMock: 'http://localhost:5000/',
