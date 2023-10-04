@@ -81,6 +81,24 @@
             <li><a class="dropdown-item" href="#"></a></li> -->
           </ul>
         </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a
+          class="nav-link"
+          [routerLink]="['/inventario']"
+          data-toggle="collapse"
+          data-target=".navbar-collapse.show"
+          ><span class="text-black">Inventario</span></a
+        >
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a
+          class="nav-link"
+          [routerLink]="['']"
+          data-toggle="collapse"
+          data-target=".navbar-collapse.show"
+          ><span class="text-black">Envios</span></a
+        >
+        </li>
         
         <!-- <li 
         *ngIf="activeUser"

@@ -1,6 +1,6 @@
 
 export interface IProduct {
-    id?:any;
+    _id?:any;
     createdAt: string;
     name: string;
     description:string;

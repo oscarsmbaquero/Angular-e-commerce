@@ -99,7 +99,7 @@ export class CartComponent  implements OnInit{
       this.carts[index].totalPrice = car.precio * car.unidades;
       this.calculateTotal(); // Si es necesario calcular el total general
     } else if (car.unidades === 1) {
-      this.deleteId(car.id);
+      this.deleteId(car._id);
     }
   }
 

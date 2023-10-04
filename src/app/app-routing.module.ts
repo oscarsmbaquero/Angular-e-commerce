@@ -31,6 +31,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     loadChildren: () => import('src/pages/client/client.module').then(m => m.ClientModule)
   },
+  {
+    path: 'inventario',
+    //canActivate: [AuthGuard],
+    loadChildren: () => import('src/pages/products/inventary/inventary.module').then(m => m.InventaryModule)
+  },
 ];
 
 @NgModule({

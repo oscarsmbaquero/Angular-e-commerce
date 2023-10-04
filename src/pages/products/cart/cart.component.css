@@ -63,7 +63,7 @@
 
     }
 }
-
+/* botones de aumento y decremento */
 .unit-controls button {
     margin: 0 5px; /* Espaciado entre los botones */
     padding: 5px 10px; /* Ajusta el padding según tus preferencias */

@@ -1,0 +1,28 @@
+.column-header{
+    display: flex;
+    justify-content: center;
+}
+
+.unit-controls {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    /* flex-direction: column-reverse; */
+
+    > button{
+        width: 30px;
+        height: 30px;
+        padding: 10px;
+        border-radius: 8px;
+        
+
+    }
+}
+/* botones de aumento y decremento */
+.unit-controls button {
+    margin: 0 5px; /* Espaciado entre los botones */
+    padding: 5px 10px; /* Ajusta el padding según tus preferencias */
+    background-color: #f0f0f0; /* Color de fondo de los botones */
+    border: none;
+    cursor: pointer;
+}
