@@ -5,6 +5,7 @@ export interface IUser{
     mail: string;
     tlf:string;
     token?: string;
+    rol?: string;
 }
  
 
