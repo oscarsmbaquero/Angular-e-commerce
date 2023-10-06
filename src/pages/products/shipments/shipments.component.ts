@@ -56,13 +56,15 @@ changeState(id: string){
     orderSelected.estadoPedido = 'Entregado';
   }
 
-  if(orderSelected?.estadoPedido === 'Preparando pédido'){
+  if(orderSelected?.estadoPedido === 'Preparando pedido'){
     orderSelected.estadoPedido = 'Enviado';
   }
  
   console.log(orderSelected?.estadoPedido);
   if(orderSelected){
-    this.storeService.changeStateOrders(id, orderSelected.estadoPedido) 
+    this.storeService.changeStateOrders(id, orderSelected.estadoPedido).subscribe((element)=>{
+console.log(element);
+    }); 
   }
   
 }

@@ -129,8 +129,8 @@ export class StoreService {
       id: id, // Agrega el ID de usuario al payload
       estado: estado // Agrega los productos al payload
     };
-    console.log(payload);
-    return this.httpClient.put<IVenta[]>(`${environment.apiUrlMock}ventas`,payload);
+    console.log(id,'id');
+    return this.httpClient.put<IVenta[]>(`${environment.apiUrlMock}ventas/${id}`, payload);
     //return this.httpClient.put<IVenta[]>(`${environment.apiUrlMock}ventas`,id);
 
   }
