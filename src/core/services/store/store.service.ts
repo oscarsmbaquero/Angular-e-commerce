@@ -119,5 +119,20 @@ export class StoreService {
   getOrders(){
     return this.httpClient.get<IVenta[]>(`${environment.apiUrlMock}ventas`);    
   }
+  /**
+   * cambiar el estado del pedido
+   */
+  changeStateOrders(id: string, estado: string){
+
+    console.log(id,estado);
+    const payload = {
+      id: id, // Agrega el ID de usuario al payload
+      estado: estado // Agrega los productos al payload
+    };
+    console.log(payload);
+    return this.httpClient.put<IVenta[]>(`${environment.apiUrlMock}ventas`,payload);
+    //return this.httpClient.put<IVenta[]>(`${environment.apiUrlMock}ventas`,id);
+
+  }
   
 }

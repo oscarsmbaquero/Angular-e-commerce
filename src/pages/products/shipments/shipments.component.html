@@ -17,10 +17,20 @@
       <ng-template pTemplate="body" let-order>
         <tr>
           <td>{{ order.orderNumber }}</td>
-          <td>{{ order.createdAt  | date: 'yyyy-MM-dd'}}</td>
-          <td>{{ order.userBuy}}</td> 
-          <td>{{ order.estadoPedido}}</td>
-          <th>{{order.statusSend}}</th>          
+          <td>{{ order.createdAt  | date: 'dd-MM-yyyy'}}</td>
+          <td>{{ order.userBuy}}</td>
+          <td *ngIf="order.estadoPedido !== 'Cerrado'">{{ order.estadoPedido}}
+            <p-checkbox 
+            
+                [(ngModel)]="order.isChecked" 
+                [binary]="true" inputId="binary" 
+                (click)="changeState(order._id)">
+            </p-checkbox>
+          </td>
+          <td *ngIf="order.estadoPedido === 'Cerrado'">{{ order.estadoPedido}}
+            
+          </td>
+          <td>{{order.statusSend}}</td>          
         </tr>
       </ng-template>
       <ng-template pTemplate="summary">

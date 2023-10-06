@@ -11,6 +11,10 @@ import { IVenta } from 'src/core/services/models/ventas.models';
 export class ShipmentsComponent {
 
   orders!: IVenta[];
+ /**
+  * check
+  */
+  checked: boolean = false;
 
   constructor(
     private storeService: StoreService
@@ -27,9 +31,42 @@ export class ShipmentsComponent {
         if(order.updatedAt){
           order.statusSend = 'Atrasado'
         }
+        order.isChecked = false;
       })
       console.log(this.orders);
   });
 }
+/**
+ * cambair estado del pedido
+ */
+changeState(id: string){
+  
+  const orderSelected = this.orders.find((order)=> order._id === id);
+  // if( orderSelected && orderSelected.isChecked){
+  //   setTimeout(() => {
+  //     orderSelected.isChecked = !orderSelected.isChecked  
+  //   }, 500);
+    
+  // }
+  
+  if(orderSelected?.estadoPedido === 'Entregado'){
+    orderSelected.estadoPedido = 'Cerrado';
+  }
+  if(orderSelected?.estadoPedido === 'Enviado'){
+    orderSelected.estadoPedido = 'Entregado';
+  }
+
+  if(orderSelected?.estadoPedido === 'Preparando pédido'){
+    orderSelected.estadoPedido = 'Enviado';
+  }
+ 
+  console.log(orderSelected?.estadoPedido);
+  if(orderSelected){
+    this.storeService.changeStateOrders(id, orderSelected.estadoPedido) 
+  }
+  
+}
+
+
 
 }
