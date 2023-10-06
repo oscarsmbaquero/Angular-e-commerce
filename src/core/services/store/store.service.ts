@@ -6,6 +6,7 @@ import { environment } from 'src/enviroment/environment';
 import { BehaviorSubject } from 'rxjs';
 import { OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { IVenta } from '../models/ventas.models';
 
 @Injectable({
   providedIn: 'root',
@@ -113,6 +114,10 @@ export class StoreService {
     };
 
     return this.httpClient.post<IProduct[]>(`${environment.apiUrlMock}products`,payload);
+  }
+
+  getOrders(){
+    return this.httpClient.get<IVenta[]>(`${environment.apiUrlMock}ventas`);    
   }
   
 }

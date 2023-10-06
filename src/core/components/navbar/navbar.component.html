@@ -81,7 +81,7 @@
             <li><a class="dropdown-item" href="#"></a></li> -->
           </ul>
         </li>
-        <li  *ngIf="activeUser.data.rol === 'admin'" class="nav-item" routerLinkActive="active">
+        <li class="nav-item" routerLinkActive="active">
           <a
           class="nav-link"
           [routerLink]="['/inventario']"
@@ -90,44 +90,15 @@
           ><span class="text-black">Inventario</span></a
         >
         </li>
-        <li *ngIf="activeUser.data.rol === 'admin'"  class="nav-item" routerLinkActive="active">
+        <li class="nav-item" routerLinkActive="active">
           <a
           class="nav-link"
-          [routerLink]="['']"
+          [routerLink]="['/envios']"
           data-toggle="collapse"
           data-target=".navbar-collapse.show"
           ><span class="text-black">Envios</span></a
         >
         </li>
-        
-        <!-- <li 
-        *ngIf="activeUser"
-           class="nav-item" 
-           routerLinkActive="active"
-           
-           >
-          <button
-          type="button"
-          class="btn btn-transparent position-relative;"
-          [routerLink]="['/cesta']"
-          data-toggle="collapse"
-          data-target=".navbar-collapse.show"
-          style="padding-left: 0; background-color: transparent"
-        >
-          <img
-            src="assets/images/bolsa.png"
-            width="30"
-            height="25"
-            alt=""
-          /><i
-            class="pi pi-bell text-3xl"
-            pBadge
-            value="{{ totalUnidades }}"
-            severity="info"
-          ></i>
-        
-        </button>
-        </li> -->
       </ul>
       <!-- <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

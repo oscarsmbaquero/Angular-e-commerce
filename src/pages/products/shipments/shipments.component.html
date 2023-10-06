@@ -1,1 +1,33 @@
-<p>shipments works!</p>
+<div class="card">
+    <p-table [value]="orders" [tableStyle]="{ 'min-width': '60rem' }">
+      <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+          Inventario
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>N Pedido</th>
+          <th>Fecha Pedido</th>
+          <th>Cliente</th>
+          <th>Estado Pedido</th>
+          <th>Observaciones</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-order>
+        <tr>
+          <td>{{ order.orderNumber }}</td>
+          <td>{{ order.createdAt  | date: 'yyyy-MM-dd'}}</td>
+          <td>{{ order.userBuy}}</td> 
+          <td>{{ order.estadoPedido}}</td>
+          <th>{{order.statusSend}}</th>          
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="summary">
+        <div class="flex align-items-center justify-content-between">
+          In total there are {{ orders ? orders.length : 0 }} Envios.
+        </div>
+      </ng-template>
+    </p-table>
+  </div>
+  
