@@ -203,6 +203,7 @@ export class CartComponent  implements OnInit{
 
   buyProducts(){
     this.articlesBuy = JSON.parse(sessionStorage.getItem('cart') || '');
+    console.log(this.articlesBuy,'articlesBuy');
     this.storeService.buyProducts(this.articlesBuy).subscribe((response: any)=>{
       if (response.status === 201) {
 

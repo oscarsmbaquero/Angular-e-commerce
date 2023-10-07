@@ -8,8 +8,8 @@
     <ng-template pTemplate="header">
       <tr>
         <th>Articulo</th>
-        <th>Imagen</th>
-        <th>PVP</th>
+        <!-- <th>Imagen</th> -->
+        <th>P.V.P</th>
         <th>Unidades</th>
         <th>Stock</th>
         <th>Opciones</th>
@@ -17,7 +17,6 @@
     </ng-template>
     <ng-template pTemplate="body" let-product>
       <tr>
-        <td>{{ product.name }}</td>
         <td>
           <img
             src="{{ product.image }}"
@@ -25,7 +24,10 @@
             width="40"
             class="shadow-4"
           />
-        </td>
+          {{ product.name }}</td>
+        <!-- <td>
+          
+        </td> -->
         <td>{{ product.precio | currency : "EUR" }}</td>
         <td>{{ product.unidades }}</td>
         <!-- <td>{{product.status}}</td> -->
