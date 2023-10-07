@@ -134,5 +134,20 @@ export class StoreService {
     //return this.httpClient.put<IVenta[]>(`${environment.apiUrlMock}ventas`,id);
 
   }
+
+  /**
+   * Añadir o quitar unidades de productos
+   * @param id 
+   * @param unidades 
+   * @returns 
+   */
+  public ChangeUnits(id: string, unidades: number): Observable<IProduct[]> {
+    console.log(id,unidades);
+    const payload = {
+      id: id, // Agrega el ID de usuario al payload
+      unidades: unidades // Agrega los productos al payload
+    };
+    return this.httpClient.put<IProduct[]>(`${environment.apiUrlMock}products/inventario/${id}`, payload);
+  }
   
 }

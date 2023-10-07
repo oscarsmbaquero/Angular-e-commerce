@@ -31,7 +31,7 @@
         <!-- <td>{{product.status}}</td> -->
         <!-- <td><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td> -->
         <td>
-          <p-tag
+          <p-tag *ngIf="getSeverity(product.stock) !== 'unknown'"
             [value]="product.stock"
             [severity]="getSeverity(product.stock)"
           ></p-tag>

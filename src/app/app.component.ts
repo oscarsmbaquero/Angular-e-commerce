@@ -39,8 +39,6 @@ export class AppComponent implements OnInit{
 
     this.usersService.getCurrentUser().subscribe((user) => {
       this.activeUser = user;
-      
-      console.log(this.activeUser.data.user, 'app');
     });
   }
 

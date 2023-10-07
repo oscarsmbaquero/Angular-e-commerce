@@ -63,7 +63,7 @@ changeState(id: string){
   console.log(orderSelected?.estadoPedido);
   if(orderSelected){
     this.storeService.changeStateOrders(id, orderSelected.estadoPedido).subscribe((element)=>{
-console.log(element);
+
     }); 
   }
   

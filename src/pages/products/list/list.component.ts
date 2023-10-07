@@ -68,30 +68,6 @@ export class ListComponent {
 
     //this.openConfirmCart(product);
   }
-
-  // addToCart(product: any): void {
-  //   this.storeService.addToCart(product);
-  //   this.router.navigate(['list']);
-  // }
-  // addToCart(product: any): void {
-  //   const storedCart = localStorage.getItem('cart');
-  //   let cart = storedCart ? JSON.parse(storedCart) : [];
-
-  //   const existingProduct = cart.find((item: { id: any; }) => item.id === product.id);
-
-  //   if (existingProduct) {
-  //     existingProduct.unidades++;
-  //     existingProduct.totalPrice = existingProduct.precio * existingProduct.unidades;
-  //   } else {
-  //     product.unidades = 1;
-  //     product.totalPrice = product.precio;
-  //     cart.push(product);
-  //   }
-
-  //   localStorage.setItem('cart', JSON.stringify(cart));
-
-  //   this.router.navigate(['list']);
-  // }
   addToCart(product: any): void {
     this.storeService.addToCart(product);
   }
