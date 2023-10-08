@@ -1,0 +1,31 @@
+<div class="card">
+    <p-table [value]="users" [tableStyle]="{'min-width': '60rem'}">
+        <ng-template pTemplate="caption">
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th><span style="font-weight: bold; color:rgb(38, 236, 233)">Cliente</span></th>
+                <th><span style="font-weight: bold; color:rgb(38, 236, 233)">Email</span></th>
+                <th><span style="font-weight: bold; color:rgb(38, 236, 233)">Tlf.</span></th>
+                <th><span style="font-weight: bold; color:rgb(38, 236, 233)">Pedidos</span></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+            <tr>
+                <td><span style="font-weight: bold; color:black">{{user.user}}</span></td>
+                <!-- <td><img [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image" [alt]="product.name" width="100" class="shadow-4" /></td> -->
+                <td><span style="font-weight: bold; color:black">{{user.mail}}</span></td>
+                <td><span style="font-weight: bold; color:black">{{user.tlf}}</span></td>
+                <td><span style="font-weight: bold; color:black">{{user.numeroPedido.length}}</span></td>
+                <!-- <td><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td>
+                <td><p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product.inventoryStatus)"></p-tag></td> -->
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                Total  {{users ? users.length : 0 }} clientes.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+

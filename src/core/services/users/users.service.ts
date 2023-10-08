@@ -86,4 +86,8 @@ export class UsersService {
     //return this.httpClient.get(`URL_DE_TU_API/pedidos/${userId}`);
     return this.httpClient.get<any[]>(`${environment.apiUrlMock}users/${userId}`);
   }
+
+  getUSers(){
+    return this.httpClient.get<IUser[]>(`${environment.apiUrlMock}users`);
+  }
 }

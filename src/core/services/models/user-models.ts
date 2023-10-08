@@ -6,6 +6,7 @@ export interface IUser{
     tlf:string;
     token?: string;
     rol?: string;
+    numeroPedido:[];
 }
  
 
