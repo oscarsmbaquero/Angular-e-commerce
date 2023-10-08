@@ -1,3 +1,4 @@
+
 import { MessageService } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
@@ -6,7 +7,7 @@ import { StoreService } from 'src/core/services/store/store.service';
 import { IProduct } from 'src/core/services/models/product.models';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { environment } from '../../../enviroment/environment'; // Ajusta la ruta según tu estructura de carpetas
-
+import emailjs from '@emailjs/browser';
 
 
 declare var paypal: any;
@@ -50,7 +51,7 @@ export class CartComponent  implements OnInit{
     private storeService: StoreService,
     private router: Router,
     private httpClient: HttpClient,
-    private messageService: MessageService
+    private messageService: MessageService,
   ){
     // this.carts = this.storeService.getCart();
     //this.calculateTotal(); // Calculamos el total al inicializar el componente
@@ -206,9 +207,16 @@ export class CartComponent  implements OnInit{
     console.log(this.articlesBuy,'articlesBuy');
     this.storeService.buyProducts(this.articlesBuy).subscribe((response: any)=>{
       if (response.status === 201) {
-
+        console.log(response);
+        const usermail  = response.data.user.mail;
+        const username = response.data.user.name;
+        const orderNumber = response.data.orderNumber;
+        console.log(usermail,'usermail');
+        this.sendMail(usermail, username, orderNumber);
         setTimeout(() => {
           this.delete();  
+          
+         
         }, 5000);
         
         //localStorage.removeItem('user');
@@ -226,8 +234,16 @@ export class CartComponent  implements OnInit{
      
     }
 
-   
-    
+    sendMail(mail: string, name: string, orderNumber: string){
+      const message =`Pedido realizado correctamente. En mis pedidos podrás ver el estado actual de tu pedido. Este es tu número de pedido ${orderNumber}`
+      emailjs.init('dso8n6rVU1ADlfbV4')
+      let response  =  emailjs.send("service_esqoixc","template_pj9nror",{
+        from_name: 'Nombre de la empresa',
+        to_name: name,
+        message: message,
+        reply_to: mail,
+        });
+    }
   
   }
 

@@ -56,6 +56,7 @@
             <li><a class="dropdown-item" href="#">Otros Productos</a></li>
           </ul>
         </li>
+       
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -81,23 +82,35 @@
             <li><a class="dropdown-item" href="#"></a></li> -->
           </ul>
         </li>
-        <li  *ngIf="activeUser && activeUser.data.rol === 'admin'" class="nav-item" routerLinkActive="active">
+        <li class="nav-item dropdown"  *ngIf="activeUser && activeUser.data.rol === 'admin'">
           <a
-          class="nav-link"
-          [routerLink]="['/inventario']"
-          data-toggle="collapse"
-          data-target=".navbar-collapse.show"
-          ><span class="text-black">Inventario</span></a
-        >
-        </li>
-        <li  *ngIf="activeUser && activeUser.data.rol === 'admin'" class="nav-item" routerLinkActive="active">
-          <a
-          class="nav-link"
-          [routerLink]="['/envios']"
-          data-toggle="collapse"
-          data-target=".navbar-collapse.show"
-          ><span class="text-black">Pedidos</span></a
-        >
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Panel de Control
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a
+              class="dropdown-item"
+              [routerLink]="['/inventario']"
+              ><span class="text-black">Inventario</span>
+              </a
+            >
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li> <a
+              class="dropdown-item"
+              [routerLink]="['/envios']"
+              ><span class="text-black">Envíos</span>
+              </a
+            ></li>
+            <!-- <li><hr class="dropdown-divider" /></li> -->
+            <!-- <li><a class="dropdown-item" href="#">Otros Productos</a></li> -->
+          </ul>
         </li>
       </ul>
       <!-- <form class="d-flex" role="search">

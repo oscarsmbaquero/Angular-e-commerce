@@ -44,7 +44,10 @@ export class StoreService {
   getCart(): any[] {
     return this.cartDataSubject.value;
   }
-
+  /**
+   * Añadir a la cesta
+   * @param product 
+   */
   addToCart(product: any): void {
     const currentCart = this.getCart();
     const existingProduct = currentCart.find((item) => item._id === product._id);
@@ -63,6 +66,10 @@ export class StoreService {
 
     this.updateCart(currentCart);
   }
+  /**
+   * Actualizar Cesta
+   * @param cart 
+   */
 
   private updateCart(cart: any[]): void {
     this.cartDataSubject.next(cart);
@@ -82,6 +89,10 @@ export class StoreService {
   clearCart(): void {
     sessionStorage.removeItem(this.cartKey);
   }
+  /**
+   * eliminar un articulo de la cesta
+   * @param cartId 
+   */
 
   clearCartId(cartId: string): void {
     const cartDataString = sessionStorage.getItem(this.cartKey);
