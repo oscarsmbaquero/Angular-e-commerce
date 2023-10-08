@@ -2,7 +2,7 @@
 <app-navbar></app-navbar>
 <div class="body">
   <div *ngIf="showCart && activeUser" class="floating-button" (click)="redirigirACesta()">
-    <img src="assets/images/cart.jpg" width="55" height="55" alt="" />
+    <img src="assets/images/cart.png" width="55" height="55" alt="" />
    <a
    routerLink="/cesta"
    >
@@ -12,6 +12,11 @@
       value="{{ totalUnidades }}"
       severity="success"
     ></i></a> 
+  </div>
+  <div
+  (click)="redirigirWhatsapp()"
+  ><img src="assets/images/deslizar.png" class="floating-button-what" width="55" height="55" alt="" />
+
   </div>
   <router-outlet></router-outlet>
 </div>

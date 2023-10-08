@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { StoreService } from 'src/core/services/store/store.service';
 import { UsersService } from 'src/core/services/users/users.service';
 
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,7 +21,8 @@ export class AppComponent implements OnInit{
   constructor(
     private storeService: StoreService,
     private router: Router,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private sanitizer: DomSanitizer
     ){
 
   }
@@ -44,6 +47,13 @@ export class AppComponent implements OnInit{
 
   redirigirACesta() {
     this.router.navigate(['/cesta']); // Asegúrate de que '/cesta' coincida con la ruta configurada en tu enrutamiento
+  }
+  redirigirWhatsapp() {
+    const telefono = '+34608722702'; // Reemplaza esto con el número de teléfono deseado
+    const url = `https://wa.me/${telefono}`;
+
+    // Abre la URL de WhatsApp en la misma ventana o pestaña
+    window.location.href = url;
   }
 
 
