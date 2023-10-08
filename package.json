@@ -25,6 +25,7 @@
     "@popperjs/core": "^2.11.6",
     "aos": "^2.3.4",
     "bootstrap": "^5.2.3",
+    "chart.js": "^4.4.0",
     "emailjs": "^4.0.3",
     "ionicons": "^7.1.2",
     "mdb-ui-kit": "^6.4.1",

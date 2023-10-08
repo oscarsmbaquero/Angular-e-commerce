@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VentasComponent } from './ventas.component';
 import { VentasRoutingModule } from './ventas-routing.module';
+//primeng
+import { ChartModule } from 'primeng/chart';
 
 
 
@@ -11,7 +13,8 @@ import { VentasRoutingModule } from './ventas-routing.module';
   ],
   imports: [
     CommonModule,
-    VentasRoutingModule
+    VentasRoutingModule,
+    ChartModule
   ]
 })
 export class VentasModule { }
