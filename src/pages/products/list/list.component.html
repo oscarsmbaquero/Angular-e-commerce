@@ -1,84 +1,41 @@
 <!-- <div class="product-card-container"> -->
-<div *ngIf="products; else loading">
-  <div class="row" style="margin-top: 85px margin-bottom 25px">
-    <div *ngFor="let product of products" class="container">
-      <div class="front side">
-        <div class="content">
-          <div>
-            <h1>{{ product.name }}</h1>
-            <img
-              src="{{ product.image }}"
-              class="product-image"
-              alt="Stony Beach"
-            />
-          </div>
-          <div>
-            <div>              
+  <div class="container" style="margin-bottom: 10px;">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let product of products">
+        <div class="card">
+          <img class="card-img" src="{{ product.image }}" alt="Vans">
+          <!-- <div class=" d-flex justify-content-end">
+            <a href="#" class="card-link text-danger like">
+              <i class="fas fa-heart"></i>
+            </a>
+          </div> -->
+          <div class="card-body">
+            <h4 class="card-title">{{product.name}}</h4>
+            <h6 class="card-subtitle mb-2 text-muted">ref: {{product._id}}</h6>
+            <p class="card-text">
+              {{product.description}}
+            </p>
+            <div class="options d-flex flex-fill" style="align-items: center;">
               <p-badge value={{product.stock}} [severity]="product.stockStatus"></p-badge>
+              <select class="custom-select mr-1" style="margin-left: 10px;">
+                <option selected>Unidades</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
             </div>
-            <p class="product-description">{{ product.description }}</p>
-            <!-- <p class="product-price">{{ product.precio }}&nbsp;€</p> -->
-          </div>
-        </div>
-      </div>
-      <div class="back side">
-        <div class="content-back">
-          <div>
-            <h3 class="product-name_back">{{ product.name }}</h3>
-            <div class="product-info_back">
-              <h6 class="product-description_back">
-                {{ product.description }}
-              </h6>
-            </div>
-          </div>
-          <div>
-            <div class="product-action">
-              <p class="product-price">{{ product.precio }}0&nbsp;€</p>
-              <!-- <button
-                class="button"
-                (click)="confirmAndAddtoCart(product)"
-                routerLink="/"
-              >
-                <img
-                  src="assets/images/cart.png"
-                  width="55"
-                  height="55"
-                  alt=""
-                />&nbsp;
-              </button> -->
-              <div class="card">
-                <p-toast></p-toast>
-                <button *ngIf="product.unidades > 0"
-                  type="button"
-                  pButton
-                  pRipple
-                  (click)="confirmAndAddtoCart(product)"
-                  label="Show"
-                  class="p-button-success"
-                >
-                  <img
-                    src="assets/images/cart.png"
-                    width="55"
-                    height="55"
-                    alt=""
-                  />
-                </button>
-              </div>
-              <button class="button" (click)="navigateDetail(product._id)">
-                <img
-                  src="assets/images/info.png"
-                  width="50"
-                  height="50"
-                  alt=""
-                />&nbsp;
-              </button>
+            <div class="buy d-flex justify-content-between align-items-center">
+              <div class="price text-success"><h2 class="mt-4">{{product.precio}}€</h2></div>
+              <button (click)="confirmAndAddtoCart(product)" class="btn btn-info mt-3"><i class="fas fa-shopping-cart"></i> Añadir a la cesta</button>
+              
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+  
+
 <!-- </div> -->
 <ng-template #loading>
   <app-loading></app-loading>
