@@ -11,3 +11,12 @@
 .like {
   font-size: 1.5rem;
 }
+.disabled-button {
+  opacity: 0.5; /* Cambia la opacidad para indicar que el botón está deshabilitado */
+  cursor: not-allowed; /* Cambia el cursor a "no permitido" para indicar que el botón no es interactivo */
+}
+.card{
+  
+  /* border: 1px solid rgb(115, 113, 113); */
+  margin: 10px;
+}

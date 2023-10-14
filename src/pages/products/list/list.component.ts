@@ -83,7 +83,7 @@ export class ListComponent {
   }
 
   show() {
-    console.log('Entro');
+    console.log('Entroasdasdasd');
     this.messageService.add({
       severity: 'success',
       summary: '',
