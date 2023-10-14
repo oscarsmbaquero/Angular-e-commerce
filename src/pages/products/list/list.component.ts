@@ -21,6 +21,8 @@ export class ListComponent {
 
   stockStatus: string[] = [];
 
+  selectedOption: any;
+
   constructor(
     private storeService: StoreService,
     private router: Router,
@@ -30,7 +32,6 @@ export class ListComponent {
 
   ngOnInit() {
     this.activeUser = localStorage.getItem('user');
-    console.log(this.activeUser);
     this.getProducts();
   }
 
@@ -50,21 +51,21 @@ export class ListComponent {
         }
       });
       
-      this.stockStatus = this.products.map(product => product.stock!) ;// Puedes acceder a this.products con el campo 'stock' añadido
+      this.stockStatus = this.products.map(product => product.stock!) ;
       console.log(this.products);
     });
   }
 
   confirmAndAddtoCart(product: any) {
     console.log(product);
-    if (this.activeUser) {
-      console.log('Si lo hay');
-      this.addToCart(product);
-      this.show();
-    } else {
-      localStorage.setItem('messageLogin', JSON.stringify(this.messageLogin));
-      this.router.navigate(['user']);
-    }
+    // if (this.activeUser) {
+    //   console.log('Si lo hay');
+    //   this.addToCart(product);
+    //   this.show();
+    // } else {
+    //   localStorage.setItem('messageLogin', JSON.stringify(this.messageLogin));
+    //   this.router.navigate(['user']);
+    // }
 
     //this.openConfirmCart(product);
   }
@@ -91,4 +92,16 @@ export class ListComponent {
     });
   }
 
+  onSelectChange() {
+    console.log('Valor seleccionado: ' + this.selectedOption);
+    // Aquí puedes realizar cualquier acción que desees con el valor seleccionado.
+  }
+
+  /**
+   * método para pintar en el input Cantidad antes de seleccionar
+   */
+  ngAfterViewInit() {
+    // Establecer la opción "Cantidad" como seleccionada
+    this.selectedOption = 'Cantidad';
+  }
 }

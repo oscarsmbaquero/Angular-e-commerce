@@ -26,7 +26,8 @@ import { BadgeModule } from 'primeng/badge';
     FormsModule,
     TagModule,
     ToastModule,
-    BadgeModule
+    BadgeModule,
+    FormsModule
     
     
   ],exports:[

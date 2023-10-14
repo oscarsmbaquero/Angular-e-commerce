@@ -88,3 +88,8 @@
   margin: 0; /* Espacio alrededor del hr */
   border: none; /* Elimina el borde */
 }
+
+.menum{
+  font-weight: bold; 
+  font-size: 20px;
+}
