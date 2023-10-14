@@ -235,13 +235,14 @@ export class CartComponent  implements OnInit{
     }
 
     sendMail(mail: string, name: string, orderNumber: string){
-      const message =`Pedido realizado correctamente. En mis pedidos podrás ver el estado actual de tu pedido. Este es tu número de pedido ${orderNumber}`
+      const message =`Pedido realizado correctamente. En tu perfil podrás ver el estado actual de tu pedido. ${orderNumber}`
       emailjs.init('dso8n6rVU1ADlfbV4')
       let response  =  emailjs.send("service_esqoixc","template_pj9nror",{
         from_name: 'Nombre de la empresa',
         to_name: name,
         message: message,
         reply_to: mail,
+        orderNumber: orderNumber,
         });
     }
   
