@@ -71,7 +71,7 @@ export class StoreService {
    * @param cart 
    */
 
-  private updateCart(cart: any[]): void {
+  updateCart(cart: any[]): void {
     this.cartDataSubject.next(cart);
     sessionStorage.setItem(this.cartKey, JSON.stringify(cart));
   }
@@ -101,7 +101,7 @@ export class StoreService {
       try {
         const cartData: any[] = JSON.parse(cartDataString);
 
-        const cartIndex = cartData.findIndex((item) => item.id === cartId);
+        const cartIndex = cartData.findIndex((item) => item._id === cartId);
 
         if (cartIndex !== -1) {
           cartData.splice(cartIndex, 1);
@@ -160,5 +160,8 @@ export class StoreService {
     };
     return this.httpClient.put<IProduct[]>(`${environment.apiUrlMock}products/inventario/${id}`, payload);
   }
+
+  
+
   
 }

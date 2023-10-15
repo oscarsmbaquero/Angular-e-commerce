@@ -32,7 +32,7 @@ export class AppComponent implements OnInit{
       console.log(cartData);
       this.carts = cartData.length;
       this.totalUnidades = cartData.reduce(
-        (total, producto) => total + producto.unidades,
+        (total, producto) => total + producto.unidadesCompra,
         0
       );
       if(this.totalUnidades){

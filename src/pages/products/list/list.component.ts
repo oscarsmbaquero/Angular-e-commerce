@@ -23,6 +23,8 @@ export class ListComponent {
 
   selectedOption: any;
 
+  unidadesCompra = 0 ;
+
   constructor(
     private storeService: StoreService,
     private router: Router,
@@ -58,14 +60,14 @@ export class ListComponent {
 
   confirmAndAddtoCart(product: any) {
     console.log(product);
-    // if (this.activeUser) {
-    //   console.log('Si lo hay');
-    //   this.addToCart(product);
-    //   this.show();
-    // } else {
-    //   localStorage.setItem('messageLogin', JSON.stringify(this.messageLogin));
-    //   this.router.navigate(['user']);
-    // }
+    if (this.activeUser) {
+      console.log('Si lo hay');
+      this.addToCart(product);
+      this.show();
+    } else {
+      localStorage.setItem('messageLogin', JSON.stringify(this.messageLogin));
+      this.router.navigate(['user']);
+    }
 
     //this.openConfirmCart(product);
   }
@@ -92,16 +94,38 @@ export class ListComponent {
     });
   }
 
-  onSelectChange() {
+  showNoStock(unidades: number) {
+    console.log('Entroasdasdasd');
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: `No hay stock. Máximo ${unidades} uds.`,
+    });
+  }
+
+  onSelectChange(product: IProduct) {
+    console.log(product);
     console.log('Valor seleccionado: ' + this.selectedOption);
-    // Aquí puedes realizar cualquier acción que desees con el valor seleccionado.
+    
+    const unidadesRestantes = product.unidades;
+
+    if (this.selectedOption <= unidadesRestantes) {
+      const unidadesCompra = parseInt(this.selectedOption, 10);
+      // Agregar el campo unidadesCompra al objeto product solo si hay suficiente stock
+      product.unidadesCompra = unidadesCompra;
+      console.log(this.products,115);
+      console.log('Si hay Stock');
+    } else {
+      this.showNoStock(unidadesRestantes);
+      console.log('No hay Stock');
+    }
   }
 
   /**
    * método para pintar en el input Cantidad antes de seleccionar
    */
-  ngAfterViewInit() {
-    // Establecer la opción "Cantidad" como seleccionada
-    this.selectedOption = 'Cantidad';
-  }
+  // ngAfterViewInit() {
+  //   // Establecer la opción "Cantidad" como seleccionada
+  //   this.selectedOption = 'Cantidad';
+  // }
 }

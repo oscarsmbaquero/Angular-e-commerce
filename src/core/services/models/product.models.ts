@@ -12,6 +12,7 @@ export interface IProduct {
     stockStatus:any ;
     user?: string;
     status?: number;
+    unidadesCompra: number;
 }
 // export enum TypeGasto {
 //   "casa" = "casa",

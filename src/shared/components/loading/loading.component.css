@@ -1,4 +1,4 @@
-
+/* 
 .div-loader{
   display: flex;
   justify-content: center;
@@ -6,9 +6,6 @@
   width: 100%;
   min-height: 80vh;
   background-color: #FFF;
-  
-  /* height: 100vh;
-  width: 100%; */
 }
 
 
@@ -44,3 +41,20 @@
   100% { transform: rotate(360deg)}
 }
       
+ */
+ .loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: black;
+}
+
+.loading-container img {
+  width: 100px; /* Ajusta el tamaño de tu logo SVG */
+}
+
+.loading-text {
+  margin-top: 10px;
+}

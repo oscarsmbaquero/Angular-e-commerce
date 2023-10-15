@@ -59,14 +59,15 @@ export class CartComponent  implements OnInit{
 
   ngOnInit(){
     this.carts = this.storeService.getCart();
+    console.log(this.carts,'carts');
     this.carts.map((element)=>{
-      this.unidades = element.unidades;
+      this.unidades = element.unidadesCompra;
       console.log(element.unidades);
 
     });
      // Inicializamos totalPrice para todos los artículos en la cesta
      this.carts.forEach(car => {
-      car.totalPrice = car.precio * this.units;
+      car.totalPrice = car.precio * car.unidadesCompra;
     });
     this.calculateTotal(); // Calculamos el total al inicializar el componente
     //this.initConfig();
@@ -87,19 +88,20 @@ export class CartComponent  implements OnInit{
  // Función para incrementar las unidades
   // Función para incrementar las unidades y actualizar el precio total
   incrementUnits(car: IProduct, index: number) {
-    if (car.unidades >= 0) {
-      this.carts[index].unidades++;
-      this.carts[index].totalPrice = car.precio * car.unidades;
+    if (car.unidadesCompra >= 0) {
+      this.carts[index].unidadesCompra++;
+      this.carts[index].totalPrice = car.precio * car.unidadesCompra;
       this.calculateTotal(); // Si es necesario calcular el total general
+      this.storeService.updateCart(this.carts);
     }
   }
   
   decrementUnits(car: IProduct, index: number) {
-    if (car.unidades > 1) {
-      this.carts[index].unidades--;
-      this.carts[index].totalPrice = car.precio * car.unidades;
+    if (car.unidadesCompra > 1) {
+      this.carts[index].unidadesCompra--;
+      this.carts[index].totalPrice = car.precio * car.unidadesCompra;
       this.calculateTotal(); // Si es necesario calcular el total general
-    } else if (car.unidades === 1) {
+    } else if (car.unidadesCompra === 1) {
       this.deleteId(car._id);
     }
   }
