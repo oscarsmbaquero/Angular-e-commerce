@@ -62,8 +62,15 @@ export class ListComponent {
     console.log(product);
     if (this.activeUser) {
       console.log('Si lo hay');
-      this.addToCart(product);
-      this.show();
+      if(!product.unidadesCompra){
+        console.log('no hay unidades')
+        this.showNotSelected();
+      }else{
+        console.log('Si hay unidades ')
+        this.addToCart(product);
+        this.show();
+      }
+      
     } else {
       localStorage.setItem('messageLogin', JSON.stringify(this.messageLogin));
       this.router.navigate(['user']);
@@ -100,6 +107,14 @@ export class ListComponent {
       severity: 'error',
       summary: 'Error',
       detail: `No hay stock. Máximo ${unidades} uds.`,
+    });
+  }
+  showNotSelected() {
+    console.log('Entroasdasdasd');
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: `Debe de seleccionar cantidad`,
     });
   }
 
