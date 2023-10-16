@@ -1,7 +1,7 @@
 <div class="card">
     <p-table [value]="orders" [tableStyle]="{ 'min-width': '60rem' }">
       <ng-template pTemplate="caption">
-        <div class="flex align-items-center justify-content-between">
+        <div class="centered-content">
           Pedidos
         </div>
       </ng-template>
@@ -11,7 +11,7 @@
           <th>Fecha Pedido</th>
           <th>Cliente</th>
           <th>Estado Pedido</th>
-          <th>Observaciones</th>
+          <!-- <th>Observaciones</th> -->
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-order>
@@ -30,7 +30,7 @@
           <td *ngIf="order.estadoPedido === 'Cerrado'">{{ order.estadoPedido}}
             
           </td>
-          <td>{{order.statusSend}}</td>          
+          <!-- <td>{{order.statusSend}}</td>           -->
         </tr>
       </ng-template>
       <ng-template pTemplate="summary">

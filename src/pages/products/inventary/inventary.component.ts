@@ -42,7 +42,7 @@ private getProducts() {
           product.stock = 'Agotado';
           product.stockStatus = 'danger';
         } else if (product.unidades <= 25) {
-          product.stock = 'PocoStock';
+          product.stock = 'Bajo';
           product.stockStatus = 'warning';
         } else {
           product.stock = 'Stock';
@@ -59,7 +59,7 @@ private getProducts() {
     switch (status) {
         case 'Stock':
             return 'success';
-        case 'PocoStock':
+        case 'Bajo':
             return 'warning';
         case 'Agotado':
             return 'danger';

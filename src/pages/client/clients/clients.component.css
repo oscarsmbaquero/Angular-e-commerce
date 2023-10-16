@@ -1,0 +1,8 @@
+.centered-content {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    background-color: rgb(110, 150, 224);
+    border-radius: 12px;
+    color: white;
+}

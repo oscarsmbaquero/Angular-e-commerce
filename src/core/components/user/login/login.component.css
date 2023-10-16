@@ -28,6 +28,9 @@
     max-width: 400px;
     width: 100%;
     padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Establece el tamaño y el color de la sombra */
+    /* border: 1px solid grey; */
+    border-radius: 12px;
     text-align: center;
   }
   

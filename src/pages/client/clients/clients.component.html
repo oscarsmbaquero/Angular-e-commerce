@@ -1,13 +1,16 @@
 <div class="card">
     <p-table [value]="users" [tableStyle]="{'min-width': '60rem'}">
         <ng-template pTemplate="caption">
-        </ng-template>
+            <div class="centered-content">
+              Clientes
+            </div>
+          </ng-template>
         <ng-template pTemplate="header">
             <tr>
-                <th><span style="font-weight: bold; color:rgb(38, 236, 233)">Cliente</span></th>
-                <th><span style="font-weight: bold; color:rgb(38, 236, 233)">Email</span></th>
-                <th><span style="font-weight: bold; color:rgb(38, 236, 233)">Tlf.</span></th>
-                <th><span style="font-weight: bold; color:rgb(38, 236, 233)">Pedidos</span></th>
+                <th><span style="font-weight: bold">Cliente</span></th>
+                <th><span style="font-weight: bold">Email</span></th>
+                <th><span style="font-weight: bold">Tlf.</span></th>
+                <th><span style="font-weight: bold">Pedidos</span></th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-user>
