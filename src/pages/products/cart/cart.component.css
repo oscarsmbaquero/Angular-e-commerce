@@ -17,12 +17,6 @@
     align-items: center;
     justify-content: center;
 }
-/* ventana de mansaje */
-.toast{
-display: flex;
-align-items: center;
-justify-content: center;
-}
 
 .content {
     flex: 1; /* Ocupa la otra mitad del alto disponible */

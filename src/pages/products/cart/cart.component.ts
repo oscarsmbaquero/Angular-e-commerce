@@ -1,7 +1,7 @@
 
 import { MessageService } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { StoreService } from 'src/core/services/store/store.service';
 
@@ -19,7 +19,7 @@ declare var paypal: any;
   styleUrls: ['./cart.component.css'] ,
   providers: [MessageService],
 })
-export class CartComponent  implements OnInit{
+export class CartComponent  implements OnInit, AfterViewInit{
 
   public payPalConfig?: IPayPalConfig;
   /**
@@ -150,6 +150,15 @@ export class CartComponent  implements OnInit{
       detail: `No hay mas unidades en stock`,
     });
   }
+
+  /**
+   * renderizar la venta al inicio y fijarlo en la parte superior de la pantalla
+   */
+  ngAfterViewInit() {
+    // Utilizar JavaScript para desplazar al principio de la página
+    window.scrollTo(0, 0);
+  }
+
 
   /**
    * configuracion de paypal
