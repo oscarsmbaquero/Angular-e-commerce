@@ -1,7 +1,7 @@
 
 import { MessageService } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { StoreService } from 'src/core/services/store/store.service';
 
@@ -19,7 +19,7 @@ declare var paypal: any;
   styleUrls: ['./cart.component.css'] ,
   providers: [MessageService],
 })
-export class CartComponent  implements OnInit, AfterViewInit{
+export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
 
   public payPalConfig?: IPayPalConfig;
   /**
@@ -45,6 +45,8 @@ export class CartComponent  implements OnInit, AfterViewInit{
    * flag para pintar el modal
    */
   visible: boolean = false;
+
+  messageButton = '';
 
   /**
    * almacenar el numero de pedido recibido 
@@ -125,6 +127,7 @@ export class CartComponent  implements OnInit, AfterViewInit{
       this.carts[index].unidadesCompra--;
       this.carts[index].totalPrice = car.precio * car.unidadesCompra;
       this.calculateTotal(); // Si es necesario calcular el total general
+      this.storeService.updateCart(this.carts);
     } else if (car.unidadesCompra === 1) {
       this.deleteId(car._id);
     }
@@ -133,7 +136,14 @@ export class CartComponent  implements OnInit, AfterViewInit{
 
   calculateTotal(precioEnvio?: number): void {
     this.total = this.carts.reduce((accumulator, car) => accumulator + (car.totalPrice || 0), 0) + (precioEnvio || 0);
-   
+    setTimeout(() => {
+      if (this.total >= 50){
+        this.showSendFree();
+        
+      }  
+    }, 1500);
+    
+   //this.shipment(); 
     
   }
 
@@ -148,6 +158,14 @@ export class CartComponent  implements OnInit, AfterViewInit{
       severity: 'error',
       summary: 'Error',
       detail: `No hay mas unidades en stock`,
+    });
+  }
+  showSendFree() {
+    console.log('ENTRO DEL TIRON')
+    this.messageService.add({
+      severity: 'info',
+      summary: 'Success',
+      detail: `Envio Grátis`,
     });
   }
 
@@ -226,8 +244,25 @@ export class CartComponent  implements OnInit, AfterViewInit{
 
 
   shipment(){
-    this.showShipment = !this.showShipment;
-    this.showPaypal = false;
+    if(this.total >=50)  {
+      this.messageButton = 'Envio gratis';
+      this.showSendFree();
+      // this.showShipment = false;
+      // this.showPaypal = true;
+    }else{
+      //this.showShipment = !this.showShipment;
+      this.messageButton = 'Calcular Envío';
+      this.showShipment = true;
+    }
+    // this.showShipment = !this.showShipment;
+    // this.showPaypal = false;
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    // Verificar si 'total' ha cambiado
+    if (['changes.total']) {
+      this.shipment();
+    }
   }
 
   priceShipment(precio: number){

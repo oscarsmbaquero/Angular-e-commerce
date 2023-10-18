@@ -61,10 +61,12 @@
     </div>
     <div>
       <div>
-        <button
+        <a  (click)="shipment()" class="ov-btn-slide-close">{{messageButton}}</a>
+        <!-- <button
           (click)="shipment()"
-          class="custom-button"
-          style="margin-top: 25px"
+          
+          class="ov-btn-slide-right"
+          
         >
           <img
             src="assets/images/camion.png"
@@ -72,7 +74,8 @@
             height="40"
             alt=""
           />&nbsp;
-        </button>
+          Calcula tu envío
+        </button> -->
       </div>
       <div *ngIf="showShipment">
         <app-shipment 

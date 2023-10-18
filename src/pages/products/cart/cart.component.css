@@ -155,3 +155,43 @@ h6 {
       transform: scale(0.8); /* Volver a la escala normal al final */
     }
   }
+
+  /*** ESTILOS BOTÓN SLIDE CLOSE ***/
+.ov-btn-slide-close {
+    background: #fff; /* color de fondo */
+    color: #4741d7; /* color de fuente */
+    border: 6px solid #4741d7; /* tamaño y color de borde */
+    padding: 16px 20px;
+    border-radius: 12px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+  }
+  .ov-btn-slide-close:before, .ov-btn-slide-close:after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    left: -50%;
+    background-color: #4741d7; /* color de fondo hover */
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  .ov-btn-slide-close:after {
+    left: 100%;
+  }
+  .ov-btn-slide-close:hover {
+    color: #fff; /* color de fuente hover */
+  }
+  .ov-btn-slide-close:hover:before {
+    left: 0;
+  }
+  .ov-btn-slide-close:hover:after {
+    left: 50%;
+  }
+
+  
