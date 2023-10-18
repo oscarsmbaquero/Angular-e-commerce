@@ -136,11 +136,16 @@ export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
 
   calculateTotal(precioEnvio?: number): void {
     this.total = this.carts.reduce((accumulator, car) => accumulator + (car.totalPrice || 0), 0) + (precioEnvio || 0);
+    // const totalPriceProducts = this.carts.map((element) => element.totalPrice);
+   // console.log(totalPriceProducts,'price');
+    console.log(this.total,'price');
     setTimeout(() => {
       if (this.total >= 50){
-        this.showSendFree();
-        
-      }  
+        this.showSendFree('free');
+        this.showPaypal = true;
+      }else{
+        this.showSendFree('pay');
+      }
     }, 1500);
     
    //this.shipment(); 
@@ -160,13 +165,33 @@ export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
       detail: `No hay mas unidades en stock`,
     });
   }
-  showSendFree() {
-    console.log('ENTRO DEL TIRON')
-    this.messageService.add({
-      severity: 'info',
-      summary: 'Success',
-      detail: `Envio Grátis`,
-    });
+  showSendFree(option: string) {
+    console.log('ENTRO DEL TIRON');
+    switch (option) {
+      case 'free':
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Success',
+          detail: `Envio Grátis`,          
+        });
+        this.showShipment = false;
+        break;
+        case 'pay':
+          this.messageService.add({
+            severity: 'warn',
+            summary: 'Warn',
+            detail: `Si añades mas productos y superas los 50 €, tienes envío gratis`,
+          });
+          this.showShipment = true;
+        break;
+      default:
+        break;
+    }
+    // this.messageService.add({
+    //   severity: 'info',
+    //   summary: 'Success',
+    //   detail: `Envio Grátis`,
+    // });
   }
 
   /**
@@ -246,7 +271,7 @@ export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
   shipment(){
     if(this.total >=50)  {
       this.messageButton = 'Envio gratis';
-      this.showSendFree();
+      this.showSendFree('free');
       // this.showShipment = false;
       // this.showPaypal = true;
     }else{
