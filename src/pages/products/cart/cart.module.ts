@@ -8,6 +8,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { FormsModule } from '@angular/forms'; // Importa FormsModule
 import { BadgeModule } from 'primeng/badge';
 import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
 
 
 
@@ -24,7 +25,8 @@ import { DialogModule } from 'primeng/dialog';
     InputNumberModule,
     FormsModule,
     BadgeModule,
-    DialogModule
+    DialogModule,
+    ToastModule
   ]
 })
 export class CartModule { }

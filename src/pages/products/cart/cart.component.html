@@ -1,5 +1,9 @@
 <div *ngIf="carts.length; else noCarts" class="cart">
   <img src="assets/images/bolsa.png" width="30" height="30" alt="" />&nbsp;
+  <div class="toast">
+    <p-toast></p-toast>
+  </div>
+  
   <div
     *ngFor="let car of carts; let i = index"
     style="

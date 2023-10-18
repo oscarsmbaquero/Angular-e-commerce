@@ -4,10 +4,12 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { StoreService } from 'src/core/services/store/store.service';
+
 import { IProduct } from 'src/core/services/models/product.models';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { environment } from '../../../enviroment/environment'; // Ajusta la ruta según tu estructura de carpetas
 import emailjs from '@emailjs/browser';
+
 
 
 declare var paypal: any;
@@ -31,6 +33,8 @@ export class CartComponent  implements OnInit{
   unidades: number = 0;
   units: number = 1; // Inicialmente, las unidades serán 1
   articlesBuy: IProduct[] = [];
+
+  products: IProduct[] = [];
 
   total: number = 0; // Inicializamos el total en 0
   showSuccess: boolean | undefined;
@@ -63,7 +67,10 @@ export class CartComponent  implements OnInit{
     this.carts.map((element)=>{
       this.unidades = element.unidadesCompra;
       console.log(element.unidades);
-
+    });
+    this.storeService.getProducts().subscribe((products) => {
+      this.products = products;
+      console.log(this.products,72);
     });
      // Inicializamos totalPrice para todos los artículos en la cesta
      this.carts.forEach(car => {
@@ -88,12 +95,29 @@ export class CartComponent  implements OnInit{
  // Función para incrementar las unidades
   // Función para incrementar las unidades y actualizar el precio total
   incrementUnits(car: IProduct, index: number) {
-    if (car.unidadesCompra >= 0) {
-      this.carts[index].unidadesCompra++;
-      this.carts[index].totalPrice = car.precio * car.unidadesCompra;
-      this.calculateTotal(); // Si es necesario calcular el total general
-      this.storeService.updateCart(this.carts);
+
+    const productInCart = this.products.find(product => product._id === car._id);
+
+    if (productInCart) {
+      // Comprobar si hay suficientes unidades disponibles
+      if (productInCart.unidades > car.unidadesCompra) {
+        // Incrementar las unidades en el carrito y actualizar el precio
+        this.carts[index].unidadesCompra++;
+        this.carts[index].totalPrice = car.precio * car.unidadesCompra;
+        this.calculateTotal(); // Si es necesario calcular el total general
+        this.storeService.updateCart(this.carts);
+      } else {
+        this.showNotSelected();
+      }
+    } else {
+      console.log('Producto no encontrado en this.products');
     }
+    // if (car.unidadesCompra >= 0) {
+    //   this.carts[index].unidadesCompra++;
+    //   this.carts[index].totalPrice = car.precio * car.unidadesCompra;
+    //   this.calculateTotal(); // Si es necesario calcular el total general
+    //   this.storeService.updateCart(this.carts);
+    // }
   }
   
   decrementUnits(car: IProduct, index: number) {
@@ -104,6 +128,7 @@ export class CartComponent  implements OnInit{
     } else if (car.unidadesCompra === 1) {
       this.deleteId(car._id);
     }
+
   }
 
   calculateTotal(precioEnvio?: number): void {
@@ -115,6 +140,15 @@ export class CartComponent  implements OnInit{
   navigateList(){
     console.log('Entro');
     this.router.navigate(['list']);
+  }
+
+  showNotSelected() {
+    console.log('Entroasdasdasd');
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: `No hay mas unidades en stock`,
+    });
   }
 
   /**
