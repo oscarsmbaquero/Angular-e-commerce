@@ -54,10 +54,15 @@
   </div>
   <div class="total">
     <div>
-      <h3>
+      <h3 *ngIf="totalWithSend">
+        Total: <span style="font-weight: bold">{{ getFixed(totalWithSend) }}</span
+        >&nbsp;€
+      </h3>
+      <h3 *ngIf="!totalWithSend">
         Total: <span style="font-weight: bold">{{ getFixed(total) }}</span
         >&nbsp;€
       </h3>
+
     </div>
     <div>
       <div>

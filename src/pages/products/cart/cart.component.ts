@@ -35,8 +35,17 @@ export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
   articlesBuy: IProduct[] = [];
 
   products: IProduct[] = [];
-
+  /**
+   * total del importe 
+   */
   total: number = 0; // Inicializamos el total en 0
+
+  /**
+   * valor total con envio
+   */
+  totalWithSend: number = 0;
+
+
   showSuccess: boolean | undefined;
   showPaypal: boolean = false;
   showShipment: boolean = false;
@@ -45,7 +54,9 @@ export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
    * flag para pintar el modal
    */
   visible: boolean = false;
-
+  /**
+   * flag para guardar el mensaje del boton. //TODO
+   */
   messageButton = '';
 
   /**
@@ -64,42 +75,43 @@ export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
   }
 
   ngOnInit(){
+    //RECUPERAMOS LOS ARTICULOS DE LA CESTA DEL LOCALSTORAGE
     this.carts = this.storeService.getCart();
     console.log(this.carts,'carts');
     this.carts.map((element)=>{
       this.unidades = element.unidadesCompra;
       console.log(element.unidades);
     });
-    this.storeService.getProducts().subscribe((products) => {
-      this.products = products;
-      console.log(this.products,72);
-    });
-     // Inicializamos totalPrice para todos los artículos en la cesta
+      // Inicializamos totalPrice para todos los artículos en la cesta
      this.carts.forEach(car => {
       car.totalPrice = car.precio * car.unidadesCompra;
     });
     this.calculateTotal(); // Calculamos el total al inicializar el componente
-    //this.initConfig();
+    //RECUPERO LOS PRODUCTOS
+    this.storeService.getProducts().subscribe((products) => {
+      this.products = products;
+      console.log(this.products,72);
+    });
   }
   /**
-   * borrar del sessionStorage
+   * borrar del sessionStorage la cesta
    */
   delete(){
     this.storeService.clearCart();
     window.location.reload(); 
   }
-
+ /**
+  * borrar un articulo de la cesta
+  * @param cart 
+  */
   deleteId(cart:string){
     this.storeService.clearCartId(cart);
     window.location.reload(); 
   }
 
- // Función para incrementar las unidades
   // Función para incrementar las unidades y actualizar el precio total
   incrementUnits(car: IProduct, index: number) {
-
     const productInCart = this.products.find(product => product._id === car._id);
-
     if (productInCart) {
       // Comprobar si hay suficientes unidades disponibles
       if (productInCart.unidades > car.unidadesCompra) {
@@ -114,12 +126,6 @@ export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
     } else {
       console.log('Producto no encontrado en this.products');
     }
-    // if (car.unidadesCompra >= 0) {
-    //   this.carts[index].unidadesCompra++;
-    //   this.carts[index].totalPrice = car.precio * car.unidadesCompra;
-    //   this.calculateTotal(); // Si es necesario calcular el total general
-    //   this.storeService.updateCart(this.carts);
-    // }
   }
   
   decrementUnits(car: IProduct, index: number) {
@@ -135,7 +141,8 @@ export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
   }
 
   calculateTotal(precioEnvio?: number): void {
-    this.total = this.carts.reduce((accumulator, car) => accumulator + (car.totalPrice || 0), 0) + (precioEnvio || 0);
+    this.totalWithSend = this.carts.reduce((accumulator, car) => accumulator + (car.totalPrice || 0), 0) + (precioEnvio || 0);
+    this.total = this.carts.reduce((accumulator, car) => accumulator + (car.totalPrice || 0), 0);
     // const totalPriceProducts = this.carts.map((element) => element.totalPrice);
    // console.log(totalPriceProducts,'price');
     console.log(this.total,'price');
@@ -151,28 +158,33 @@ export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
    //this.shipment(); 
     
   }
-
+  /**
+   * redireccionar al listado
+   */
   navigateList(){
-    console.log('Entro');
     this.router.navigate(['list']);
   }
-
+  /**
+   * mensaje si selecionamos mas unidades de las q hay en stock
+   */
   showNotSelected() {
-    console.log('Entroasdasdasd');
     this.messageService.add({
       severity: 'error',
       summary: 'Error',
       detail: `No hay mas unidades en stock`,
     });
   }
+  /**
+   * Mensaje de envio pagado o gratis
+   * @param option 
+   */
   showSendFree(option: string) {
-    console.log('ENTRO DEL TIRON');
     switch (option) {
       case 'free':
         this.messageService.add({
           severity: 'info',
           summary: 'Success',
-          detail: `Envio Grátis`,          
+          detail: `Envio Grátis`,
         });
         this.showShipment = false;
         break;
@@ -187,18 +199,12 @@ export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
       default:
         break;
     }
-    // this.messageService.add({
-    //   severity: 'info',
-    //   summary: 'Success',
-    //   detail: `Envio Grátis`,
-    // });
   }
 
   /**
    * renderizar la venta al inicio y fijarlo en la parte superior de la pantalla
    */
   ngAfterViewInit() {
-    // Utilizar JavaScript para desplazar al principio de la página
     window.scrollTo(0, 0);
   }
 

@@ -13,7 +13,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 export class AppComponent implements OnInit{
   title = 'e-commerce';
   carts: number = 0;
-  totalUnidades: number = 0;
+  totalUnidades = 0;
   showCart = false; 
   activeUser: any;
 
@@ -32,7 +32,7 @@ export class AppComponent implements OnInit{
       console.log(cartData);
       this.carts = cartData.length;
       this.totalUnidades = cartData.reduce(
-        (total, producto) => total + producto.unidadesCompra,
+        (total, producto) => total + parseInt(producto.unidadesCompra,10),
         0
       );
       if(this.totalUnidades){

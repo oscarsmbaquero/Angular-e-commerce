@@ -1,7 +1,7 @@
 <!-- <div class="product-card-container"> -->
   <div  *ngIf="products.length; else loading" class="container" style="margin-bottom: 10px;">
     <div class="row">
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let product of products">
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let product of products; let i = index">
         <div class="card">
           <!-- Mensaje al añadir  -->
           <p-toast position="top-center"></p-toast>
@@ -22,9 +22,9 @@
               <select 
                  class="custom-select mr-1" 
                  style="margin-left: 10px;" 
-                 [(ngModel)]="selectedOption" 
+                 [(ngModel)]="selectedOptions[product._id]"
                  [disabled]="product.unidades <= 0"
-                 (change)="onSelectChange(product)">
+                 (change)="onSelectChange(product,i)">
                 <option [ngValue]="'Cantidad'">Cantidad</option>
                 <option value="1">1</option>
                 <option value="2">2</option>

@@ -25,6 +25,8 @@ export class ListComponent {
 
   unidadesCompra = 0 ;
 
+  selectedOptions: { [productId: number]: number } = {};
+
   constructor(
     private storeService: StoreService,
     private router: Router,
@@ -110,7 +112,6 @@ export class ListComponent {
     });
   }
   showNotSelected() {
-    console.log('Entroasdasdasd');
     this.messageService.add({
       severity: 'error',
       summary: 'Error',
@@ -118,16 +119,17 @@ export class ListComponent {
     });
   }
 
-  onSelectChange(product: IProduct) {
-    console.log(product);
-    console.log('Valor seleccionado: ' + this.selectedOption);
+  onSelectChange(product: IProduct, index: number) {
+    const selectedOption = this.selectedOptions[product._id];
+    console.log(selectedOption);
+    console.log('Valor seleccionado: ' + selectedOption);
     
     const unidadesRestantes = product.unidades;
 
-    if (this.selectedOption <= unidadesRestantes) {
-      const unidadesCompra = parseInt(this.selectedOption, 10);
+    if (selectedOption <= unidadesRestantes) {
+      //const unidadesCompra = parseInt(this.selectedOption, 10);
       // Agregar el campo unidadesCompra al objeto product solo si hay suficiente stock
-      product.unidadesCompra = unidadesCompra;
+      product.unidadesCompra = selectedOption;
       console.log(this.products,115);
       console.log('Si hay Stock');
     } else {
