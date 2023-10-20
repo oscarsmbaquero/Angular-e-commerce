@@ -25,16 +25,18 @@
     flex-direction: column;
     text-align: center;
     height: 100px;
-    width: 250px;
+    width: 200px;
     border-radius: 10px;
     color: white;
     cursor: pointer;
     transition: 400ms;
+    padding: 10px;
   }
   
   .cards .card p.tip {
     font-size: 1em;
     font-weight: 700;
+    
   }
   
   .cards .card p.second-text {
