@@ -31,10 +31,7 @@ export class AppComponent implements OnInit{
     this.storeService.getCartObservable().subscribe((cartData) => {
       console.log(cartData);
       this.carts = cartData.length;
-      this.totalUnidades = cartData.reduce(
-        (total, producto) => total + parseInt(producto.unidadesCompra,10),
-        0
-      );
+      this.totalUnidades = cartData.reduce((total, producto) => total + parseInt(producto.unidadesCompra,10), 0);
       if(this.totalUnidades){
         this.showCart = true;
       }

@@ -1,18 +1,43 @@
-<div *ngFor="let envio of envios; let i = index">
-    <div class="form-check">
-      <input
-        type="radio"
-        class="form-check-input"
-        name="envioSeleccionado"
-        [value]="i"
-        id="flexRadioDefault{{ i }}"
-        (click)="precioEnvio(envio.precio)"
-      />
-      <label class="form-check-label" for="flexRadioDefault{{ i }}">
-        <span style="font-weight: bold;">{{ envio.label }}</span><br/>
-        {{envio.text}}
-      </label>
+<!-- Primera version -->
+<!-- <div *ngFor="let envio of envios; let i = index">
+  <div class="form-check">
+    <input
+      type="radio"
+      class="form-check-input"
+      name="envioSeleccionado"
+      [value]="i"
+      id="flexRadioDefault{{ i }}"
+      (click)="precioEnvio(envio.precio)"
+    />
+    <label class="form-check-label" for="flexRadioDefault{{ i }}">
+      <span style="font-weight: bold;">{{ envio.label }}</span><br/>
+      {{envio.text}}
+    </label>
+  </div>
+</div> -->
+<!-- Segunda version -->
+<!-- <div *ngFor="let envio of envios; let i = index">
+  <div class="cards">
+    <div class="card red">
+      <p class="tip">{{ envio.label }}</p>
+      <p class="second-text">{{ envio.text }}</p>
+    </div>
+    <div class="card blue">
+      <p class="tip">Hover Me</p>
+      <p class="second-text">Lorem Ipsum</p>
+    </div>
+    <div class="card green">
+      <p class="tip">Hover Me</p>
+      <p class="second-text">Lorem Ipsum</p>
     </div>
   </div>
-  <div *ngIf="total">Hola</div>
-  
+</div> -->
+<div *ngFor="let envio of envios; let i = index">
+  <div class="cards" (click)="precioEnvio(envio.precio)">
+    <div [ngClass]="['card', envio.cssClass]">
+      <p class="tip">{{ envio.label }}</p>
+      <p class="second-text">{{ envio.text }}</p>
+    </div>
+  </div>
+</div>
+

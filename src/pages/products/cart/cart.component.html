@@ -91,7 +91,18 @@
     </div>
     <div *ngIf="showPaypal">
       <div>
-        <button (click)="buyProducts()"  >Comprar</button>
+        <div class="button"
+        (click)="buyProducts()"
+        >
+          <div class="box">C</div>
+          <div class="box">O</div>
+          <div class="box">M</div>
+          <div class="box">P</div>
+          <div class="box">R</div>
+          <div class="box">A</div>
+          <div class="box">R</div>
+      </div>
+        <!-- <button (click)="buyProducts()"  >Comprar</button> -->
         <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
       </div>
     </div>
