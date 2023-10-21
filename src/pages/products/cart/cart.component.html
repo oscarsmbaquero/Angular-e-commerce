@@ -9,6 +9,7 @@
       border-radius: 12px;
       margin-bottom: 6px;
       padding: 15px;
+      background-color: white;
     "
   >
     <div class="header">
@@ -22,7 +23,7 @@
         <h5>Total: {{ getFixed(car.totalPrice) }}&nbsp;€</h5>
         <div class="price-units">
           <h4>
-            <span style="font-weight: bold">{{ car.precio }}</span
+            <span style="font-weight: bold;">{{ car.precio }}</span
             >€
           </h4>
           <div class="unit-controls">
@@ -55,8 +56,8 @@
   <div class="total">
     <div>
       <h3 *ngIf="totalWithSend">
-        Total: <span style="font-weight: bold">{{ getFixed(totalWithSend) }}</span
-        >&nbsp;€
+       <span style="font-weight: bold; color: white">  Total: {{ getFixed(totalWithSend) }}&nbsp;€</span
+        >
       </h3>
       <h3 *ngIf="!totalWithSend">
         Total: <span style="font-weight: bold">{{ getFixed(total) }}</span
