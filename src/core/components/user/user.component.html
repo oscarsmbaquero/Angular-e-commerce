@@ -1,12 +1,12 @@
 <div
   class="card flex justify-content-center"
-  style="padding: 20px; border: none"
+  style="padding: 20px; border: none; background-color: rgb(57, 55, 55);"
 >
   <div *ngIf="!showRegister; else labelLogin">
-    <label>Si no tienes cuenta, regístrate</label>
+    <label style="color:white">Si no tienes cuenta, regístrate</label>
   </div>
   <ng-template #labelLogin>
-    <label>Si ya tienes cuenta, accede al Login</label>
+    <label style="color:white">Si ya tienes cuenta, accede al Login</label>
   </ng-template>
   <p-inputSwitch
     [(ngModel)]="checked"
