@@ -1,0 +1,62 @@
+<div data-aos="flip-up">
+    <mat-card>
+      <mat-card-content>
+        <!-- <img
+          src="../../../assets/images/logo.jpg"
+          width="130"
+          height="90"
+          alt=""
+        /> -->
+         <span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Añadir Producto</span>
+        <form novalidate (ngSubmit)="onSubmit()" [formGroup]="anadirProduct" style="margin-top: 25px;">
+          <mat-form-field appearance="fill">
+            <mat-label>Nombre del producto</mat-label>
+            <input matInput formControlName="name" />
+            <mat-error *ngIf="anadirProduct.get('name')?.invalid">
+              Campo obligado
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Descripción:</mat-label>
+            <input matInput formControlName="description" />
+            <mat-error *ngIf="anadirProduct.get('description')?.invalid">
+                Campo obligado
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>P. Compra:</mat-label>
+            <input matInput formControlName="pCompra"  type="number"/>
+            <mat-error *ngIf="anadirProduct.get('pCompra')?.invalid">
+                Campo obligado.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>PVP:</mat-label>
+            <input matInput formControlName="pvp" type="number" />
+            <mat-error *ngIf="anadirProduct.get('pvp')?.invalid">
+                Campo obligado
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Unidades:</mat-label>
+            <input matInput formControlName="unidades"  type="number"/>
+            <mat-error *ngIf="anadirProduct.get('unidades')?.invalid">
+                Campo obligado
+            </mat-error>
+          </mat-form-field>
+          <input type="file" 
+          (change)="onFileSelected($event)" 
+          accept="image/*"
+          >
+          <mat-card-content>
+            <button *ngIf="anadirProduct.valid"
+              mat-raised-button
+              color="primary">
+              Enviar
+            </button>
+          </mat-card-content>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

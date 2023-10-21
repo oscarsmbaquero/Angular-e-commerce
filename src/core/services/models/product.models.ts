@@ -13,6 +13,8 @@ export interface IProduct {
     user?: string;
     status?: number;
     unidadesCompra: number;
+    pCompra: number;
+    pvp: number;
 }
 // export enum TypeGasto {
 //   "casa" = "casa",

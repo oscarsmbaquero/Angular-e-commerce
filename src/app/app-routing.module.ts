@@ -51,6 +51,11 @@ const routes: Routes = [
     //canActivate: [AuthGuard],
     loadChildren: () => import('src/pages/ventas/ventas.module').then(m => m.VentasModule)
   },
+  {
+    path: 'anadir',
+    //canActivate: [AuthGuard],
+    loadChildren: () => import('src/pages/products/anadir/anadir.module').then(m => m.AnadirModule)
+  },
 ];
 
 @NgModule({

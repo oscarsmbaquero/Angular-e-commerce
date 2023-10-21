@@ -161,6 +161,21 @@ export class StoreService {
     return this.httpClient.put<IProduct[]>(`${environment.apiUrlMock}products/inventario/${id}`, payload);
   }
 
+  public addProduct(body: any): Observable<any> {
+    const formData = new FormData();
+    console.log(body,'body');
+    formData.append('name', body.name);
+    formData.append('description', body.description);
+    formData.append('pCompra', body.pCompra);
+    formData.append('pvp', body.pvp);
+    formData.append('unidades', body.unidades);
+    formData.append('image', body.image);
+    return this.httpClient.post<any>(
+      `${environment.apiUrlMock}products/addProduct`,
+      formData
+    );
+  }
+
   
 
   
