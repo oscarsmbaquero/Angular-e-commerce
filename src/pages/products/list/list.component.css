@@ -18,10 +18,10 @@
 .card{  
   /* border: 1px solid rgb(115, 113, 113); */
   margin: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra alrededor del contorno */
+ 
 }
 .card:hover {
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.8); /* Aumenta la sombra en el hover */
+  box-shadow: 0 0 10px  rgb(228, 221, 221); /* Aumenta la sombra en el hover */
 }
  select{
   font-size: inherit; /* Evita cambios en el tamaño de fuente */
