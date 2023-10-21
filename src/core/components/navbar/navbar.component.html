@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md bg-light bg-transparent">
+<nav class="navbar navbar-expand-md sticky-top" style="background-color: black;">
   <div class="container-fluid">
     <!-- <button 
       class="navbar-toggler"
@@ -137,7 +137,7 @@
             [routerLink]="['']"
             data-toggle="collapse"
             data-target=".navbar-collapse.show"
-            ><span class="text-black" style="font-weight: bold; font-size: 15px"
+            ><span class="text-white" style="font-weight: bold; font-size: 15px"
               >Home</span
             ></a
           >
@@ -150,7 +150,7 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            <span style="font-weight: bold; font-size: 15px">Productos</span>
+            <span style="color:white; font-weight: bold; font-size: 15px">Productos</span>
           </a>
           <ul class="dropdown-menu">
             <li>
@@ -173,16 +173,20 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            <span style="font-weight: bold; font-size: 15px">Mis pedidos</span>
+            <span style="font-weight: bold; color:white; font-size: 15px">Mis pedidos</span>
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" style="background-color: black;">
             <li>
               <a class="dropdown-item" [routerLink]="['/client/orders']"
-                ><span class="text-black">Historial</span>
+                ><span class="text-white">Historial</span>
               </a>
             </li>
             <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Mi perfil</a></li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/client/orders']"
+                ><span class="text-white">Perfil</span>
+              </a>
+            </li>
             <!-- <li><hr class="dropdown-divider" /></li>
             <li><a class="dropdown-item" href="#"></a></li> -->
           </ul>
@@ -198,38 +202,38 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            <span style="font-weight: bold; font-size: 15px"
+            <span style="font-weight: bold; color:white; font-size: 15px"
               >Panel de Control</span
             >
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" style="background-color: black;">
             <li>
               <a class="dropdown-item" [routerLink]="['/inventario']"
-                ><span class="text-black">Inventario</span>
+                ><span class="text-white">Inventario</span>
               </a>
             </li>
             <li><hr class="dropdown-divider" /></li>
             <li>
               <a class="dropdown-item" [routerLink]="['/envios']"
-                ><span class="text-black">Envíos</span>
+                ><span class="text-white">Envíos</span>
               </a>
             </li>
             <li><hr class="dropdown-divider" /></li>
             <li>
               <a class="dropdown-item" [routerLink]="['/clients']"
-                ><span class="text-black">Clientes</span>
+                ><span class="text-white">Clientes</span>
               </a>
             </li>
             <li><hr class="dropdown-divider" /></li>
             <li>
               <a class="dropdown-item" [routerLink]="['/ventas']"
-                ><span class="text-black">Ventas</span>
+                ><span class="text-white">Ventas</span>
               </a>
             </li>
             <li><hr class="dropdown-divider" /></li>
             <li>
               <a class="dropdown-item" [routerLink]="['/anadir']"
-                ><span class="text-black">Añadir Producto</span>
+                ><span class="text-white">Añadir Producto</span>
               </a>
             </li>
             <li><hr class="dropdown-divider" /></li>
@@ -271,9 +275,9 @@
               data-target=".navbar-collapse.show"
             >
               <img
-                src="assets/images/login2.png"
-                width="150"
-                height="60"
+                src="assets/images/login3.png"
+                width="100"
+                height="50"
                 alt=""
               />&nbsp;
               <!-- <span class="text-black" (click)="logout()">Logout</span> -->

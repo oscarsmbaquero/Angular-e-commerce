@@ -32,7 +32,7 @@
 }*/
 .navbar-toggler {
   /* margin: 0 auto; */
-  border: solid 1px rgb(223, 228, 192);
+  /* border: solid 1px rgb(223, 228, 192); */
   font-size: 0.8em;  
   margin-right: 10px;
 }
@@ -112,7 +112,7 @@
 
 .line {
   fill: none;
-  stroke: black;
+  stroke: white;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 3;
