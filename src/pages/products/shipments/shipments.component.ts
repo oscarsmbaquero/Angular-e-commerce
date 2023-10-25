@@ -27,6 +27,7 @@ export class ShipmentsComponent {
   getOrders(){
     this.storeService.getOrders().subscribe((orders) => {
       this.orders = orders;
+      
       this.orders.forEach((order:any) =>{
         if(order.updatedAt){
           order.statusSend = 'Atrasado'
@@ -56,7 +57,7 @@ changeState(id: string){
     orderSelected.estadoPedido = 'Entregado';
   }
 
-  if(orderSelected?.estadoPedido === 'Preparando pedido'){
+  if(orderSelected?.estadoPedido === 'En proceso'){
     orderSelected.estadoPedido = 'Enviado';
   }
  
