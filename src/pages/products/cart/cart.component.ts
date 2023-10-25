@@ -9,6 +9,7 @@ import { IProduct } from 'src/core/services/models/product.models';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { environment } from '../../../enviroment/environment'; // Ajusta la ruta según tu estructura de carpetas
 import emailjs from '@emailjs/browser';
+import { IVenta } from 'src/core/services/models/ventas.models';
 
 
 
@@ -141,11 +142,17 @@ export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
   }
 
   calculateTotal(precioEnvio?: number): void {
-    this.totalWithSend = this.carts.reduce((accumulator, car) => accumulator + (car.totalPrice || 0), 0) + (precioEnvio || 0);
+    //this.totalWithSend = this.carts.reduce((accumulator, car) => accumulator + (car.totalPrice || 0), 0) + (precioEnvio || 0);
     this.total = this.carts.reduce((accumulator, car) => accumulator + (car.totalPrice || 0), 0);
+    if(precioEnvio){
+      this.totalWithSend = this.total  + precioEnvio
+    }else{
+      this.totalWithSend = this.total
+    }
+    
     // const totalPriceProducts = this.carts.map((element) => element.totalPrice);
    // console.log(totalPriceProducts,'price');
-    console.log(this.total,'price');
+    console.log(this.total,'price',this.totalWithSend,'send');
     setTimeout(() => {
       if (this.total >= 50){
         this.showSendFree('free');
@@ -299,7 +306,7 @@ export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
   priceShipment(precio: number){
     this.showPaypal = true;
     this.priceShipme = precio;
-    console.log(this.priceShipme);
+    console.log(this.priceShipme,303);
     this.calculateTotal(this.priceShipme);
   }
 
@@ -315,8 +322,19 @@ export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
 
   buyProducts(){
     this.articlesBuy = JSON.parse(sessionStorage.getItem('cart') || '');
-    console.log(this.articlesBuy,'articlesBuy');
-    this.storeService.buyProducts(this.articlesBuy).subscribe((response: any)=>{
+
+    const saleTotal = this.total + this.priceShipme
+  console.log(saleTotal,'total');
+  const venta: IVenta = {
+    //_id: 'ID_de_la_venta',
+    orderNumber: '',
+    userBuy: '',
+    products: this.articlesBuy,
+    estadoPedido: 'Preparando Pedido',
+    //isChecked: false,
+    salePrice: saleTotal,
+  };
+    this.storeService.buyProducts(venta).subscribe((response: any)=>{
       if (response.status === 201) {
         console.log(response);
         const usermail  = response.data.user.mail;

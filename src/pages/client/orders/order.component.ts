@@ -17,6 +17,8 @@ export class OrderComponent {
 
   pedidos:any =[];
 
+  public ultimoPedido = false;
+
   constructor(
     private usersService : UsersService
   ){
@@ -25,17 +27,27 @@ export class OrderComponent {
 
   ngOnInit() {
     console.log('Order');
-    const userJSON = localStorage.getItem('user');   
+    
+    const userJSON = localStorage.getItem('user');
+    
     
     if (userJSON) {
       const userObject = JSON.parse(userJSON); // Parsea el JSON almacenado en 'user'
       const userId = userObject.data.id; // Accede al campo 'id' dentro del objeto 'data'
       console.log(userId); // Muestra el 'id' en la consola
-      this.myOrders(userId)
+      this.myOrders(userId);
+      
     } else {
       console.log('No se encontró ningún valor en localStorage para la clave "user".');
     }
   }
+
+    /**
+   * renderizar la venta al inicio y fijarlo en la parte superior de la pantalla
+   */
+    ngAfterViewInit() {
+      window.scrollTo(0, 0);
+    }
   
 
   // myOrders(userId: string){
@@ -54,6 +66,9 @@ export class OrderComponent {
       const data = response.data; // Accede al objeto "data"
   
       console.log(data, 'datas');
+      if (this.pedidos && data.length > 0) {
+        this.ultimoPedido = true;
+      }
       
         if (data && data.pedidos && data.pedidos.numeroPedido) {
           console.log('Entro');
@@ -63,6 +78,7 @@ export class OrderComponent {
               fechaPedido: pedido.createdAt,
               userBuy: pedido.userBuy,
               estadoPedido: pedido.estadoPedido,
+              salePrice: pedido.salePrice,
               products: pedido.products.map((producto:any) => ({
                 productName: producto.name,
                 productDescription: producto.description,

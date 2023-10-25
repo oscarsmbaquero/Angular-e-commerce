@@ -113,19 +113,36 @@ export class StoreService {
       }
     }
   }
-  buyProducts(products: IProduct[]){
+
+  buyProducts(venta: IVenta) {
     const user = localStorage.getItem('user');
-    if(user !== null){      
-      const objetoJSON = JSON.parse(user);
-      this.idUser = objetoJSON.data.id;
+    if (user !== null) {
+        const objetoJSON = JSON.parse(user);
+        this.idUser = objetoJSON.data.id;
     }
+    
+    // Agrega el ID de usuario y la venta al payload
     const payload = {
-      idUser: this.idUser, // Agrega el ID de usuario al payload
-      products: products // Agrega los productos al payload
+        idUser: this.idUser,
+        venta: venta
     };
 
-    return this.httpClient.post<IProduct[]>(`${environment.apiUrlMock}products`,payload);
-  }
+    return this.httpClient.post<IVenta>(`${environment.apiUrlMock}products`, payload);
+}
+
+  // buyProducts(products: IProduct[]){
+  //   const user = localStorage.getItem('user');
+  //   if(user !== null){      
+  //     const objetoJSON = JSON.parse(user);
+  //     this.idUser = objetoJSON.data.id;
+  //   }
+  //   const payload = {
+  //     idUser: this.idUser, // Agrega el ID de usuario al payload
+  //     products: products // Agrega los productos al payload
+  //   };
+
+  //   return this.httpClient.post<IProduct[]>(`${environment.apiUrlMock}products`,payload);
+  // }
 
   getOrders(){
     return this.httpClient.get<IVenta[]>(`${environment.apiUrlMock}ventas`);    

@@ -10,6 +10,8 @@ export class OrdersTableComponent {
 
 
   @Input() products!: IProduct[];
+  
+  
 
   ngOnInit(){
     console.log(this.products,'products');

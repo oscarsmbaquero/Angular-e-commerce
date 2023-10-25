@@ -13,7 +13,7 @@
       severity="success"
     ></i></a> 
   </div>
-  <div
+  <div *ngIf="activeUser"
   (click)="redirigirWhatsapp()"
   ><img src="assets/images/whats.png" class="floating-button-what" width="55" height="55" alt="" />
 

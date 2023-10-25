@@ -11,6 +11,8 @@ export class VentasComponent {
 
   options: any;
 
+  totalSale = 0;
+
   constructor(
     private storeServices: StoreService
   ){
@@ -100,22 +102,22 @@ private actualizarRegistro(objects: any[]) {
   objects.forEach((obj) => {
     const objDate = new Date(obj.createdAt);
     const monthKey = `${objDate.getFullYear()}-${objDate.getMonth() + 1}`;
-    console.log(monthKey,'montkey');
-    console.log(objDate,'objDate');
+    // console.log(monthKey,'montkey');
+    // console.log(objDate,'objDate');
     // Obtiene el año y el mes
 const year = objDate.getFullYear();
 const month = objDate.getMonth() + 1; // Nota: getMonth() devuelve 0 para enero, 1 para febrero, etc.
 
 // Convierte la fecha en "YYYY-MM"
 const fechaFormateada = `${year}-${month < 10 ? '0' : ''}${month}`;
-console.log(fechaFormateada,'fechaFormateda');
-console.log(objectCountByMonth,'object');
+// console.log(fechaFormateada,'fechaFormateda');
+// console.log(objectCountByMonth,'object');
     if (!objectCountByMonth[fechaFormateada]) {
-      console.log('no');
+      // console.log('no');
       objectCountByMonth[fechaFormateada] = 1;
     } else {
       objectCountByMonth[fechaFormateada]++;
-      console.log('Si');
+      // console.log('Si');
     }
   });
 
@@ -133,10 +135,10 @@ private transformDataForChart(data: Record<string, number>): number[] {
   for (const label of this.data.labels) {
     // Convierte el nombre del mes en la clave esperada
     const key = label.toLowerCase(); // Convierte "Octubre" a "octubre"
-    console.log(key);
+    // console.log(key);
     // Obtiene el valor correspondiente del objeto de datos
     const monthData = data[key] || 0; // Obtiene el valor del mes o establece 0 si no hay datos
-    console.log(monthData,'monthData');
+    // console.log(monthData,'monthData');
     chartData.push(monthData);
   }
 
@@ -146,10 +148,15 @@ private transformDataForChart(data: Record<string, number>): number[] {
 
 
 getOrders() {
-  this.storeServices.getOrders().subscribe((element) => {
-    console.log(element);
+  this.storeServices.getOrders().subscribe((orders) => {
+    console.log(orders);
+
+    for(let order of orders){
+      this.totalSale += order.salePrice;
+    }
+   console.log(this.totalSale);
     // Actualiza el registro con los datos recibidos
-    this.actualizarRegistro(element);
+    this.actualizarRegistro(orders);
 
     // Ahora puedes acceder a this.data para usarlo en tu gráfica
     console.log('Datos actualizados para la gráfica:', this.data);
