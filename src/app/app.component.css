@@ -7,7 +7,7 @@
 /* Estilos para el botón flotante */
 .floating-button {
     position: fixed; /* Esto lo mantendrá en una posición fija en la ventana */
-    bottom: 180px; /* Puedes ajustar la distancia desde la parte inferior según tus necesidades */
+    top: 130px; /* Puedes ajustar la distancia desde la parte inferior según tus necesidades */
     right: 15px; /* Puedes ajustar la distancia desde la derecha según tus necesidades */
     background-color: #007bff; /* Color de fondo del botón */
     color: #fff; /* Color del texto del botón */
@@ -29,7 +29,7 @@
   
   .floating-button-what {
     position: fixed; /* Esto lo mantendrá en una posición fija en la ventana */
-    bottom: 100px; /* Puedes ajustar la distancia desde la parte inferior según tus necesidades */
+    bottom: 10px; /* Puedes ajustar la distancia desde la parte inferior según tus necesidades */
     right: 15px; /* Puedes ajustar la distancia desde la derecha según tus necesidades */
     background-color: #007bff; /* Color de fondo del botón */
     color: #fff; /* Color del texto del botón */
