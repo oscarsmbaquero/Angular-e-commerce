@@ -341,7 +341,7 @@ export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
         const username = response.data.user.name;
         const orderNumber = response.data.orderNumber;
         console.log(usermail,'usermail');
-        this.sendMail(usermail, username, orderNumber);
+        //this.sendMail(usermail, username, orderNumber);
         setTimeout(() => {
           this.delete();  
           
