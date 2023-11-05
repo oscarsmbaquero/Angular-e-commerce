@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  public text: string = 'Consulta nuestros productos!!!';
+  public text: string = 'Disfruta de una buena conexión con estas gafas de sol que incorporan bluetooth 5.0 compatible con dispositivos Android e iOS. Cuenta con un alcance de hasta 10 metros para mayor comodidad. Además, incorpora cancelación de ruido para un sonido nítido, ideal para responder llamadas y disfrutar de tu música favorita. La batería se carga mediante USB en un máximo de dos a tres horas.';
   public send: string='Envio en 24h'
-  public scrollSpeed: number = 3; // Velocidad de desplazamiento (ajusta según tus preferencias)
+  public scrollSpeed: number = 10; // Velocidad de desplazamiento (ajusta según tus preferencias)
 
   constructor() { }
 

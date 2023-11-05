@@ -25,17 +25,16 @@
                  [(ngModel)]="selectedOptions[product._id]"
                  [disabled]="product.unidades <= 0"
                  (change)="onSelectChange(product,i)">
-                <option [ngValue]="'Cantidad'">Cantidad</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
+                 <option [ngValue]=1>1</option> <!-- Establecer "1" como valor predeterminado -->
+                 <option [ngValue]=2>2</option>
+                 <option [ngValue]=3>3</option>
+                 <option [ngValue]=4>4</option>
+                 <option [ngValue]="'5'">5</option>
+                 <option [ngValue]="'6'">6</option>
+                 <option [ngValue]="'7'">7</option>
+                 <option [ngValue]="'8'">8</option>
+                 <option [ngValue]="'9'">9</option>
+                 <option [ngValue]="'10'">10</option>
                 
               </select>
             </div>
