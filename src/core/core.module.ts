@@ -9,6 +9,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router'; // Import the RouterModule here
 
 import { BadgeModule } from 'primeng/badge';
+import { AvatarModule } from 'primeng/avatar';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 
@@ -25,7 +26,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     CommonModule,
     MatSidenavModule,
     RouterModule,
-    BadgeModule
+    BadgeModule,
+    AvatarModule
   ],
   exports:[
     HeaderComponent,

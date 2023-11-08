@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md sticky-top" style="background-color:  rgb(37, 42, 42);">
   <div class="container-fluid">
     <a class="navbar-brand" [routerLink]="['']">
-      <img src="assets/images/logo.jpg" width="70" height="50" alt="" />&nbsp;
+      <img src="assets/images/logo.png" width="70" height="50" alt="" />&nbsp;
     </a>
     <!-- <button 
       class="navbar-toggler"
@@ -170,51 +170,47 @@
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form> -->
       <ul
-        class="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll"
-        style="--bs-scroll-height: 100px"
+  class="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll"
+  style="--bs-scroll-height: 100px"
+>
+  <ng-container *ngIf="activeUser; else notUser">
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [routerLink]="['/user']"
+        data-toggle="collapse"
+        data-target=".navbar-collapse.show"
+      > 
+        
+        <span (click)="logout()" class="text-white" style="font-weight: bold; font-size: 15px">Cerrar sesión</span>
+        <span class="text-white"  style="margin-left: 10px; background-color: rgb(80, 80, 110); padding: 8px;
+        border-radius: 50%;
+        ">{{ activeUserName }}&nbsp;</span>
+      </a>
+    </li>
+  </ng-container>
+
+  <ng-template #notUser>
+    <li class="nav-item" routerLinkActive="active">
+      <a
+        class="nav-link"
+        [routerLink]="['/user']"
+        data-toggle="collapse"
+        data-target=".navbar-collapse.show"
       >
-        <li *ngIf="activeUser; else notUser" class="nav-item">
-          <a
-            class="nav-link"
-            [routerLink]="['/user']"
-            data-toggle="collapse"
-            data-target=".navbar-collapse.show"
-          >
-          <span (click)="logout()" class="text-white" style="font-weight: bold; font-size: 15px"
-              >Cerrar sesión</span
-            >
-            <!-- <img
-              (click)="logout()"
-              src="assets/images/logout.png"
-              width="50"
-              height="50"
-              alt=""
-            />&nbsp; -->
-            <!-- <span class="text-black" (click)="logout()">Logout</span> -->
-          </a>
-        </li>
-        <ng-template #notUser>
-          <li class="nav-item" routerLinkActive="active">
-            <a
-              class="nav-link"
-              [routerLink]="['/user']"
-              data-toggle="collapse"
-              data-target=".navbar-collapse.show"
-            >
-              <!-- <img
-                src="assets/images/loginIcon.png"
-                width="50"
-                height="50"
-                alt=""
-              />&nbsp; -->
-              <span class="text-white" style="font-weight: bold; font-size: 15px"
-              >Identificarse</span
-            >
-              <!-- <span class="text-black" (click)="logout()">Logout</span> -->
-            </a>
-          </li>
-        </ng-template>
-      </ul>
+        <!-- <img
+          src="assets/images/loginIcon.png"
+          width="50"
+          height="50"
+          alt=""
+        />&nbsp; -->
+        <span class="text-white" style="font-weight: bold; font-size: 15px">Identificarse</span>
+        <!-- <span class="text-black" (click)="logout()">Logout</span> -->
+      </a>
+    </li>
+  </ng-template>
+</ul>
+
     </div>
   </div>
 </nav>

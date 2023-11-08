@@ -42,8 +42,14 @@ export class NavbarComponent implements OnInit {
       );
     });
     this.usersService.getCurrentUser().subscribe((user) => {
+      
       this.activeUser = user;
-      this.activeUserName = user?.user;
+      console.log(this.activeUser);
+      if(this.activeUser){
+        this.activeUserName = this.activeUser.data.user;
+        console.log(this.activeUserName);
+      }
+      
     });   
 
     // this.formGroup = new FormGroup({
