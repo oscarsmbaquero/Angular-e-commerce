@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md sticky-top" style="background-color:  rgb(37, 42, 42);">
   <div class="container-fluid">
     <a class="navbar-brand" [routerLink]="['']">
-      <img src="assets/images/logo.png" width="70" height="50" alt="" />&nbsp;
+      <img src="assets/images/logo.png" width="90" height="90" alt="" />&nbsp;
     </a>
     <!-- <button 
       class="navbar-toggler"
@@ -50,7 +50,7 @@
             [routerLink]="['']"
             data-toggle="collapse"
             data-target=".navbar-collapse.show"
-            ><span class="text-white" style="font-weight: bold; font-size: 15px"
+            ><span class="text-white" style="font-size: 15px"
               >Home</span
             ></a
           >
@@ -61,7 +61,7 @@
             [routerLink]="['/list']"
             data-toggle="collapse"
             data-target=".navbar-collapse.show"
-            ><span class="text-white" style="font-weight: bold; font-size: 15px"
+            ><span class="text-white" style="font-size: 15px"
               >Productos</span
             ></a
           >
@@ -97,7 +97,7 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            <span style="font-weight: bold; color:white; font-size: 15px">Mis pedidos</span>
+            <span style="color:white; font-size: 15px">Mis pedidos</span>
           </a>
           <ul class="dropdown-menu" style="background-color: black;">
             <li>
@@ -126,7 +126,7 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            <span style="font-weight: bold; color:white; font-size: 15px"
+            <span style="color:white; font-size: 15px"
               >Panel de Control</span
             >
           </a>
@@ -182,7 +182,8 @@
         data-target=".navbar-collapse.show"
       > 
         
-        <span (click)="logout()" class="text-white" style="font-weight: bold; font-size: 15px">Cerrar sesión</span>
+        <span (click)="logout()" class="text-white" style="font-size: 15px">Cerrar sesión</span>
+         
         <span class="text-white"  style="margin-left: 10px; background-color: rgb(80, 80, 110); padding: 8px;
         border-radius: 50%;
         ">{{ activeUserName }}&nbsp;</span>
