@@ -22,6 +22,7 @@
               [alt]="product.name"
               width="40"
               class="shadow-4"
+              [ngClass]="{'imagen-agotada': product.unidades === 0}"
             />
             {{ product.name }}
           </td>

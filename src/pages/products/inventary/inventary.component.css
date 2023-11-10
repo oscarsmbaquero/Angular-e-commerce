@@ -35,3 +35,8 @@
     border-radius: 12px;
     color: white;
 }
+
+.imagen-agotada {
+    filter: grayscale(100%);
+    width: 70px;
+  }
