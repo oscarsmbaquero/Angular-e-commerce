@@ -90,4 +90,8 @@ export class UsersService {
   getUSers(){
     return this.httpClient.get<IUser[]>(`${environment.apiUrlMock}users`);
   }
+
+  getUSerById(id: string){
+    return this.httpClient.get<IUser[]>(`${environment.apiUrlMock}users/${id}`);
+  }
 }
