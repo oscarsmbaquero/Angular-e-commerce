@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UsersService } from 'src/core/services/users/users.service';
 //import { IUser } from '../../services/models/user-models';
 import * as AOS from 'aos';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Router } from '@angular/router';
 import {
@@ -25,6 +26,7 @@ export class RegisterComponent {
     private formBuilder: FormBuilder,
     private userServices: UsersService,
     private router: Router,
+    private matSnackBar: MatSnackBar
     
   ) {
     this.registerUser = this.formBuilder.group({
@@ -71,16 +73,14 @@ export class RegisterComponent {
           this.router.navigate(['list']);
         },
         (error) => {
-          //this.loading = false;
-          console.error('Error al enviar los datos', error);
-          if (error.status !== 200) {
-            // this.snackBar.open(
-            //   'Error al registrar al usuario',
-            //   'Cerrar',
-            //   {
-            //     duration: 3000,
-            //   }
-            // );
+          if (error.status === 500) {
+            this.matSnackBar.open(
+              'Ya existe un usuario con ese email',
+              'Cerrar',
+              {
+                duration: 5000,
+              }
+            );
           }
           console.log(error.status, 'status');
         }

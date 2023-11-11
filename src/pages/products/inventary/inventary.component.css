@@ -35,7 +35,9 @@
     border-radius: 12px;
     color: white;
 }
-
+/*
+*Degrada la imagen cuanso esta sin stock
+*/
 .imagen-agotada {
     filter: grayscale(100%);
     width: 70px;

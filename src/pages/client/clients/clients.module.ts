@@ -6,13 +6,15 @@ import { ClientsRoutingModule } from './clients-routing.module';
 import { PanelModule } from 'primeng/panel';
 import { TableModule } from 'primeng/table';
 import {MatBadgeModule} from '@angular/material/badge';
+import { ClientAccountComponent } from '../client-account/client-account.component';
 
 
 
 
 @NgModule({
   declarations: [
-    ClientsComponent
+    ClientsComponent,
+    ClientAccountComponent
   ],
   imports: [
     CommonModule,
