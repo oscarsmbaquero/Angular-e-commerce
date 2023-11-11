@@ -16,7 +16,7 @@
   cursor: not-allowed; /* Cambia el cursor a "no permitido" para indicar que el botón no es interactivo */
 }
 .card{  
-  width: 250px;
+  
   /* border: 1px solid rgb(115, 113, 113); */
   margin: 15px;
  

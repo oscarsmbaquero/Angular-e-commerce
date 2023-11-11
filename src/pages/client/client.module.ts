@@ -10,13 +10,15 @@ import { PanelModule } from 'primeng/panel';
 import { TableModule } from 'primeng/table';
 import { OrdersTableComponent } from './orders-table/orders-table.component';
 import {MatBadgeModule} from '@angular/material/badge';
+import { ClientProfileComponent } from './client-profile/client-profile.component';
 
 
 
 @NgModule({
   declarations: [
     OrderComponent,
-    OrdersTableComponent
+    OrdersTableComponent,
+    ClientProfileComponent
   ],
   imports: [
     CommonModule,

@@ -14,9 +14,20 @@ export class ClientAccountComponent {
 
   }
 
-  orders(){
+  orders(option: string){
+    switch (option) {
+      case 'first':
+        this.router.navigate(['client/orders']);
+        
+        break;
+        case 'second':
+          this.router.navigate(['client/profile'])
+    break;
+      default:
+        break;
+    }
     console.log('Entro');
-    this.router.navigate(['client/orders']);
+
   }
 
 }
