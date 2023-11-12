@@ -12,6 +12,8 @@ export class ClientProfileComponent {
   userName ='';
   userTlf = '';
   userPhoto= '';
+
+  nPedidos = 0;
   constructor(
     private usersService: UsersService
   ){ }
@@ -42,7 +44,8 @@ export class ClientProfileComponent {
       this.userName = this.user.data.pedidos.user;
       this.userTlf = this.user.data.pedidos.tlf;
       this.userPhoto = this.user.data.pedidos.image;
-      console.log(this.userMail);
+      this.nPedidos = this.user.data.pedidos.numeroPedido.length;
+      console.log(this.nPedidos);
 
 
   })

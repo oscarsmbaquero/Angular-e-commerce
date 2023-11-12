@@ -1,14 +1,11 @@
-<!-- <p class="text-white">client-profile works!</p> -->
-<!-- Making a card in css  -->
-<div class="wrapper">
-    <div class="card">
-      <img src={{userPhoto}} alt="" />
-      <div id="container">
-        <p id="name">Nombre:{{userName}}</p>
-        <p id="exp">Mail:{{userMail}}</p>
-        <p id="exp">Tlf:{{userTlf}}</p>
-        <p id="exp">Dirección:</p>
-        <a href="#" id="button">Editar</a>
-      </div>
-    </div>
-    </div>
+<div class="user-container">
+<div class="user-card">
+  <img [src]="userPhoto" alt="User Photo" class="user-photo">
+  <div class="user-info">
+      <h2 class="user-name">{{ userName }}</h2>
+      <p class="user-email">{{ userMail }}</p>
+      <p class="user-phone">Teléfono: {{ userTlf }}</p>
+      <p class="user-orders">Número de Pedidos: {{ nPedidos }}</p>
+  </div>
+</div>
+</div>
