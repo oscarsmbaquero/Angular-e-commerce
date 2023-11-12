@@ -8,6 +8,10 @@ import { UsersService } from 'src/core/services/users/users.service';
 export class ClientProfileComponent {
 
   user: any;
+  userMail ='';
+  userName ='';
+  userTlf = '';
+  userPhoto= '';
   constructor(
     private usersService: UsersService
   ){ }
@@ -34,7 +38,11 @@ export class ClientProfileComponent {
       console.log(response);
       
       this.user = response; // Accede al objeto "data"
-      console.log(this.user.pedidos.user);
+      this.userMail  = this.user.data.pedidos.mail;
+      this.userName = this.user.data.pedidos.user;
+      this.userTlf = this.user.data.pedidos.tlf;
+      this.userPhoto = this.user.data.pedidos.image;
+      console.log(this.userMail);
 
 
   })
