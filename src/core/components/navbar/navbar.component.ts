@@ -16,6 +16,17 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+  
+  logoUrl: string ='';
+  logos: string[] = ['assets/images/logo.png',
+                     'assets/images/logo3.jpeg', 
+                     'assets/images/logo4.jpeg',
+                     'assets/images/logo5.jpeg',
+                     'assets/images/logo6.jpeg',
+                     'assets/images/logo7.jpeg',
+                     'assets/images/logo8.jpeg',
+                     'assets/images/logo9.jpeg',
+                    ];
   formGroup: FormGroup | undefined;
 
   carts: number = 0;
@@ -51,6 +62,8 @@ export class NavbarComponent implements OnInit {
       }
       
     });   
+    this.changeLogo();
+    setInterval(() => this.changeLogo(), 5000);
 
     // this.formGroup = new FormGroup({
     //   selectedCity: new FormControl<City | null>(null),
@@ -60,5 +73,11 @@ export class NavbarComponent implements OnInit {
     this.usersService.clearCurrentUser();
     this.router.navigate(['/'])
  }
+
+ changeLogo() {
+  console.log('Entro');
+  const randomIndex = Math.floor(Math.random() * this.logos.length);
+  this.logoUrl = this.logos[randomIndex];
+}
  
 }
