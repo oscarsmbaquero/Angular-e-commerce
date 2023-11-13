@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Puedes ajustar esto según tus necesidades */
+  height: 100vh;
 }
 
 .user-card {
@@ -10,18 +10,57 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  width: 300px;
-}
-
-.user-photo {
-  width: 100%;
-  height: auto;
+  width: 80%; /* Cambiado a un porcentaje para hacerlo responsive */
+  max-width: 400px; /* Establece un ancho máximo para evitar que sea demasiado ancho */
 }
 
 .user-info {
   padding: 20px;
 }
 
-.user-name {
-  margin: 0 0 10px;
+.user-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+}
+
+.user-photo {
+  padding: 15px;
+  width: 50%;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.user-info-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.user-name,
+.user-phone,
+.user-email,
+.user-orders {
+  margin: 0 0 10px; /* Ajusta el margen según tus preferencias */
+}
+
+.custom-button {
+  position: ralative;
+  /* top: 90%;
+  left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  /* Aplicar estilos específicos para pantallas más grandes (por ejemplo, tablets y escritorios) */
+  .user-card {
+    width: 50%;
+  }
 }

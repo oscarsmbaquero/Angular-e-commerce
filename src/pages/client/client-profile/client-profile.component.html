@@ -1,11 +1,88 @@
 <div class="user-container">
-<div class="user-card">
-  <img [src]="userPhoto" alt="User Photo" class="user-photo">
-  <div class="user-info">
-      <h2 class="user-name">{{ userName }}</h2>
-      <p class="user-email">{{ userMail }}</p>
-      <p class="user-phone">Teléfono: {{ userTlf }}</p>
-      <p class="user-orders">Número de Pedidos: {{ nPedidos }}</p>
+  <div class="user-card">
+    <div class="user-info">
+      <div class="user-header">
+        <img [src]="userPhoto" alt="User Photo" class="user-photo" />
+        <div>
+          <h2 class="user-name">{{ userName }}</h2>
+          <p class="user-phone">{{ userTlf }}</p>
+        </div>
+      </div>
+      <div class="user-info-row">
+        <p class="user-email">
+          Mail:&nbsp;<span style="font-weight: bold">{{ userMail }}</span>
+        </p>
+        <p class="user-email">
+          Dirección:&nbsp;<span style="font-weight: bold"
+            >Claude Simón n º 9 Bajo A
+          </span>
+        </p>
+        <p class="user-mail">CP:<span style="font-weight: bold">10600</span></p>
+        <p class="user-mail">
+          Localidad:<span style="font-weight: bold">Plasencia</span>
+        </p>
+        <p class="user-mail">CP:<span style="font-weight: bold">10600</span></p>
+        <p class="user-mail">
+          Provincia:<span style="font-weight: bold">Cáceres</span>
+        </p>
+        <p class="user-orders">
+          Número de Pedidos: <br />
+          <span style="text-align: center"></span>{{ nPedidos }}
+        </p>
+      </div>
+      <button class="custom-button">Editar</button>
+    </div>
   </div>
 </div>
+<div style="padding: 20px; border-radius: 12px">
+  <div data-aos="flip-up">
+    <mat-card>
+      <mat-card-content>
+        <form
+          novalidate
+          (ngSubmit)="onSubmit()"
+          [formGroup]="editUser"
+          style="margin-top: 32px"
+        >
+          <mat-form-field appearance="fill">
+            <mat-label>Usuario:</mat-label>
+            <input matInput formControlName="user" />
+            <mat-error *ngIf="editUser.get('user')?.invalid">
+              El usuario es requerido.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Password:</mat-label>
+            <input matInput formControlName="password" />
+            <mat-error *ngIf="editUser.get('password')?.invalid">
+              La password es requerida.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Mail:</mat-label>
+            <input matInput formControlName="mail" />
+            <mat-error *ngIf="editUser.get('mail')?.invalid">
+              El mail es requerido.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Tlf:</mat-label>
+            <input matInput formControlName="tlf" />
+            <mat-error *ngIf="editUser.get('tlf')?.invalid">
+              El teléfono es requerido.
+            </mat-error>
+          </mat-form-field>
+          <p>
+            Al crear una cuenta, aceptas las Condiciones de Uso y el Aviso de
+            Privacidad de Coexist
+          </p>
+          <mat-card-content>
+            <button *ngIf="editUser.valid" mat-raised-button color="primary">
+              Enviar
+            </button>
+          </mat-card-content>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

@@ -19,13 +19,13 @@ export class NavbarComponent implements OnInit {
   
   logoUrl: string ='';
   logos: string[] = ['assets/images/logo.png',
-                     'assets/images/logo3.jpeg', 
-                     'assets/images/logo4.jpeg',
-                     'assets/images/logo5.jpeg',
-                     'assets/images/logo6.jpeg',
-                     'assets/images/logo7.jpeg',
-                     'assets/images/logo8.jpeg',
-                     'assets/images/logo9.jpeg',
+                     'assets/images/logo1.png', 
+                     'assets/images/logo2.png',
+                    //  'assets/images/logo5.jpeg',
+                    //  'assets/images/logo6.jpeg',
+                    //  'assets/images/logo7.jpeg',
+                    //  'assets/images/logo8.jpeg',
+                    //  'assets/images/logo9.jpeg',
                     ];
   formGroup: FormGroup | undefined;
 
