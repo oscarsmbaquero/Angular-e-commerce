@@ -18,9 +18,14 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class NavbarComponent implements OnInit {
   
   logoUrl: string ='';
-  logos: string[] = ['assets/images/logo.png',
+  logos: string[] = [
+                    //  'assets/images/logo.png',
                      'assets/images/logo1.png', 
                      'assets/images/logo2.png',
+                     'assets/images/logo4.png',
+                     'assets/images/logo6.png',
+                     'assets/images/logo7.png',
+                     'assets/images/logo8.png',
                     //  'assets/images/logo5.jpeg',
                     //  'assets/images/logo6.jpeg',
                     //  'assets/images/logo7.jpeg',

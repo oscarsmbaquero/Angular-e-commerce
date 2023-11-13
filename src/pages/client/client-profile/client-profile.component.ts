@@ -84,12 +84,14 @@ export class ClientProfileComponent {
       // Crear un objeto de usuario con los datos del formulario
       const user: any = {
         user: this.editUser.get('user')?.value,
-        password: this.editUser.get('tlf')?.value,
+        tlf: this.editUser.get('tlf')?.value,
         mail: this.editUser.get('mail')?.value,
-        tlf: this.editUser.get('address')?.value,
+        address: this.editUser.get('address')?.value,
         cp: this.editUser.get('cp')?.value,
         province:  this.editUser.get('province')?.value,
       };
+      console.log(user,'user');
+      
       
       // Llamar al servicio para registrar al usuario
       // this.userServices.register(user).subscribe(

@@ -46,38 +46,56 @@
         >
           <mat-form-field appearance="fill">
             <mat-label>Usuario:</mat-label>
-            <input matInput formControlName="user" />
+            <input matInput formControlName="user" 
+            [(ngModel)]="userName"
+            />
             <mat-error *ngIf="editUser.get('user')?.invalid">
               El usuario es requerido.
             </mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
-            <mat-label>Password:</mat-label>
-            <input matInput formControlName="password" />
-            <mat-error *ngIf="editUser.get('password')?.invalid">
-              La password es requerida.
+            <mat-label>Tlf.</mat-label>
+            <input matInput formControlName="tlf" 
+            [(ngModel)]="userTlf"
+            />
+            <mat-error *ngIf="editUser.get('tlf')?.invalid">
+              El teléfono obligatorio.
             </mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Mail:</mat-label>
-            <input matInput formControlName="mail" />
+            <input 
+            [(ngModel)]="userMail"
+            matInput formControlName="mail" />
             <mat-error *ngIf="editUser.get('mail')?.invalid">
               El mail es requerido.
             </mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
-            <mat-label>Tlf:</mat-label>
-            <input matInput formControlName="tlf" />
-            <mat-error *ngIf="editUser.get('tlf')?.invalid">
-              El teléfono es requerido.
+            <mat-label>Dirección:</mat-label>
+            <input matInput formControlName="address" />
+            <mat-error *ngIf="editUser.get('address')?.invalid">
+              La dirección es obligatoria.
             </mat-error>
           </mat-form-field>
-          <p>
-            Al crear una cuenta, aceptas las Condiciones de Uso y el Aviso de
-            Privacidad de Coexist
-          </p>
+          <mat-form-field appearance="fill">
+            <mat-label>CP:</mat-label>
+            <input matInput formControlName="cp" />
+            <mat-error *ngIf="editUser.get('cp')?.invalid">
+              La dirección es obligatoria.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Provincia:</mat-label>
+            <input matInput formControlName="province" />
+            <mat-error *ngIf="editUser.get('province')?.invalid">
+              La provincia es obligatoria.
+            </mat-error>
+          </mat-form-field>
+         
           <mat-card-content>
-            <button *ngIf="editUser.valid" mat-raised-button color="primary">
+            <button  mat-raised-button color="primary">
+              <!-- *ngIf="editUser.valid" -->
               Enviar
             </button>
           </mat-card-content>
