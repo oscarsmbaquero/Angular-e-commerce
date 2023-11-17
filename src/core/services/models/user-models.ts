@@ -7,6 +7,9 @@ export interface IUser{
     token?: string;
     rol?: string;
     numeroPedido:[];
+    address?: string;
+    cp?: string;
+    province?: string;
 }
  
 

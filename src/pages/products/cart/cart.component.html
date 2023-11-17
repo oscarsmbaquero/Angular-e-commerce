@@ -92,7 +92,7 @@
     </div>
     <div *ngIf="showPaypal">
       <div>
-        <div class="button"
+        <div class="button" *ngIf="!buttonEditProfile"
         (click)="buyProducts()"
         >
           <div class="box">C</div>
@@ -102,6 +102,16 @@
           <div class="box">R</div>
           <div class="box">A</div>
           <div class="box">R</div>
+      </div>
+      <div class="button" *ngIf="buttonEditProfile"
+        (click)="editProfile()"
+        >
+          <div class="box">P</div>
+          <div class="box">E</div>
+          <div class="box">R</div>
+          <div class="box">F</div>
+          <div class="box">I</div>
+          <div class="box">L</div>
       </div>
         <!-- <button (click)="buyProducts()"  >Comprar</button> -->
         <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { StoreService } from 'src/core/services/store/store.service';
-
+import { UsersService } from 'src/core/services/users/users.service';
 import { IProduct } from 'src/core/services/models/product.models';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { environment } from '../../../enviroment/environment'; // Ajusta la ruta según tu estructura de carpetas
@@ -28,6 +28,10 @@ export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
    */
   carts: IProduct[]=[];
 
+  activeUser: any;
+  activeUserId: any;
+
+  buttonEditProfile = false;
   //hostia: number =0;
 
 
@@ -70,12 +74,23 @@ export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
     private router: Router,
     private httpClient: HttpClient,
     private messageService: MessageService,
+    private usersService:UsersService
   ){
     // this.carts = this.storeService.getCart();
     //this.calculateTotal(); // Calculamos el total al inicializar el componente
   }
-
-  ngOnInit(){
+ngOnInit(){
+  //RECUPERAMOS EL USER LOGEADO PARA COMPROBAR SI TIENE LOS DATOS NECESARIOS PARA HACER LA COMPRA
+    this.usersService.getCurrentUser().subscribe((user) => {      
+      this.activeUser = user;
+      console.log(this.activeUser);
+      if(this.activeUser){
+        this.activeUserId = this.activeUser.data.id;
+        console.log(this.activeUserId);
+        this.verifyUSerOk(this.activeUserId);
+      }
+      
+    });
     //RECUPERAMOS LOS ARTICULOS DE LA CESTA DEL LOCALSTORAGE
     this.carts = this.storeService.getCart();
     console.log(this.carts,'carts');
@@ -93,6 +108,7 @@ export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
       this.products = products;
       console.log(this.products,72);
     });
+
   }
   /**
    * borrar del sessionStorage la cesta
@@ -179,6 +195,13 @@ export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
       severity: 'error',
       summary: 'Error',
       detail: `No hay mas unidades en stock`,
+    });
+  }
+  showNotAdress() {
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: `Tienes datos incompletos necesarios para el envio`,
     });
   }
   /**
@@ -374,7 +397,41 @@ export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
         orderNumber: orderNumber,
         });
     }
-  
+
+    verifyUSerOk(id: string): void {
+      this.usersService.getUSerById(id).subscribe(
+        (userData: any) => {
+          console.log(userData);    
+          // Verificar si la propiedad 'address' está presente en los datos del usuario
+          if (userData?.data?.pedidos?.address || 
+              userData?.data?.pedidos?.cp ||
+              userData?.data?.pedidos?.province
+
+            
+            ) {
+            console.log('La propiedad address está presente:', userData.data.pedidos.address);
+            // Aquí puedes realizar la acción que desees cuando la propiedad 'address' está presente
+          } else {
+            this.showNotAdress();
+            this.buttonEditProfile = true;
+            console.log(this.buttonEditProfile);
+            
+            console.error('La propiedad address no está presente en los datos del usuario');
+            // Aquí puedes mostrar un mensaje de error o realizar otra acción según tus necesidades
+          }
+        },
+        (error) => {
+          console.error('Error al obtener los datos del usuario:', error);
+        }
+      );
+    
+      console.log(id, 395);
+    }
+
+    editProfile(){
+      this.router.navigate(['client/profile'])
+    }
+
   }
 
 

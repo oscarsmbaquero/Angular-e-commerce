@@ -15,10 +15,17 @@ import {
 export class ClientProfileComponent {
 
   user: any;
+  /**
+   * Campos para pintar el valor en el input como valor
+   */
   userMail ='';
   userName ='';
   userTlf = '';
   userPhoto= '';
+  userId='';
+  userAddress ='';
+  userCp='';
+  userProvince='';
 
   nPedidos = 0;
 
@@ -50,9 +57,9 @@ export class ClientProfileComponent {
     
     if (userJSON) {
       const userObject = JSON.parse(userJSON); // Parsea el JSON almacenado en 'user'
-      const userId = userObject.data.id; // Accede al campo 'id' dentro del objeto 'data'
-      console.log(userId); // Muestra el 'id' en la consola
-      this.myUser(userId);
+      this.userId = userObject.data.id; // Accede al campo 'id' dentro del objeto 'data'
+      console.log(this.userId); // Muestra el 'id' en la consola
+      this.myUser(this.userId);
       
     } else {
       console.log('No se encontró ningún valor en localStorage para la clave "user".');
@@ -67,6 +74,9 @@ export class ClientProfileComponent {
       this.userMail  = this.user.data.pedidos.mail;
       this.userName = this.user.data.pedidos.user;
       this.userTlf = this.user.data.pedidos.tlf;
+      this.userAddress = this.user.data.pedidos.address;
+      this.userCp = this.user.data.pedidos.cp;
+      this.userProvince = this.user.data.pedidos.province;
       this.userPhoto = this.user.data.pedidos.image;
       this.nPedidos = this.user.data.pedidos.numeroPedido.length;
       console.log(this.nPedidos);
@@ -90,36 +100,28 @@ export class ClientProfileComponent {
         cp: this.editUser.get('cp')?.value,
         province:  this.editUser.get('province')?.value,
       };
-      console.log(user,'user');
+      console.log(user,'user',this.userId);
       
       
       // Llamar al servicio para registrar al usuario
-      // this.userServices.register(user).subscribe(
-      //   (response) => {
-      //     //this.loading = false;
-      //     console.log('Datos enviados con éxito');
-      //     // this.snackBar.open(
-      //     //   'Usuario registrado correctamente',
-      //     //   'Cerrar',
-      //     //   {
-      //     //     duration: 3000,
-      //     //   }
-      //     // );
-      //     this.router.navigate(['list']);
-      //   },
-      //   (error) => {
-      //     if (error.status === 500) {
-      //       this.matSnackBar.open(
-      //         'Ya existe un usuario con ese email',
-      //         'Cerrar',
-      //         {
-      //           duration: 5000,
-      //         }
-      //       );
-      //     }
-      //     console.log(error.status, 'status');
-      //   }
-      // );
+      this.usersService.updatedUser(this.userId, user).subscribe(
+        (response: any) => {
+          console.log('Datos actualizados con éxito');
+          this.router.navigate(['list']);
+        },
+        (error) => {
+          if (error.status === 500) {
+            // this.matSnackBar.open(
+            //   'Ya existe un usuario con ese email',
+            //   'Cerrar',
+            //   {
+            //     duration: 5000,
+            //   }
+            // );
+          }
+          console.log(error.status, 'status');
+        }
+      );
     }
   }
 }

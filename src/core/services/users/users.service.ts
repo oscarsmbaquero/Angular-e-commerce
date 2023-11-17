@@ -94,4 +94,9 @@ export class UsersService {
   getUSerById(id: string){
     return this.httpClient.get<IUser[]>(`${environment.apiUrlMock}users/${id}`);
   }
+  updatedUser(id: string, userData: any): Observable<IUser[]> {
+    console.log(id,userData,98)
+    const url = `${environment.apiUrlMock}users/modify/${id}`;
+    return this.httpClient.put<IUser[]>(url, userData);
+  }
 }

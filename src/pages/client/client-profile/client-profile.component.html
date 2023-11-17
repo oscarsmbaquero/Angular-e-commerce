@@ -1,5 +1,5 @@
-<div class="user-container">
-  <div class="user-card">
+<!-- <div class="user-container">
+  <!-- <div class="user-card">
     <div class="user-info">
       <div class="user-header">
         <img [src]="userPhoto" alt="User Photo" class="user-photo" />
@@ -32,8 +32,8 @@
       </div>
       <button class="custom-button">Editar</button>
     </div>
-  </div>
-</div>
+  </div> -->
+<!-- </div> --> 
 <div style="padding: 20px; border-radius: 12px">
   <div data-aos="flip-up">
     <mat-card>
@@ -79,21 +79,27 @@
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Dirección:</mat-label>
-            <input matInput formControlName="address" />
+            <input 
+            [(ngModel)]="userAddress"
+            matInput formControlName="address" />
             <mat-error *ngIf="editUser.get('address')?.invalid">
               La dirección es obligatoria.
             </mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>CP:</mat-label>
-            <input matInput formControlName="cp" />
+            <input 
+            [(ngModel)]="userCp"
+            matInput formControlName="cp" />
             <mat-error *ngIf="editUser.get('cp')?.invalid">
               La dirección es obligatoria.
             </mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Provincia:</mat-label>
-            <input matInput formControlName="province" />
+            <input 
+            [(ngModel)]="userProvince"
+            matInput formControlName="province" />
             <mat-error *ngIf="editUser.get('province')?.invalid">
               La provincia es obligatoria.
             </mat-error>
