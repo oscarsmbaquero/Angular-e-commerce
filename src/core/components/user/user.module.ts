@@ -21,6 +21,7 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 
@@ -29,7 +30,8 @@ import { RegisterComponent } from './register/register.component';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    UserComponent
+    UserComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,

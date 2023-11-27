@@ -32,6 +32,7 @@ export class RegisterComponent {
     this.registerUser = this.formBuilder.group({
       user: ['', [Validators.required ]],
       password: ['', [Validators.required]],
+      repassword: ['', [Validators.required]],
       mail: ['', [Validators.required]],
       tlf: ['', [Validators.required]],
     });
@@ -54,37 +55,49 @@ export class RegisterComponent {
       const user: any = {
         user: this.registerUser.get('user')?.value,
         password: this.registerUser.get('password')?.value,
+        repassword: this.registerUser.get('repassword')?.value,
         mail: this.registerUser.get('mail')?.value,
         tlf: this.registerUser.get('tlf')?.value,
       };
-      
-      // Llamar al servicio para registrar al usuario
-      this.userServices.register(user).subscribe(
-        (response) => {
-          //this.loading = false;
-          console.log('Datos enviados con éxito');
-          // this.snackBar.open(
-          //   'Usuario registrado correctamente',
-          //   'Cerrar',
-          //   {
-          //     duration: 3000,
-          //   }
-          // );
-          this.router.navigate(['list']);
-        },
-        (error) => {
-          if (error.status === 500) {
-            this.matSnackBar.open(
-              'Ya existe un usuario con ese email',
-              'Cerrar',
-              {
-                duration: 5000,
-              }
-            );
+      if(user.password !== user.repassword){
+        this.matSnackBar.open(
+          'La contraseña debe de coincidir',
+          'Cerrar',
+          {
+            duration: 5000,
           }
-          console.log(error.status, 'status');
+        );
+      }else{
+// Llamar al servicio para registrar al usuario
+this.userServices.register(user).subscribe(
+  (response) => {
+    //this.loading = false;
+    console.log('Datos enviados con éxito');
+    // this.snackBar.open(
+    //   'Usuario registrado correctamente',
+    //   'Cerrar',
+    //   {
+    //     duration: 3000,
+    //   }
+    // );
+    this.router.navigate(['list']);
+  },
+  (error) => {
+    if (error.status === 500) {
+      this.matSnackBar.open(
+        'Ya existe un usuario con ese email',
+        'Cerrar',
+        {
+          duration: 5000,
         }
       );
+    }
+    console.log(error.status, 'status');
+  }
+);
+      }
+      
+      
     }
   }
   

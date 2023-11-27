@@ -28,6 +28,13 @@
             </mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
+            <mat-label> Repite la password:</mat-label>
+            <input matInput formControlName="repassword" />
+            <mat-error *ngIf="registerUser.get('repassword')?.invalid">
+              La contraseña debe de coincidir.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
             <mat-label>Mail:</mat-label>
             <input matInput formControlName="mail" />
             <mat-error *ngIf="registerUser.get('mail')?.invalid">
