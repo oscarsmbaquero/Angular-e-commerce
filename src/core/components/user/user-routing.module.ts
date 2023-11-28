@@ -1,6 +1,8 @@
+import { NewPasswordComponent } from './new-password/new-password.component';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+
 
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -14,6 +16,10 @@ const routes: Routes = [
   {
     path: "reset",
     component: ResetPasswordComponent
+  },
+  {
+    path: "new",
+    component: NewPasswordComponent
   }
 ];
 

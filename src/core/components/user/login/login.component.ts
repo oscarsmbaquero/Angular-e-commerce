@@ -112,7 +112,7 @@ export class LoginComponent {
     }
   } 
 register(){
-  console.log('Hola');
+  //console.log('Hola');
   this.showRegister = !this.showRegister;
 }
 

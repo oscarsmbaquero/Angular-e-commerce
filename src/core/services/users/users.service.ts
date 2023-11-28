@@ -33,7 +33,6 @@ export class UsersService {
   //   this.getOrderClient(this.activeUser);
   // }
   login(credentials: { user: string; password: string }): Observable<boolean> {
-    console.log('Entro');
     const endpoint = `${environment.apiUrlMock}users/login`;
     return this.httpClient.post<IUser>(endpoint, credentials).pipe(
       map((user) => {
@@ -98,5 +97,15 @@ export class UsersService {
     console.log(id,userData,98)
     const url = `${environment.apiUrlMock}users/modify/${id}`;
     return this.httpClient.put<IUser[]>(url, userData);
+  }
+
+  resetPassword(email: string): Observable<any> {
+    console.log(email);
+    const url = `${environment.apiUrlMock}users/reset-password/${email}`;
+    return this.httpClient.post<IUser[]>(url, email);
+  }
+
+  changePassword(email: string, nuevaContrasena: string): Observable<any> {
+    return this.httpClient.post(`${environment.apiUrlMock}/change-password`, { email, nuevaContrasena });
   }
 }
