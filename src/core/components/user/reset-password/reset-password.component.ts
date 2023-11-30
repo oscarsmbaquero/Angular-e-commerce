@@ -8,32 +8,37 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { IUser } from 'src/core/services/models/user-models';
 
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.css']
+  styleUrls: ['./reset-password.component.css'],
 })
 export class ResetPasswordComponent {
-
-   /**
+  /**
    * flag para pintar el loader
    */
-   loading= false;
+  loading = false;
 
   public resetPassword: FormGroup;
   public submitted: boolean = false;
-  mail:string='';
+  mail: string = '';
+  /**
+   * Mostrar el resto del formualrio si coincide el mail
+   */
+  showRestForm = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private usersService: UsersService,
     private router: Router,
-    private snackBar: MatSnackBar,
-  ){
+    private snackBar: MatSnackBar
+  ) {
     this.resetPassword = this.formBuilder.group({
-      mail: ['', [Validators.required ]],
-      
+      mail: ['', [Validators.required]],
+      password: [''],
+      confirmPassword:[''],
     });
   }
 
@@ -43,42 +48,71 @@ export class ResetPasswordComponent {
     this.submitted = true;
     // Si el formulario es valido
     if (this.resetPassword.valid) {
-      // Creamos un Usuario y lo emitimos
-     
-        this.mail= this.resetPassword.get('mail')?.value,
+      const user: any = {
+        mail: this.resetPassword.get('mail')?.value,
+        password: this.resetPassword.get('password')?.value,
+        confirmPassword: this.resetPassword.get('confirmPassword')?.value,
         
-   
-      console.log(this.mail, 46);
-     
-      this.usersService.resetPassword(this.mail).subscribe(
-        (response) => {
-          this.loading = false;
-          console.log(response,'response');
-          console.log('Datos enviados con éxito');
-          this.snackBar.open(
-            'Hemos enviado un enlace a tu email',
-            'Cerrar',
-            {
-              duration: 3000,
-            }
-          );
-          this.router.navigate(['list']);
-        },
-        (error) => {
-          this.loading = false;
-          console.error('Error al enviar los datos', error);
-          if(error.status !== 200){
-              this.snackBar.open(
-            'Usuario o contraseña incorrectas',
-            'Cerrar',
-            {
-              duration: 3000,
-            }
-          );
+      };
+        console.log(user, 46);
+      if (this.showRestForm) {
+        this.usersService.changePassword(user.mail,user.password).subscribe((response)=>{
+          console.log(response);
+          this.router.navigate(['/user']);
+          // const prueba = response.previousUser.user;
+          // console.log(prueba);
+          // const userLogged={
+          //   user: response.data.previousUser.user,
+          //   password: response.data.previousUser.password
+          // }
+          // this.usersService.login(userLogged).subscribe((response)=>{
+          //   console.log(response);
+          // })
+          
+        });
+      } else {
+        this.usersService.getUSerByMail(user.mail).subscribe((response) => {
+          console.log(response);
+          if (response) {
+            const userMail = response.mail; // Accede al objeto "data"
+            console.log(userMail, 'userMail');
+            this.showRestForm = true;
+          } else {
+            this.showRestForm = false;
+            console.log('No');
           }
-          console.log(error.status,'status');
-        }
-      );
+        });
+      }
+
+      // this.usersService.resetPassword(this.mail).subscribe(
+      //   (response) => {
+      //     this.loading = false;
+      //     console.log(response,'response');
+      //     console.log('Datos enviados con éxito');
+      //     this.snackBar.open(
+      //       'Hemos enviado un enlace a tu email',
+      //       'Cerrar',
+      //       {
+      //         duration: 3000,
+      //       }
+      //     );
+      //     this.router.navigate(['list']);
+      //   },
+      //   (error) => {
+      //     this.loading = false;
+      //     console.error('Error al enviar los datos', error);
+      //     if(error.status !== 200){
+      //         this.snackBar.open(
+      //       'Usuario o contraseña incorrectas',
+      //       'Cerrar',
+      //       {
+      //         duration: 3000,
+      //       }
+      //     );
+      //     }
+      //     console.log(error.status,'status');
+      //   }
+      // );
     }
-  } 
+  }
 }

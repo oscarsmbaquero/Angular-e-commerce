@@ -99,6 +99,10 @@ export class UsersService {
     return this.httpClient.put<IUser[]>(url, userData);
   }
 
+  getUSerByMail(email: string){    
+    return this.httpClient.get<IUser>(`${environment.apiUrlMock}users/mail/${email}`);
+  }
+
   resetPassword(email: string): Observable<any> {
     console.log(email);
     const url = `${environment.apiUrlMock}users/reset-password/${email}`;
@@ -106,6 +110,8 @@ export class UsersService {
   }
 
   changePassword(email: string, nuevaContrasena: string): Observable<any> {
-    return this.httpClient.post(`${environment.apiUrlMock}/change-password`, { email, nuevaContrasena });
+    console.log(email, nuevaContrasena );
+    
+    return this.httpClient.post(`${environment.apiUrlMock}users/reset-password/${email}`,{ nuevaContrasena });
   }
 }
