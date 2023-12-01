@@ -37,8 +37,8 @@ export class ResetPasswordComponent {
   ) {
     this.resetPassword = this.formBuilder.group({
       mail: ['', [Validators.required]],
-      password: [''],
-      confirmPassword:[''],
+      // password: [''],
+      // confirmPassword:[''],
     });
   }
 
@@ -50,39 +50,66 @@ export class ResetPasswordComponent {
     if (this.resetPassword.valid) {
       const user: any = {
         mail: this.resetPassword.get('mail')?.value,
-        password: this.resetPassword.get('password')?.value,
-        confirmPassword: this.resetPassword.get('confirmPassword')?.value,
-        
+        // password: this.resetPassword.get('password')?.value,
+        // confirmPassword: this.resetPassword.get('confirmPassword')?.value,
       };
-        console.log(user, 46);
-      if (this.showRestForm) {
-        this.usersService.changePassword(user.mail,user.password).subscribe((response)=>{
-          console.log(response);
-          this.router.navigate(['/user']);
-          // const prueba = response.previousUser.user;
-          // console.log(prueba);
-          // const userLogged={
-          //   user: response.data.previousUser.user,
-          //   password: response.data.previousUser.password
-          // }
-          // this.usersService.login(userLogged).subscribe((response)=>{
-          //   console.log(response);
-          // })
-          
-        });
-      } else {
-        this.usersService.getUSerByMail(user.mail).subscribe((response) => {
-          console.log(response);
-          if (response) {
-            const userMail = response.mail; // Accede al objeto "data"
-            console.log(userMail, 'userMail');
-            this.showRestForm = true;
-          } else {
-            this.showRestForm = false;
-            console.log('No');
-          }
-        });
-      }
+      console.log(user, 46);
+      // if (this.showRestForm) {
+      //   this.usersService.changePassword(user.mail,user.password).subscribe((response)=>{
+      //     console.log(response);
+      //     this.router.navigate(['/user']);
+      //     // const prueba = response.previousUser.user;
+      //     // console.log(prueba);
+      //     // const userLogged={
+      //     //   user: response.data.previousUser.user,
+      //     //   password: response.data.previousUser.password
+      //     // }
+      //     // this.usersService.login(userLogged).subscribe((response)=>{
+      //     //   console.log(response);
+      //     // })
+
+      //   });
+      // } else {
+      this.usersService.getUSerByMail(user.mail).subscribe((response) => {
+        console.log(response);
+        if (response) {
+          const userMail = response.mail; // Accede al objeto "data"
+          console.log(userMail, 'userMail');
+          this.usersService.resetPassword(userMail).subscribe(
+            (response) => {
+              this.loading = false;
+              console.log(response, 'response');
+              console.log('Datos enviados con éxito');
+              this.snackBar.open(
+                'Hemos enviado un enlace a tu email',
+                'Cerrar',
+                {
+                  duration: 3000,
+                }
+              );
+              this.router.navigate(['list']);
+            },
+            (error) => {
+              this.loading = false;
+              console.error('Error al enviar los datos', error);
+              if (error.status !== 200) {
+                this.snackBar.open(
+                  'Usuario o contraseña incorrectas',
+                  'Cerrar',
+                  {
+                    duration: 3000,
+                  }
+                );
+              }
+              console.log(error.status, 'status');
+            }
+          );
+        } else {
+          //this.showRestForm = false;
+          console.log('No');
+        }
+      });
+      //}
 
       // this.usersService.resetPassword(this.mail).subscribe(
       //   (response) => {

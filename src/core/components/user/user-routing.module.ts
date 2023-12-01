@@ -18,7 +18,7 @@ const routes: Routes = [
     component: ResetPasswordComponent
   },
   {
-    path: "new",
+    path: "new/:token",
     component: NewPasswordComponent
   }
 ];
