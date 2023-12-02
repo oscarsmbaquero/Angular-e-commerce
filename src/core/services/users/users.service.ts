@@ -109,9 +109,9 @@ export class UsersService {
     return this.httpClient.post<IUser[]>(url, email);
   }
 
-  changePassword(email: string, nuevaContrasena: string): Observable<any> {
-    console.log(email, nuevaContrasena );
+  changePassword(id: string, nuevaContrasena: string): Observable<any> {
+    //console.log(id, nuevaContrasena );
     
-    return this.httpClient.post(`${environment.apiUrlMock}users/reset-password/${email}`,{ nuevaContrasena });
+    return this.httpClient.post(`${environment.apiUrlMock}users/changePassword/${id}`,{ nuevaContrasena });
   }
 }
