@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IUser } from 'src/core/services/models/user-models';
 import { UsersService } from 'src/core/services/users/users.service';
+import { logoService } from 'src/core/services/logo/logo.service';
 import * as AOS from 'aos';
 import { MessageService } from 'primeng/api';
 import { Message } from 'primeng/api';
@@ -41,13 +42,15 @@ export class LoginComponent {
    * flag para pintar el loader
    */
   loading= false;
+  logoUrl: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
     private userServices: UsersService,
     private router: Router,
     private snackBar: MatSnackBar,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private logoService: logoService,
     
   ) {
     this.loginUser = this.formBuilder.group({
@@ -65,6 +68,9 @@ export class LoginComponent {
     AOS.init({
       duration: 1550,
       delay: 550,
+    });
+    this.logoService.logoUrl$.subscribe(newLogoUrl => {
+      this.logoUrl = newLogoUrl;
     });
   }
 

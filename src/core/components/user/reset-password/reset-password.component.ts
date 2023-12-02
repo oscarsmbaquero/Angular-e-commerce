@@ -1,5 +1,5 @@
 import { UsersService } from 'src/core/services/users/users.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   FormBuilder,
@@ -9,13 +9,14 @@ import {
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IUser } from 'src/core/services/models/user-models';
+import { logoService } from 'src/core/services/logo/logo.service';
 
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.css'],
 })
-export class ResetPasswordComponent {
+export class ResetPasswordComponent  implements OnInit{
   /**
    * flag para pintar el loader
    */
@@ -24,6 +25,8 @@ export class ResetPasswordComponent {
   public resetPassword: FormGroup;
   public submitted: boolean = false;
   mail: string = '';
+
+  logoUrl: string = '';
   /**
    * Mostrar el resto del formualrio si coincide el mail
    */
@@ -33,12 +36,18 @@ export class ResetPasswordComponent {
     private formBuilder: FormBuilder,
     private usersService: UsersService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private logoService: logoService,
   ) {
     this.resetPassword = this.formBuilder.group({
       mail: ['', [Validators.required]],
       // password: [''],
       // confirmPassword:[''],
+    });
+  }ngOnInit() {
+  
+    this.logoService.logoUrl$.subscribe(newLogoUrl => {
+      this.logoUrl = newLogoUrl;
     });
   }
 

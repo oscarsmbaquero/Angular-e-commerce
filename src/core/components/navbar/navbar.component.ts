@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { IProduct } from 'src/core/services/models/product.models';
 import { StoreService } from 'src/core/services/store/store.service';
 import { UsersService } from 'src/core/services/users/users.service';
+import { logoService } from 'src/core/services/logo/logo.service';
 import { FormControl, FormGroup } from '@angular/forms';
 
 // interface City {
@@ -16,22 +17,21 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  
-  logoUrl: string ='';
-  logos: string[] = [
-                    //  'assets/images/logo.png',
-                     'assets/images/logo1.png', 
-                     'assets/images/logo2.png',
-                     'assets/images/logo4.png',
-                     'assets/images/logo6.png',
-                     'assets/images/logo7.png',
-                     'assets/images/logo8.png',
-                    //  'assets/images/logo5.jpeg',
-                    //  'assets/images/logo6.jpeg',
-                    //  'assets/images/logo7.jpeg',
-                    //  'assets/images/logo8.jpeg',
-                    //  'assets/images/logo9.jpeg',
-                    ];
+  logoUrl: string = '';
+  // logos: string[] = [
+  //   //  'assets/images/logo.png',
+  //   'assets/images/logo1.png',
+  //   'assets/images/logo2.png',
+  //   'assets/images/logo4.png',
+  //   'assets/images/logo6.png',
+  //   'assets/images/logo7.png',
+  //   'assets/images/logo8.png',
+  //   //  'assets/images/logo5.jpeg',
+  //   //  'assets/images/logo6.jpeg',
+  //   //  'assets/images/logo7.jpeg',
+  //   //  'assets/images/logo8.jpeg',
+  //   //  'assets/images/logo9.jpeg',
+  // ];
   formGroup: FormGroup | undefined;
 
   carts: number = 0;
@@ -42,7 +42,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private router: Router,
     private storeService: StoreService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private logoService: logoService,
   ) {
     //this.carts = this.storeService.getCart().length;
     //console.log(this.carts,'navbar');
@@ -58,17 +59,24 @@ export class NavbarComponent implements OnInit {
       );
     });
     this.usersService.getCurrentUser().subscribe((user) => {
-      
       this.activeUser = user;
       console.log(this.activeUser);
-      if(this.activeUser){
+      if (this.activeUser) {
         this.activeUserName = this.activeUser.data.user;
         console.log(this.activeUserName);
       }
-      
-    });   
-    this.changeLogo();
-    setInterval(() => this.changeLogo(), 5000);
+    });
+    //this.logoService.changeLogo();
+    // this.logoUrl = this.logoService.getLogoUrl();
+    // console.log(this.logoUrl); // Accede a la URL actual del logo
+   
+    // setInterval(() => this.logoService.changeLogo(), 5000);
+    this.logoService.logoUrl$.subscribe(newLogoUrl => {
+      this.logoUrl = newLogoUrl;
+    });
+
+    // this.changeLogo();
+    // setInterval(() => this.changeLogo(), 5000);
 
     // this.formGroup = new FormGroup({
     //   selectedCity: new FormControl<City | null>(null),
@@ -76,13 +84,12 @@ export class NavbarComponent implements OnInit {
   }
   logout(): void {
     this.usersService.clearCurrentUser();
-    this.router.navigate(['/'])
- }
+    this.router.navigate(['/']);
+  }
 
- changeLogo() {
-  console.log('Entro');
-  const randomIndex = Math.floor(Math.random() * this.logos.length);
-  this.logoUrl = this.logos[randomIndex];
-}
- 
+  // changeLogo() {
+  //   console.log('Entro');
+  //   const randomIndex = Math.floor(Math.random() * this.logos.length);
+  //   this.logoUrl = this.logos[randomIndex];
+  // }
 }

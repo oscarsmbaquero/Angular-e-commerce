@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { UsersService } from 'src/core/services/users/users.service';
+import { logoService } from 'src/core/services/logo/logo.service';
 
 @Component({
   selector: 'app-new-password',
@@ -22,6 +23,8 @@ export class NewPasswordComponent implements OnInit {
   userId='';
   userName='';
 
+  logoUrl: string = '';
+
 
   constructor(
     private route: ActivatedRoute,
@@ -29,6 +32,7 @@ export class NewPasswordComponent implements OnInit {
     private formBuilder: FormBuilder,
     private usersService: UsersService,
     private router: Router,
+    private logoService: logoService,
   ){ 
     this.newPassword = this.formBuilder.group({
       password: ['', [Validators.required]],
@@ -53,6 +57,9 @@ export class NewPasswordComponent implements OnInit {
       
      
      
+    });
+    this.logoService.logoUrl$.subscribe(newLogoUrl => {
+      this.logoUrl = newLogoUrl;
     });
   }
 

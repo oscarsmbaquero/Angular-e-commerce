@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/core/services/users/users.service';
 //import { IUser } from '../../services/models/user-models';
 import * as AOS from 'aos';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { logoService } from 'src/core/services/logo/logo.service';
 
 import { Router } from '@angular/router';
 import {
@@ -17,16 +18,20 @@ import { trigger, transition, style, animate } from '@angular/animations';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit{
+
+  logoUrl: string = '';
 
   public registerUser: FormGroup;
   public submitted: boolean = false;
-  
+
+ 
   constructor(
     private formBuilder: FormBuilder,
     private userServices: UsersService,
     private router: Router,
-    private matSnackBar: MatSnackBar
+    private matSnackBar: MatSnackBar,
+    private logoService: logoService,
     
   ) {
     this.registerUser = this.formBuilder.group({
@@ -42,6 +47,9 @@ export class RegisterComponent {
     AOS.init({
       duration: 1550,
       delay: 550,
+    });
+    this.logoService.logoUrl$.subscribe(newLogoUrl => {
+      this.logoUrl = newLogoUrl;
     });
   }
 
