@@ -1,60 +1,67 @@
-/* 
-.div-loader{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 80vh;
-  background-color: #FFF;
+/* .spinner{
+  min-height: 100vh;
+  padding-top: 200px;
 }
-
-
-.loader {
-  width: 64px;
-  height: 64px;
-  position: relative;
-  animation: rotate 1.5s ease-in infinite alternate;
+.spinner .fa-spin {
+  color: white;
 }
-.loader::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  color: #FF3D00;
-  background: currentColor;
-  width: 64px;
-  height: 32px;
-  border-radius: 0 0 50px 50px;
-}
-.loader::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 10%;
-  background: #FFF;
-  width: 8px;
-  height: 64px;
-  animation: rotate 1.2s linear infinite alternate-reverse;
-}
-
-@keyframes rotate {
-  100% { transform: rotate(360deg)}
-}
-      
  */
- .loading-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+ bodY {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.center {
   height: 100vh;
-  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+}
+.wave {
+  width: 5px;
+  height: 100px;
+  background: linear-gradient(45deg, cyan, #fff);
+  margin: 10px;
+  animation: wave 1s linear infinite;
+  border-radius: 20px;
+}
+.wave:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.wave:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.wave:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.wave:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.wave:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.wave:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.wave:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.wave:nth-child(9) {
+  animation-delay: 0.8s;
+}
+.wave:nth-child(10) {
+  animation-delay: 0.9s;
 }
 
-.loading-container img {
-  width: 100px; /* Ajusta el tamaño de tu logo SVG */
-}
-
-.loading-text {
-  margin-top: 10px;
+@keyframes wave {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
 }

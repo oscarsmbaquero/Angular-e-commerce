@@ -31,6 +31,10 @@ export class ResetPasswordComponent  implements OnInit{
    * Mostrar el resto del formualrio si coincide el mail
    */
   showRestForm = false;
+/**
+ * pintar mensaje de error si no existe el mail de cliente
+ */
+  showEmailError = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -113,8 +117,13 @@ export class ResetPasswordComponent  implements OnInit{
               console.log(error.status, 'status');
             }
           );
+          this.loading = false;
         } else {
+          console.log();
+          
+          this.loading = false;
           //this.showRestForm = false;
+          this.showEmailError = true;
           console.log('No');
         }
       });
