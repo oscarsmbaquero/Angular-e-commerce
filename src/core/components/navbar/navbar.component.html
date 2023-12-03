@@ -192,12 +192,13 @@
         data-target=".navbar-collapse.show"
       > 
         
-        <span (click)="logout()" class="text-white" style="font-size: 15px">Cerrar sesión</span>
+        <span (click)="logout()" class="text-white" style="font-size: 15px">Cerrar sesión&nbsp;</span>
          
-        <span class="text-white"  style="margin-left: 10px; background-color: rgb(80, 80, 110); padding: 8px;
-        border-radius: 50%;
-        ">{{ activeUserName }}&nbsp;</span>
+        <span class="text-white">
+        
+        <p-avatar label={{palabrasAvatar}} styleClass="mr-2" size="large" [style]="{ 'background-color': '#2196F3', color: '#ffffff' }" shape="circle"></p-avatar></span>
       </a>
+      
     </li>
   </ng-container>
 
