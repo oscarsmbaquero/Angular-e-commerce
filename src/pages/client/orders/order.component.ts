@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { IProduct } from 'src/core/services/models/product.models';
 import { IUser } from 'src/core/services/models/user-models';
 //servisios
 import { UsersService } from 'src/core/services/users/users.service';
+import { StoreService } from 'src/core/services/store/store.service';
 //pipe fecha
 //import { DatePipe } from '@angular/common';
 
@@ -20,7 +23,9 @@ export class OrderComponent {
   public ultimoPedido = false;
 
   constructor(
-    private usersService : UsersService
+    private usersService : UsersService,
+    private storeService: StoreService,
+    private router: Router
   ){
 
   }
@@ -64,14 +69,11 @@ export class OrderComponent {
   myOrders(userId: string): void {
     this.usersService.getOrderClient(userId).subscribe((response) => {
       const data = response.data; // Accede al objeto "data"
-  
-      console.log(data, 'datas');
       if (this.pedidos && data.length > 0) {
         this.ultimoPedido = true;
       }
       
         if (data && data.pedidos && data.pedidos.numeroPedido) {
-          console.log('Entro');
           const allOrdersArray = data.pedidos.numeroPedido.map((pedido:any) => {
             const orderDetails = {
               orderNumber: pedido.orderNumber,
@@ -105,6 +107,11 @@ export class OrderComponent {
     console.log(userId, 'userId');
   }
   
+  buyAgain(product:IProduct){
+    console.log(product);
+    this.storeService.addToCart(product);
+    this.router.navigate(['/cesta']);
+  }
   
   
 
