@@ -75,8 +75,12 @@ export class NavbarComponent implements OnInit {
     });
   
     // Unir las letras extraídas en una nueva cadena
-    const resultado = letrasExtraidas.join('');
+    const resultado = letrasExtraidas.join(' ');
   
     this.palabrasAvatar= resultado;
+  }
+
+  navigateTo(){
+    this.router.navigate(['/client/account'])
   }
 }

@@ -17,14 +17,14 @@
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Password:</mat-label>
-            <input matInput formControlName="password" />
+            <input type="password" matInput formControlName="password" />
             <mat-error *ngIf="registerUser.get('password')?.invalid">
               La password es requerida.
             </mat-error>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label> Repite la password:</mat-label>
-            <input matInput formControlName="repassword" />
+            <input type="password" matInput formControlName="repassword" />
             <mat-error *ngIf="registerUser.get('repassword')?.invalid">
               La contraseña debe de coincidir.
             </mat-error>

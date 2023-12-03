@@ -28,3 +28,17 @@
  select{
   font-size: inherit; /* Evita cambios en el tamaño de fuente */
  }
+ .agotado-class{
+ /* color:brown;
+ background-color: blue; */
+ filter: blur(0.5px);
+ cursor: not-allowed; /* Cambia el cursor a "no permitido" para indicar que el botón no es interactivo */
+  
+}
+.new-products{
+  width: 35px;
+  position: absolute;
+  top: 0; /* Ajusta la posición vertical según tus necesidades */
+  left: 0; /* Ajusta la posición horizontal según tus necesidades */
+  z-index: 1; /* Asegura que la imagen nueva esté sobre la imagen principal */
+}

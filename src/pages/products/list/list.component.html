@@ -2,10 +2,13 @@
   <div  *ngIf="products.length; else loading" class="container" style="padding-bottom: 10px;">
     <div class="row">
       <div *ngFor="let product of products; let i = index" class="col-12 col-md-12 col-lg-3">
-        <div class="card" style="padding:15px">
+        <div class="card" style="padding:15px"
+        [ngClass]="{'agotado-class': product.unidades <=  0}"
+        >
           <!-- Mensaje al añadir  -->
           <p-toast position="top-center"></p-toast>
-          <img class="card-img" src="{{ product.image }}" alt="Vans" >
+          <img src='../../../assets/images/new.png' *ngIf="product.isNew" class="new-products">          
+          <img class="card-img" [src]=" product.image" alt="Vans">
           <!-- <div class=" d-flex justify-content-end">
             <a href="#" class="card-link text-danger like">
               <i class="fas fa-heart"></i>
@@ -40,11 +43,11 @@
             </div>
             <div class="buy d-flex justify-content-between align-items-center">
               <div class="price text-info"><h2 class="mt-4">{{product.precio}}€</h2></div>
+              
               <button *ngIf="product.unidades > 0" (click)="confirmAndAddtoCart(product)" class="btn btn-info mt-3"><i class="fas fa-shopping-cart"></i>&nbsp;Añadir</button>
               <button *ngIf="product.unidades <= 0" class="btn btn-info mt-3" [ngClass]="{'disabled-button': product.unidades <= 0}" [disabled]="product.unidades <= 0">
                 <i class="fas fa-shopping-cart"></i>&nbsp;Añadir
               </button>
-              
             </div>
           </div>
         </div>

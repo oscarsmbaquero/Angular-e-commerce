@@ -39,9 +39,30 @@ export class ListComponent {
     this.getProducts();
   }
 
+  // private getProducts() {
+  //   this.storeService.getProducts().subscribe((products) => {
+  //     this.products = products;
+  //     this.products.forEach((product) => {
+  //       if (product.unidades < 1) {
+  //         product.stock = 'Agotado';
+  //         product.stockStatus = 'danger';
+  //       } else if (product.unidades <= 50) {
+  //         product.stock = 'Stock';
+  //         product.stockStatus = 'warning';
+  //       } else {
+  //         product.stock = 'Stock';
+  //         product.stockStatus = 'success'
+  //       }
+  //     });
+      
+  //     this.stockStatus = this.products.map(product => product.stock!) ;
+  //     console.log(this.products);
+  //   });
+  // }
   private getProducts() {
     this.storeService.getProducts().subscribe((products) => {
       this.products = products;
+  
       this.products.forEach((product) => {
         if (product.unidades < 1) {
           product.stock = 'Agotado';
@@ -51,14 +72,29 @@ export class ListComponent {
           product.stockStatus = 'warning';
         } else {
           product.stock = 'Stock';
-          product.stockStatus = 'success'
+          product.stockStatus = 'success';
+        }
+  
+        // Agregar campo isNew y establecerlo en true si la fecha actual es inferior a 15 días
+        if (product.createdAt) {
+          const createdAtDate = new Date(product.createdAt).getTime(); // Obtener el valor numérico de la fecha
+          const currentDate = new Date().getTime(); // Obtener el valor numérico de la fecha actual
+          const differenceInDays = Math.floor((currentDate - createdAtDate) / (1000 * 60 * 60 * 24));
+  
+          if (differenceInDays < 15) {
+            product.isNew = true;
+          } else {
+            product.isNew = false;
+          }
         }
       });
-      
-      this.stockStatus = this.products.map(product => product.stock!) ;
+  
+      this.stockStatus = this.products.map((product) => product.stock!);
       console.log(this.products);
     });
   }
+  
+  
 
   confirmAndAddtoCart(product: any) {
     console.log(product);
