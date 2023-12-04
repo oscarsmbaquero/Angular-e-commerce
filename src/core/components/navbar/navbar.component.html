@@ -3,7 +3,7 @@
     <!-- rgb(37, 42, 42); -->
     <a class="navbar-brand" [routerLink]="['']">
       <!-- <img src="assets/images/logo.png" width="90" height="90" alt="" />&nbsp; -->
-      <img src={{logoUrl}} width="120" height="120" alt="logo" />&nbsp;
+      <img src="{{ logoUrl }}" width="120" height="120" alt="logo" />&nbsp;
     </a>
     <!-- <button 
       class="navbar-toggler"
@@ -52,9 +52,7 @@
             [routerLink]="['']"
             data-toggle="collapse"
             data-target=".navbar-collapse.show"
-            ><span class="text-white" style="font-size: 15px"
-              >Home</span
-            ></a
+            ><span class="text-white" style="font-size: 15px">Home</span></a
           >
         </li>
         <li class="nav-item" routerLinkActive="active">
@@ -136,11 +134,9 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            <span style="color:white; font-size: 15px"
-              >Panel de Control</span
-            >
+            <span style="color: white; font-size: 15px">Panel de Control</span>
           </a>
-          <ul class="dropdown-menu" style="background-color: black;">
+          <ul class="dropdown-menu" style="background-color: black">
             <li>
               <a class="dropdown-item" [routerLink]="['/inventario']"
                 ><span class="text-white">Inventario</span>
@@ -161,13 +157,19 @@
             <li><hr class="dropdown-divider" /></li>
             <li>
               <a class="dropdown-item" [routerLink]="['/ventas']"
-                ><span class="text-white">Ventas</span>
+                ><span class="text-white">Gráficas</span>
               </a>
             </li>
             <li><hr class="dropdown-divider" /></li>
             <li>
               <a class="dropdown-item" [routerLink]="['/anadir']"
                 ><span class="text-white">Añadir Producto</span>
+              </a>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/anadir']"
+                ><span class="text-white">Añadir Gasto</span>
               </a>
             </li>
             <!-- <li><hr class="dropdown-divider" /></li> -->
@@ -180,49 +182,60 @@
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form> -->
       <ul
-  class="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll"
-  style="--bs-scroll-height: 100px"
->
-  <ng-container *ngIf="activeUser; else notUser">
-    <li class="nav-item">
-      <a
-        class="nav-link"
-        [routerLink]="['/user']"
-        data-toggle="collapse"
-        data-target=".navbar-collapse.show"
-      > 
-        
-        <span (click)="logout()" class="text-white" style="font-size: 15px">Cerrar sesión&nbsp;</span>
-         
-        <span class="text-white">
-        
-        <p-avatar label={{palabrasAvatar}} styleClass="mr-2" [style]="{ 'background-color': '#2196F3', color: '#ffffff' }" shape="circle"></p-avatar></span>
-      </a>
-      
-    </li>
-  </ng-container>
-
-  <ng-template #notUser>
-    <li class="nav-item" routerLinkActive="active">
-      <a
-        class="nav-link"
-        [routerLink]="['/user']"
-        data-toggle="collapse"
-        data-target=".navbar-collapse.show"
+        class="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll"
+        style="--bs-scroll-height: 100px"
       >
-        <!-- <img
+        <ng-container *ngIf="activeUser; else notUser">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLink]="['/user']"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+            >
+              <span
+                (click)="logout()"
+                class="text-white"
+                style="font-size: 15px"
+                >Cerrar sesión&nbsp;</span
+              >
+
+              <span class="text-white">
+                <p-avatar
+                  label="{{ palabrasAvatar }}"
+                  styleClass="mr-2"
+                  [style]="{ 'background-color': '#2196F3', color: '#ffffff' }"
+                  shape="circle"
+                ></p-avatar
+              ></span>
+            </a>
+          </li>
+        </ng-container>
+
+        <ng-template #notUser>
+          <li class="nav-item" routerLinkActive="active">
+            <a
+              class="nav-link"
+              [routerLink]="['/user']"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+            >
+              <!-- <img
           src="assets/images/loginIcon.png"
           width="50"
           height="50"
           alt=""
         />&nbsp; -->
-        <span class="text-white" style="font-weight: bold; font-size: 15px">Identificarse</span>
-        <!-- <span class="text-black" (click)="logout()">Logout</span> -->
-      </a>
-    </li>
-  </ng-template>
-</ul>
-
+              <span
+                class="text-white"
+                style="font-weight: bold; font-size: 15px"
+                >Identificarse</span
+              >
+              <!-- <span class="text-black" (click)="logout()">Logout</span> -->
+            </a>
+          </li>
+        </ng-template>
+      </ul>
     </div>
   </div>
 </nav>
