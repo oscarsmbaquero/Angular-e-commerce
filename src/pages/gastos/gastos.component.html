@@ -1,1 +1,92 @@
-<p>gastos works!</p>
+<div style="padding: 20px; border-radius: 12px">
+    <div data-aos="flip-up">
+        <mat-card>
+          <mat-card-content>
+            <img
+            src="../../../assets/images/logoNegro.png"
+            width="130"
+            height="90"
+            alt=""
+          />
+             
+            <form novalidate (ngSubmit)="onSubmit()" [formGroup]="anadirGasto" style="margin-top: 25px;">
+              <mat-form-field appearance="fill">
+                <mat-label>Cliente</mat-label>
+                <input matInput formControlName="nameClient" />
+                <mat-error *ngIf="anadirGasto.get('nameClient')?.invalid">
+                  Nombre del cliente obligatorio
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Número de factura:</mat-label>
+                <input matInput formControlName="numberIssue" />
+                <mat-error *ngIf="anadirGasto.get('numberIssue')?.invalid">
+                    Debes de introducir número de factura
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Tipo de Gasto</mat-label>
+                <input matInput formControlName="type" type="text"/>
+                <mat-error *ngIf="anadirGasto.get('type')?.invalid">
+                    Campo obligado.
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Concepto</mat-label>
+                <input matInput formControlName="concepto" type="text" />
+                <mat-error *ngIf="anadirGasto.get('concepto')?.invalid">
+                    Campo obligado
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Importe neto:</mat-label>
+                <input matInput formControlName="price"  type="number"/>
+                <mat-error *ngIf="anadirGasto.get('price')?.invalid">
+                    Campo obligado
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>IVA:</mat-label>
+                <input matInput formControlName="iva"  type="number"/>
+                <mat-error *ngIf="anadirGasto.get('iva')?.invalid">
+                    Campo obligado
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Importe total:</mat-label>
+                <input matInput formControlName="priceFinal"  type="number"/>
+                <mat-error *ngIf="anadirGasto.get('priceFinal')?.invalid">
+                    Campo obligado
+                </mat-error>
+              </mat-form-field>
+              <!-- <mat-form-field appearance="fill">
+                <mat-label>Fecha:</mat-label>
+                <input matInput formControlName="date"/>
+                <mat-error *ngIf="anadirGasto.get('date')?.invalid">
+                    Campo obligado
+                </mat-error>
+              </mat-form-field> -->
+              <mat-form-field>
+                <mat-label>Fecha:</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <!-- <input type="file" 
+              
+              accept="image/*"
+              > -->
+              <mat-card-content>
+                <button *ngIf="anadirGasto.valid"
+                  mat-raised-button
+                  color="primary">
+                  Enviar
+                </button>
+              </mat-card-content>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>  
+    

@@ -1,4 +1,5 @@
 
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/core/guards/auth.guard';
@@ -55,6 +56,11 @@ const routes: Routes = [
     path: 'anadir',
     //canActivate: [AuthGuard],
     loadChildren: () => import('src/pages/products/anadir/anadir.module').then(m => m.AnadirModule)
+  },
+  {
+    path: 'anadir-gasto',
+    //canActivate: [AuthGuard],
+    loadChildren: () => import('src/pages/gastos/gastos.module').then(m => m.VentasModule)
   },
 ];
 
