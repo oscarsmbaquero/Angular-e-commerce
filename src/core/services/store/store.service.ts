@@ -187,12 +187,35 @@ export class StoreService {
     formData.append('pvp', body.pvp);
     formData.append('unidades', body.unidades);
     formData.append('image', body.image);
+    console.log(formData);
     return this.httpClient.post<any>(
       `${environment.apiUrlMock}products/addProduct`,
       formData
     );
   }
 
+  addGasto(body: any): Observable<any> {
+    const formData = new FormData();
+    console.log(body.nameClient,'bodyasdad');
+    formData.append('nameClient', body.nameClient);
+    formData.append('numberIssue', body.numberIssue);
+    formData.append('type', body.type);
+    formData.append('concepto', body.concepto);
+    formData.append('price', body.price);
+    formData.append('iva', body.iva);
+    formData.append('priceFinal', body.priceFinal);
+    //formData.append('date', body.date);
+    
+    return this.httpClient.post<any>(
+      `${environment.apiUrlMock}gastos/addGasto`,
+      formData
+    );
+
+  }
+
+  getGastos(): Observable<IVenta[]>{
+    return this.httpClient.get<IVenta[]>(`${environment.apiUrlMock}gastos`);    
+  }
   
 
   

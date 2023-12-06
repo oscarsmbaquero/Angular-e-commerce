@@ -4,7 +4,9 @@ import { CommonModule } from '@angular/common';
 import { GastosRoutingModule } from './gastos-routing.module';
 //primeng
 import { ChartModule } from 'primeng/chart';
+import { AddGastosComponent } from './anadirGasto/anadirGastos.component';
 import { GastosComponent } from './gastos.component';
+import { TableModule } from 'primeng/table';
 //material
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,10 +19,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { TabViewModule } from 'primeng/tabview';
+import { VerGastosComponent } from './ver-gastos/ver-gastos.component';
 
 @NgModule({
   declarations: [
-    GastosComponent
+    AddGastosComponent,
+    GastosComponent,
+    VerGastosComponent
   ],
   imports: [
     CommonModule,
@@ -35,8 +41,10 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatSnackBarModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    TabViewModule,
+    TableModule
     
   ]
 })
-export class VentasModule { }
+export class GastosModule { }

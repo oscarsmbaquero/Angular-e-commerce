@@ -60,7 +60,7 @@ const routes: Routes = [
   {
     path: 'anadir-gasto',
     //canActivate: [AuthGuard],
-    loadChildren: () => import('src/pages/gastos/gastos.module').then(m => m.VentasModule)
+    loadChildren: () => import('src/pages/gastos/gastos.module').then(m => m.GastosModule)
   },
 ];
 

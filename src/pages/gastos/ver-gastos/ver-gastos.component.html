@@ -1,0 +1,82 @@
+<!-- <p>ver-gastos works!</p> -->
+
+<!-- <div class="card">
+    <p-table [value]="gastos" [tableStyle]="{ 'min-width': '10rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Cliente</th>
+                <th>Nº Factura</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{ product.nameClient }}</td>                
+                <td>{{ product.numberIssue }}</td> 
+                <td><button (click)="toggleDetails(product)">Mas</button></td>               
+            </tr>
+            <div *ngIf="selectedGasto">
+                <div class="detalle">
+                    <p>Tipo: {{ selectedItem.type }}</p>
+                    <p>Concepto: {{ selectedItem.concepto }}</p>
+                </div>
+            </div>
+        </ng-template>
+    </p-table>
+</div> -->
+<!-- <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of gastos" (click)="toggleDetails(item)">
+        <td>{{ item.nameClient }}</td>
+        <td>{{ item.numberIssue }}</td>
+      </tr>
+      <tr *ngIf="selectedGasto">
+        <td colspan="2"> 
+          <div class="detalle">
+            <p>Tipo: {{ selectedGasto.type }}</p>
+            <p>Concepto: {{ selectedGasto.concepto }}</p>
+            
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <!-- Otros encabezados según tus necesidades -->
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let item of gastos; let i = index">
+        <tr (click)="toggleDetails(item, i)">
+          <td>{{ item.nameClient }}</td>
+          <td>{{ item.numberIssue }}</td>
+        </tr>
+        <tr *ngIf="selectedGasto === item">
+          <td colspan="2">
+            <div class="detalle">
+              <p class="p">Tipo: {{ item.type }}</p>
+              <p class="p">Concepto: <span style="font-family: bold;">{{ item.concepto }}</span></p>
+              <p class="p">Concepto: {{ item.price }}</p>
+              <p class="p">Concepto: {{ item.iva }}</p>
+              <p class="p">Concepto: {{ item.priceFinal }}</p>
+              <!-- Otros detalles según tus necesidades -->
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+      <!-- Otros campos según tus necesidades -->
+    </tbody>
+  </table>
+  
+  
+  
