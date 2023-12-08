@@ -204,6 +204,7 @@ export class StoreService {
     formData.append('price', body.price);
     formData.append('iva', body.iva);
     formData.append('priceFinal', body.priceFinal);
+    formData.append('image', body.image);
     //formData.append('date', body.date);
     
     return this.httpClient.post<any>(

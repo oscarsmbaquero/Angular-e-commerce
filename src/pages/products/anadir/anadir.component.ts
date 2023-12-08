@@ -49,12 +49,7 @@ export class AnadirComponent {
         pvp: parseFloat(this.anadirProduct.get('pvp')?.value),
         unidades: parseFloat(this.anadirProduct.get('unidades')?.value),
         image: this.anadirProduct.get('image')?.value,
-      };
-  
-      console.log(newProduct);
-  
-      //this.loading = true;
-  
+      };  
       this.storeService.addProduct(newProduct).subscribe(
         (response: any) => {
           console.log('Datos enviados con éxito');

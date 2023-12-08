@@ -32,6 +32,7 @@ export class AddGastosComponent {
       price: ['', [Validators.required]],
       iva : [ '',[Validators.required]],
       priceFinal: ['', [Validators.required]],
+      image : ['']
       //date: [''],
     });
   }
@@ -48,15 +49,15 @@ export class AddGastosComponent {
         priceFinal: parseFloat(this.anadirGasto.get('priceFinal')?.value),
         iva: this.anadirGasto.get('iva')?.value,
         date: this.anadirGasto.get('date')?.value,
+        image: this.anadirGasto.get('image')?.value,
       };
-  
-      console.log(newGasto);
-  
       //this.loading = true;
   
       this.storeService.addGasto(newGasto).subscribe(
         (response: any) => {
           console.log('Datos enviados con éxito');
+          console.log(response);
+          
           // this.loading = false;
           // this.snackBar.open(
           //   'El producto ha sido añadido correctamente',
@@ -72,6 +73,12 @@ export class AddGastosComponent {
         }
       );
     }
+  }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    console.log(file, 61);
+    this.anadirGasto.get('image')?.setValue(file);
   }
 
   

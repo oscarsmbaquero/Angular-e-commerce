@@ -51,4 +51,6 @@ toggleDetails(gasto: any, index: number): void {
     this.selectedRowIndex = index;
   }
 }
+
+
 }

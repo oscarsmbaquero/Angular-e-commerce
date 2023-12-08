@@ -71,6 +71,7 @@
               <p class="p">Precio: <span style="color:black">{{ item.price }}€</span></p>
               <p class="p">Iva: <span style="color:black">{{ item.iva }}%</span></p>
               <p class="p">Precio Final: <span style="color:black">{{ item.priceFinal }}€</span></p>
+              <img *ngIf="item.image" [src]=" item.image" alt="Vans" style="width: 55px;">
               <!-- Otros detalles según tus necesidades -->
             </div>
           </td>

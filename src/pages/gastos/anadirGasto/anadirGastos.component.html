@@ -85,10 +85,10 @@
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
-              <!-- <input type="file" 
-              
+              <input type="file" 
+              (change)="onFileSelected($event)" 
               accept="image/*"
-              > -->
+              >
               <mat-card-content>
                 <button *ngIf="anadirGasto.valid"
                   mat-raised-button
