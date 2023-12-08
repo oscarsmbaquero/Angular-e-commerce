@@ -58,7 +58,9 @@
     <tbody>
       <ng-container *ngFor="let item of gastos; let i = index">
         <tr (click)="toggleDetails(item, i)">
-          <td>{{ item.nameClient }}</td>
+          <td>{{ item.nameClient }}&nbsp;&nbsp;
+            &nbsp; &nbsp;<img  src="../../../assets/images/hand.png" style="width: 20px;"/>
+          </td>
           <td>{{ item.numberIssue }}</td>
         </tr>
         <tr *ngIf="selectedGasto === item">

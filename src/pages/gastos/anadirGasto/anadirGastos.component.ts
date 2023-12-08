@@ -32,7 +32,7 @@ export class AddGastosComponent {
       price: ['', [Validators.required]],
       iva : [ '',[Validators.required]],
       priceFinal: ['', [Validators.required]],
-      date: [''],
+      //date: [''],
     });
   }
 
@@ -73,4 +73,6 @@ export class AddGastosComponent {
       );
     }
   }
+
+  
 }

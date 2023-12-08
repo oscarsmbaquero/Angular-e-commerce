@@ -196,7 +196,7 @@ export class StoreService {
 
   addGasto(body: any): Observable<any> {
     const formData = new FormData();
-    console.log(body.nameClient,'bodyasdad');
+    console.log(body,'bodyasdad');
     formData.append('nameClient', body.nameClient);
     formData.append('numberIssue', body.numberIssue);
     formData.append('type', body.type);
