@@ -19,7 +19,7 @@ table {
   .detalle {
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background-color: #f1eaea;
     border: 1px solid #ddd;
     padding: 10px;
     margin-top: 10px;

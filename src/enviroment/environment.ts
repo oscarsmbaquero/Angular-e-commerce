@@ -7,8 +7,8 @@ export const environment = {
     // apiUrlMock: 'https://63961d9490ac47c6807dc9d2.mockapi.io/',
    
     //apiUrl: 'https://node-hot-weels.vercel.app/',
-    //apiUrlMock: 'https://node-e-commerce-nine.vercel.app/',
-    apiUrlMock: 'http://localhost:5000/',
+    apiUrlMock: 'https://node-e-commerce-nine.vercel.app/',
+    //apiUrlMock: 'http://localhost:5000/',
   };
   
   /*
