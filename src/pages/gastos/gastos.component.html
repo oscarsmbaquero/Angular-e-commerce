@@ -13,7 +13,18 @@
               <i class="pi pi-user"></i>
               <span>Ver gastos</span>
           </ng-template>
-          <app-ver-gastos></app-ver-gastos>
+          <app-ver-gastos
+          [gastos]="gastos"
+          ></app-ver-gastos>
       </p-tabPanel>
+      <p-tabPanel header="Header II">
+        <ng-template pTemplate="header">
+            <i class="pi pi-user"></i>
+            <span>Gráficos</span>
+        </ng-template>
+        <app-graficas-gastos
+        [gastos]="gastos"
+        ></app-graficas-gastos>
+    </p-tabPanel>
   </p-tabView>
 </div>

@@ -21,12 +21,16 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { TabViewModule } from 'primeng/tabview';
 import { VerGastosComponent } from './ver-gastos/ver-gastos.component';
+import { GraficasGastosComponent } from './graficas-gastos/graficas-gastos.component';
+import { NgChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   declarations: [
     AddGastosComponent,
     GastosComponent,
-    VerGastosComponent
+    VerGastosComponent,
+    GraficasGastosComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +47,8 @@ import { VerGastosComponent } from './ver-gastos/ver-gastos.component';
     MatDatepickerModule,
     MatNativeDateModule,
     TabViewModule,
-    TableModule
+    TableModule,
+    NgChartsModule
     
   ]
 })

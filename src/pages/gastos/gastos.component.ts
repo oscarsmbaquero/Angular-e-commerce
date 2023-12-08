@@ -1,24 +1,43 @@
 
-import { Component } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { StoreService } from 'src/core/services/store/store.service';
 
 @Component({
   selector: 'app-gastos',
   templateUrl: './gastos.component.html',
   styleUrls: ['./gastos.component.css']
 })
-export class GastosComponent {
+export class GastosComponent implements OnInit{
 
+  gastos: any;
+
+
+  @Output() showGrafics = new EventEmitter<string>();
+  pruebaInput: string='';
   // public anadirGasto: FormGroup;
   // public submitted: boolean = false;
+  ngOnInit() {
+    this.storeService.getGastos().subscribe((data) => {
+        this.gastos = data;
+        console.log(this.gastos);
+        this.showGraficas(this.gastos);    
+    });
+    // setTimeout(() => {
+    //   this.showGraficas(this.gastos);  
+    // }, 2000);
+    
+}
+
 
   constructor(
     private formBuilder: FormBuilder,
+    private storeService : StoreService
   ){
     // this.anadirGasto = this.formBuilder.group({
     //   nameClient: ['', [Validators.required ]],
@@ -69,4 +88,11 @@ export class GastosComponent {
   //     // );
   //   }
   // }
+  showGraficas(gastos:any){
+    console.log(gastos,'gastos');
+    
+    this.pruebaInput = gastos
+    console.log(this.pruebaInput,402);
+    // this.showGrafics.emit(event)
+  }
 }

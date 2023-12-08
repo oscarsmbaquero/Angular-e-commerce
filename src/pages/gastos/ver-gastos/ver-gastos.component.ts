@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { StoreService } from 'src/core/services/store/store.service';
 
 @Component({
@@ -6,9 +6,10 @@ import { StoreService } from 'src/core/services/store/store.service';
   templateUrl: './ver-gastos.component.html',
   styleUrls: ['./ver-gastos.component.css']
 })
-export class VerGastosComponent implements OnInit {
+export class VerGastosComponent {
 
-  gastos: any;
+  // gastos: any;
+  @Input() gastos: any | undefined;
 
   selectedItem: any = null;
   //selectedGasto: any;
@@ -17,30 +18,19 @@ export class VerGastosComponent implements OnInit {
 
 
   constructor(
-    private storeService : StoreService
+    //private storeService : StoreService
   ){
 
   }
 
-  ngOnInit() {
-    this.storeService.getGastos().subscribe((data) => {
-        this.gastos = data;
-        console.log(this.gastos);
+//   ngOnInit() {
+//     this.storeService.getGastos().subscribe((data) => {
+//         this.gastos = data;
+//         console.log(this.gastos);
         
-    });
-}
-
-// toggleDetails(item: any): void {
-//   console.log('Entro',item);
-  
-//   if (this.selectedItem === item) {
-//     this.selectedItem = null; // Oculta los detalles si se hace clic nuevamente en la misma fila
-//     this.selectedGasto = false;
-//   } else {
-//     this.selectedItem = item; // Muestra detalles si se hace clic en una fila diferente
-//     this.selectedGasto = true;
-//   }
+//     });
 // }
+
 
 toggleDetails(gasto: any, index: number): void {
   if (this.selectedGasto === gasto) {
