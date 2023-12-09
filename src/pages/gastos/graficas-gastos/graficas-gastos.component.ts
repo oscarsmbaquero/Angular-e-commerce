@@ -29,12 +29,12 @@ export class GraficasGastosComponent implements OnInit{
     ],
   };
   constructor(){
-
+    console.log(this.gastos,'gastos');
+    this.updateChartData(this.gastos)
   }
 
   ngOnInit(){
-  console.log(this.gastos,'gastos');
-    this.updateChartData(this.gastos)
+
 
   }
   public barChartType: ChartType = 'bar';

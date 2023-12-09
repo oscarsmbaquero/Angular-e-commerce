@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { StoreService } from 'src/core/services/store/store.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { StoreService } from 'src/core/services/store/store.service';
   templateUrl: './ventas.component.html',
   styleUrls: ['./ventas.component.css']
 })
-export class VentasComponent {
+export class VentasComponent implements OnInit{
   data: any;
 
   options: any;
@@ -40,11 +40,11 @@ export class VentasComponent {
                 label: 'ventas',
                 backgroundColor: documentStyle.getPropertyValue('--blue-500'),
                 borderColor: documentStyle.getPropertyValue('--blue-500'),
-                //data: [65, 59, 80, 81, 56, 55, 40]
-                data: []
+                data: [65, this.totalSale+28, 80, 81, 56, 55, 40]
+                //data: []
             },
             {
-                label: 'My Second dataset',
+                label: 'Gastos',
                 backgroundColor: documentStyle.getPropertyValue('--pink-500'),
                 borderColor: documentStyle.getPropertyValue('--pink-500'),
                 data: [28, 48, 40, 19, 86, 27, 90]
@@ -89,6 +89,12 @@ export class VentasComponent {
     };
 }
 
+ngOnChanges(changes: SimpleChanges) {
+  if (changes['data'] && changes['data'].currentValue) {
+    //this.showGrafics();
+    console.log(this.data,'data');
+  }
+}
 // getOrders(){
 //   this.storeServices.getOrders().subscribe((element)=>{
 //     console.log(element);
@@ -120,7 +126,8 @@ const fechaFormateada = `${year}-${month < 10 ? '0' : ''}${month}`;
       // console.log('Si');
     }
   });
-
+  console.log(objectCountByMonth,123);
+  
   // Luego, actualiza los datos para el dataset 'ventas' en la propiedad 'data'
   this.data.datasets[0].data = this.transformDataForChart(objectCountByMonth);
 }
@@ -159,7 +166,7 @@ getOrders() {
     this.actualizarRegistro(orders);
 
     // Ahora puedes acceder a this.data para usarlo en tu gráfica
-    console.log('Datos actualizados para la gráfica:', this.data);
+    console.log('Datos actualizados para la gráfica:', this.totalSale);
   });
 }
 

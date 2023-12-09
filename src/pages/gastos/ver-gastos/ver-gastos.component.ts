@@ -18,9 +18,11 @@ export class VerGastosComponent {
 
 
   constructor(
+    
+    
     //private storeService : StoreService
   ){
-
+    console.log(this.gastos,'vergastos');
   }
 
 //   ngOnInit() {
