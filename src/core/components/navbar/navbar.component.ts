@@ -5,6 +5,7 @@ import { StoreService } from 'src/core/services/store/store.service';
 import { UsersService } from 'src/core/services/users/users.service';
 import { logoService } from 'src/core/services/logo/logo.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { NavbarService } from 'src/core/services/navbarService/navbar.service';
 
 
 // interface City {
@@ -28,11 +29,14 @@ export class NavbarComponent implements OnInit {
 
   palabrasAvatar='';
 
+  showNavbar = false;
+
   constructor(
     private router: Router,
     private storeService: StoreService,
     private usersService: UsersService,
     private logoService: logoService,
+    private navbarService: NavbarService
   ) {
     //this.carts = this.storeService.getCart().length;
     //console.log(this.carts,'navbar');
@@ -82,5 +86,16 @@ export class NavbarComponent implements OnInit {
 
   navigateTo(){
     this.router.navigate(['/client/account'])
+  }
+
+  /**
+   * collapsa el navbar desde el submenu
+   */
+  toggleNavbar(){
+  //   const navbarToggler = document.querySelector('.navbar-toggler') as HTMLElement;
+  // if (navbarToggler) {
+  //   navbarToggler.click();
+  // }
+  this.navbarService.collapseNavbar();
   }
 }

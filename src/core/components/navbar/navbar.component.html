@@ -46,7 +46,7 @@
         class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
         style="--bs-scroll-height: 100px"
       >
-        <li class="nav-item" routerLinkActive="active">
+        <li (click)="toggleNavbar()" class="nav-item" routerLinkActive="active">
           <a
             class="nav-link"
             [routerLink]="['']"
@@ -55,7 +55,7 @@
             ><span class="text-white" style="font-size: 15px">Home</span></a
           >
         </li>
-        <li class="nav-item" routerLinkActive="active">
+        <li (click)="toggleNavbar()"class="nav-item" routerLinkActive="active">
           <a
             class="nav-link"
             [routerLink]="['/list']"
@@ -88,7 +88,7 @@
             <li><a class="dropdown-item" href="#">Otros Productos</a></li>
           </ul>
         </li> -->
-        <li class="nav-item" routerLinkActive="active">
+        <li  (click)="toggleNavbar()" class="nav-item" routerLinkActive="active">
           <a
             class="nav-link"
             [routerLink]="['/client/account']"
@@ -137,37 +137,37 @@
             <span style="color: white; font-size: 15px">Panel de Control</span>
           </a>
           <ul class="dropdown-menu" style="background-color: black">
-            <li>
+            <li (click)="toggleNavbar()">
               <a class="dropdown-item" [routerLink]="['/inventario']"
                 ><span class="text-white">Inventario</span>
               </a>
             </li>
             <li><hr class="dropdown-divider" /></li>
-            <li>
+            <li (click)="toggleNavbar()">
               <a class="dropdown-item" [routerLink]="['/envios']"
                 ><span class="text-white">Envíos</span>
               </a>
             </li>
             <li><hr class="dropdown-divider" /></li>
-            <li>
+            <li (click)="toggleNavbar()">
               <a class="dropdown-item" [routerLink]="['/clients']"
                 ><span class="text-white">Clientes</span>
               </a>
             </li>
             <li><hr class="dropdown-divider" /></li>
-            <li>
+            <li (click)="toggleNavbar()">
               <a class="dropdown-item" [routerLink]="['/ventas']"
                 ><span class="text-white">Gráficas</span>
               </a>
             </li>
             <li><hr class="dropdown-divider" /></li>
-            <li>
+            <li (click)="toggleNavbar()">
               <a class="dropdown-item" [routerLink]="['/anadir']"
                 ><span class="text-white">Añadir Producto</span>
               </a>
             </li>
             <li><hr class="dropdown-divider" /></li>
-            <li>
+            <li (click)="toggleNavbar()">
               <a class="dropdown-item" [routerLink]="['/anadir-gasto']"
                 ><span class="text-white">Gastos</span>
               </a>
@@ -186,7 +186,7 @@
         style="--bs-scroll-height: 100px"
       >
         <ng-container *ngIf="activeUser; else notUser">
-          <li class="nav-item">
+          <li class="nav-item" (click)="toggleNavbar()">
             <a
               class="nav-link"
               [routerLink]="['/user']"
@@ -213,7 +213,7 @@
         </ng-container>
 
         <ng-template #notUser>
-          <li class="nav-item" routerLinkActive="active">
+          <li class="nav-item" routerLinkActive="active" (click)="toggleNavbar()">
             <a
               class="nav-link"
               [routerLink]="['/user']"
