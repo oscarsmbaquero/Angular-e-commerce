@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { StoreService } from 'src/core/services/store/store.service';
+//import * as jsPDF from 'jspdf';
+import { jsPDF } from 'jspdf';
+
 
 @Component({
   selector: 'app-ver-gastos',
@@ -41,7 +44,22 @@ toggleDetails(gasto: any, index: number): void {
   } else {
     this.selectedGasto = gasto;
     this.selectedRowIndex = index;
+    //this.generarPdf(this.selectedGasto.image)
   }
+  //console.log(this.selectedGasto.image,45);
+  
+}
+generarPdf(image: any): void{
+  // console.log(image);
+  const nombreArchivo = 'factura.pdf';
+
+    const pdf = new jsPDF();
+    pdf.addImage(image, 'JPEG', 10, 10, 190, 150);
+    pdf.save(nombreArchivo);
+    //console.log(pdf,'pdf');
+    
+  
+
 }
 
 

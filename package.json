@@ -28,6 +28,7 @@
     "chart.js": "^4.4.0",
     "emailjs": "^4.0.3",
     "ionicons": "^7.1.2",
+    "jspdf": "^2.5.1",
     "mdb-ui-kit": "^6.4.1",
     "ng2-charts": "^4.1.1",
     "ngx-paypal": "^11.0.0",
