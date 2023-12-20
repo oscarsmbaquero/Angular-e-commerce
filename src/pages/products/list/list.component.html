@@ -8,7 +8,13 @@
           <!-- Mensaje al añadir  -->
           <p-toast position="top-center"></p-toast>
           <img src='../../../assets/images/new.png' *ngIf="product.isNew" class="new-products">          
-          <img class="card-img" [src]=" product.image" alt="Vans">
+          <!-- <img class="card-img" [src]=" product.image" alt="Vans"/> -->
+          <p-image [src]="product.image" 
+          alt="Image" 
+           
+          [preview]="true"> 
+ </p-image>
+          <!-- <p-image [src]="product.image" alt="Image" [preview]="true"></p-image> -->
           <!-- <div class=" d-flex justify-content-end">
             <a href="#" class="card-link text-danger like">
               <i class="fas fa-heart"></i>
