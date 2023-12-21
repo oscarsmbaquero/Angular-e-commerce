@@ -1,15 +1,5 @@
-/* body {
-  padding: 2rem 0rem;
-  display: flex;
-  flex-wrap: wrap;
-  
-}
-.rows{
-  background-color: red;
-} */
+
 /* Estilos personalizados para la responsividad de la imagen Primeng */
-
-
 ::ng-deep .p-image img {
   max-width: 100% !important;
   height: auto !important;
