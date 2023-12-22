@@ -62,6 +62,11 @@ const routes: Routes = [
     //canActivate: [AuthGuard],
     loadChildren: () => import('src/pages/gastos/gastos.module').then(m => m.GastosModule)
   },
+  {
+    path: 'top-ventas',
+    //canActivate: [AuthGuard],
+    loadChildren: () => import('src/pages/products/top-ventas/top-ventas.module').then(m => m.TopVentasModule)
+  },
 ];
 
 @NgModule({

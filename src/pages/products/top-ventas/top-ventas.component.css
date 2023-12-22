@@ -1,0 +1,13 @@
+.top{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+   
+   
+}
+.graphics{
+    width: 90%;
+    min-height: 80vh;
+}

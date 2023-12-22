@@ -6,13 +6,16 @@ import { InventaryRoutingModule } from './inventary-routing.module';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { ButtonModule } from 'primeng/button';
+//pipe
+import { DashIfNullPipe } from 'src/app/pipes/dash-if-null.pipe';
 
 
 
 
 @NgModule({
   declarations: [
-    InventaryComponent
+    InventaryComponent,
+    DashIfNullPipe
   ],
   imports: [
     CommonModule,

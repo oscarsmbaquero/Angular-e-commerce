@@ -16,6 +16,7 @@ export interface IProduct {
     pCompra: number;
     pvp: number;
     isNew?: boolean;
+    unidadesVendidas: number;
 }
 // export enum TypeGasto {
 //   "casa" = "casa",

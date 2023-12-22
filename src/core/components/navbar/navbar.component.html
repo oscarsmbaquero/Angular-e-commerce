@@ -172,6 +172,14 @@
                 ><span class="text-white">Gastos</span>
               </a>
             </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li (click)="toggleNavbar()">
+              <a class="dropdown-item" [routerLink]="['/top-ventas']"
+                ><span class="text-white">Top Ventas</span>
+                <img src='../../../assets/images/new.png' class="new-products">
+              </a>
+              
+            </li>
             <!-- <li><hr class="dropdown-divider" /></li> -->
             <!-- <li><a class="dropdown-item" href="#">Otros Productos</a></li> -->
           </ul>
