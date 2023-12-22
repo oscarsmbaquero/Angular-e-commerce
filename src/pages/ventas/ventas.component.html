@@ -1,6 +1,16 @@
 <div style="padding: 20px; border-radius: 12px">
 <div class="card">
     <h6 style="text-align: center;color: red;">Total Ventas:&nbsp;{{totalSale}}&nbsp;€</h6>
-    <p-chart type="bar" [data]="data" [options]="options"></p-chart>
+    <h6 style="text-align: center;color: red;">Total Gastos:&nbsp;{{totalGasto}}&nbsp;€</h6>
+    <!-- <p-chart type="bar" [data]="data" [options]="options"></p-chart> -->
+    <canvas
+    baseChart
+    class="chart"
+    [data]="barChartData"
+    [type]="barChartType"
+    [options]="barChartOptions"
+   
+  >
+  </canvas>
 </div>
 </div>

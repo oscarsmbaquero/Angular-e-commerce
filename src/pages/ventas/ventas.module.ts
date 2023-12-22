@@ -4,6 +4,7 @@ import { VentasComponent } from './ventas.component';
 import { VentasRoutingModule } from './ventas-routing.module';
 //primeng
 import { ChartModule } from 'primeng/chart';
+import { NgChartsModule } from 'ng2-charts';
 
 
 
@@ -14,7 +15,7 @@ import { ChartModule } from 'primeng/chart';
   imports: [
     CommonModule,
     VentasRoutingModule,
-    ChartModule
+    NgChartsModule
   ]
 })
 export class VentasModule { }
