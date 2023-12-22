@@ -36,7 +36,7 @@ ngOnInit() {
 
 private getProducts() {
     this.storeService.getProducts().subscribe((products) => {
-      this.products = products;
+      this.products = products.sort((a,b)=>(b.unidades - a.unidades));
       this.products.forEach((product) => {
         if (product.unidades < 1) {
           product.stock = 'Agotado';
