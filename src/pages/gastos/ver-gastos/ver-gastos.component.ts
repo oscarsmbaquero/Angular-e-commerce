@@ -49,9 +49,10 @@ toggleDetails(gasto: any, index: number): void {
   //console.log(this.selectedGasto.image,45);
   
 }
-generarPdf(image: any): void{
-  // console.log(image);
-  const nombreArchivo = 'factura.pdf';
+generarPdf(image: any,concepto:string): void{
+  
+console.log(concepto);
+  const nombreArchivo = `factura-${concepto}.pdf`;
 
     const pdf = new jsPDF();
     pdf.addImage(image, 'JPEG', 10, 10, 190, 150);
