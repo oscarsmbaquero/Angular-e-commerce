@@ -16,7 +16,7 @@ export class StoreService {
   private cart = '';
   idUser = '';
 
-  private totalUnidades: number =0;
+  private totalUnidades: number = 0;
   private cartDataSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(
     []
   );
@@ -46,11 +46,13 @@ export class StoreService {
   }
   /**
    * Añadir a la cesta
-   * @param product 
+   * @param product
    */
   addToCart(product: any): void {
     const currentCart = this.getCart();
-    const existingProduct = currentCart.find((item) => item._id === product._id);
+    const existingProduct = currentCart.find(
+      (item) => item._id === product._id
+    );
 
     if (existingProduct) {
       console.log('Ya existe');
@@ -68,7 +70,7 @@ export class StoreService {
   }
   /**
    * Actualizar Cesta
-   * @param cart 
+   * @param cart
    */
 
   updateCart(cart: any[]): void {
@@ -91,7 +93,7 @@ export class StoreService {
   }
   /**
    * eliminar un articulo de la cesta
-   * @param cartId 
+   * @param cartId
    */
 
   clearCartId(cartId: string): void {
@@ -117,70 +119,62 @@ export class StoreService {
   buyProducts(venta: IVenta) {
     const user = localStorage.getItem('user');
     if (user !== null) {
-        const objetoJSON = JSON.parse(user);
-        this.idUser = objetoJSON.data.id;
+      const objetoJSON = JSON.parse(user);
+      this.idUser = objetoJSON.data.id;
     }
-    
+
     // Agrega el ID de usuario y la venta al payload
     const payload = {
-        idUser: this.idUser,
-        venta: venta
+      idUser: this.idUser,
+      venta: venta,
     };
 
-    return this.httpClient.post<IVenta>(`${environment.apiUrlMock}products`, payload);
-}
+    return this.httpClient.post<IVenta>(
+      `${environment.apiUrlMock}products`,
+      payload
+    );
+  }
 
-  // buyProducts(products: IProduct[]){
-  //   const user = localStorage.getItem('user');
-  //   if(user !== null){      
-  //     const objetoJSON = JSON.parse(user);
-  //     this.idUser = objetoJSON.data.id;
-  //   }
-  //   const payload = {
-  //     idUser: this.idUser, // Agrega el ID de usuario al payload
-  //     products: products // Agrega los productos al payload
-  //   };
-
-  //   return this.httpClient.post<IProduct[]>(`${environment.apiUrlMock}products`,payload);
-  // }
-
-  getOrders(){
-    return this.httpClient.get<IVenta[]>(`${environment.apiUrlMock}ventas`);    
+  getOrders() {
+    return this.httpClient.get<IVenta[]>(`${environment.apiUrlMock}ventas`);
   }
   /**
    * cambiar el estado del pedido
    */
-  changeStateOrders(id: string, estado: string){
-
-    console.log(id,estado);
+  changeStateOrders(id: string, estado: string) {
     const payload = {
       id: id, // Agrega el ID de usuario al payload
-      estado: estado // Agrega los productos al payload
+      estado: estado, // Agrega los productos al payload
     };
-    console.log(id,'id');
-    return this.httpClient.put<IVenta[]>(`${environment.apiUrlMock}ventas/${id}`, payload);
+    console.log(id, 'id');
+    return this.httpClient.put<IVenta[]>(
+      `${environment.apiUrlMock}ventas/${id}`,
+      payload
+    );
     //return this.httpClient.put<IVenta[]>(`${environment.apiUrlMock}ventas`,id);
-
   }
 
   /**
    * Añadir o quitar unidades de productos
-   * @param id 
-   * @param unidades 
-   * @returns 
+   * @param id
+   * @param unidades
+   * @returns
    */
   public ChangeUnits(id: string, unidades: number): Observable<IProduct[]> {
-    console.log(id,unidades);
+    console.log(id, unidades);
     const payload = {
       id: id, // Agrega el ID de usuario al payload
-      unidades: unidades // Agrega los productos al payload
+      unidades: unidades, // Agrega los productos al payload
     };
-    return this.httpClient.put<IProduct[]>(`${environment.apiUrlMock}products/inventario/${id}`, payload);
+    return this.httpClient.put<IProduct[]>(
+      `${environment.apiUrlMock}products/inventario/${id}`,
+      payload
+    );
   }
 
   public addProduct(body: any): Observable<any> {
     const formData = new FormData();
-    console.log(body,'body');
+    console.log(body, 'body');
     formData.append('name', body.name);
     formData.append('description', body.description);
     formData.append('pCompra', body.pCompra);
@@ -196,7 +190,7 @@ export class StoreService {
 
   addGasto(body: any): Observable<any> {
     const formData = new FormData();
-    console.log(body,'bodyasdad');
+    console.log(body, 'bodyasdad');
     formData.append('nameClient', body.nameClient);
     formData.append('numberIssue', body.numberIssue);
     formData.append('type', body.type);
@@ -206,18 +200,14 @@ export class StoreService {
     formData.append('priceFinal', body.priceFinal);
     formData.append('image', body.image);
     //formData.append('date', body.date);
-    
+
     return this.httpClient.post<any>(
       `${environment.apiUrlMock}gastos/addGasto`,
       formData
     );
-
   }
 
-  getGastos(): Observable<IVenta[]>{
-    return this.httpClient.get<IVenta[]>(`${environment.apiUrlMock}gastos`);    
+  getGastos(): Observable<any[]> {
+    return this.httpClient.get<any[]>(`${environment.apiUrlMock}gastos`);
   }
-  
-
-  
 }
