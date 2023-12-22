@@ -1,5 +1,8 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { StoreService } from 'src/core/services/store/store.service';
+import { ChartData, ChartType } from 'chart.js';
+
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-ventas',
@@ -9,9 +12,24 @@ import { StoreService } from 'src/core/services/store/store.service';
 export class VentasComponent implements OnInit{
   data: any;
 
+  public barChartType: ChartType = 'bar';
+
+   barChartLabels: string[] = [''];
+
+   @Input('data') barChartData: ChartData<'bar'> = {
+    labels: this.barChartLabels,
+    datasets: [
+      {
+        data: [0],
+      },
+    ],
+  };
+
   options: any;
 
   totalSale = 0;
+  totalGasto = 0;
+  salesByMothot: any;
 
   constructor(
     private storeServices: StoreService
@@ -19,155 +37,151 @@ export class VentasComponent implements OnInit{
 
   }
 
-  ngOnInit(
+  ngOnInit() {   
+    // this.getOrders();
+    // this.getGastos();
+    this.getDataForChart();
+}
+getDataForChart() {
+  forkJoin({
+    sales: this.storeServices.getOrders(),
+    expenses: this.storeServices.getGastos(),
+  }).subscribe(({ sales, expenses }) => {
+    const salesByMonth: { [month: string]: number } = {};
+    const expensesByMonth: { [month: string]: number } = {};
+
+    // Procesar datos de ventas
+    for (let order of sales) {
+      if (order.createdAt) {
+        const orderMonth = new Date(order.createdAt).toLocaleString('es-ES', { month: 'numeric' });
+        salesByMonth[orderMonth] = (salesByMonth[orderMonth] || 0) + order.salePrice;
+        this.totalSale += order.salePrice;
+      }
+    }
+
+    // Procesar datos de gastos
+    for (let gasto of expenses) {
+      if (gasto.createdAt) {
+        const orderMonth = new Date(gasto.createdAt).toLocaleString('es-ES', { month: 'numeric' });
+        expensesByMonth[orderMonth] = (expensesByMonth[orderMonth] || 0) + gasto.priceFinal;
+        this.totalGasto += gasto.priceFinal;
+      }
+    }
     
-  ) {
-    this.getOrders();
-    const documentStyle = getComputedStyle(document.documentElement);
-    const textColor = documentStyle.getPropertyValue('--text-color');
-    const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
-    const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
-   
-    
 
-
-    this.data = {
-        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto',
-                'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'  
-      ],
-        datasets: [
-            {
-                label: 'ventas',
-                backgroundColor: documentStyle.getPropertyValue('--blue-500'),
-                borderColor: documentStyle.getPropertyValue('--blue-500'),
-                data: [65, this.totalSale+28, 80, 81, 56, 55, 40]
-                //data: []
-            },
-            {
-                label: 'Gastos',
-                backgroundColor: documentStyle.getPropertyValue('--pink-500'),
-                borderColor: documentStyle.getPropertyValue('--pink-500'),
-                data: [28, 48, 40, 19, 86, 27, 90]
-            }
-        ]
-    };
-
-    this.options = {
-        indexAxis: 'y',
-        maintainAspectRatio: false,
-        aspectRatio: 0.8,
-        plugins: {
-            legend: {
-                labels: {
-                    color: textColor
-                }
-            }
-        },
-        scales: {
-            x: {
-                ticks: {
-                    color: textColorSecondary,
-                    font: {
-                        weight: 500
-                    }
-                },
-                grid: {
-                    color: surfaceBorder,
-                    drawBorder: false
-                }
-            },
-            y: {
-                ticks: {
-                    color: textColorSecondary
-                },
-                grid: {
-                    color: surfaceBorder,
-                    drawBorder: false
-                }
-            }
-        }
-    };
+    this.updateChartData(salesByMonth, expensesByMonth);
+  });
 }
 
-ngOnChanges(changes: SimpleChanges) {
-  if (changes['data'] && changes['data'].currentValue) {
-    //this.showGrafics();
-    console.log(this.data,'data');
-  }
-}
-// getOrders(){
-//   this.storeServices.getOrders().subscribe((element)=>{
-//     console.log(element);
+// getGastos(): void{
+//   this.storeServices.getGastos().subscribe((gastos)=>{
+//     const gastosByMonth: { [month: string]: number } = {};
+//     for( let gasto of gastos){
+//       if(gasto.createdAt){
+//         const orderMonth = new Date(gasto.createdAt).toLocaleString('es-ES', { month: 'numeric' });
+//         gastosByMonth[orderMonth] = (gastosByMonth[orderMonth] || 0) + gasto.priceFinal;
+//          this.totalGasto += gasto.priceFinal;
+       
+        
+//       }
+//     }
+//     console.log(gastosByMonth,51);
+//     this.updateChartData(gastosByMonth);
+
 //   })
 // }
-private actualizarRegistro(objects: any[]) {
-  // Crea un objeto para mantener el recuento de ventas por mes
-  const objectCountByMonth: Record<string, number> = {};
 
-  // Recorre los objetos y actualiza el recuento por mes
-  objects.forEach((obj) => {
-    const objDate = new Date(obj.createdAt);
-    const monthKey = `${objDate.getFullYear()}-${objDate.getMonth() + 1}`;
-    // console.log(monthKey,'montkey');
-    // console.log(objDate,'objDate');
-    // Obtiene el año y el mes
-const year = objDate.getFullYear();
-const month = objDate.getMonth() + 1; // Nota: getMonth() devuelve 0 para enero, 1 para febrero, etc.
+/**
+ * Metodo que obtiene las ventas
+ */
+// getOrders() {
+//   this.storeServices.getOrders().subscribe((orders) => {
+//     console.log(orders);
+//     const salesByMonth: { [month: string]: number } = {};
 
-// Convierte la fecha en "YYYY-MM"
-const fechaFormateada = `${year}-${month < 10 ? '0' : ''}${month}`;
-// console.log(fechaFormateada,'fechaFormateda');
-// console.log(objectCountByMonth,'object');
-    if (!objectCountByMonth[fechaFormateada]) {
-      // console.log('no');
-      objectCountByMonth[fechaFormateada] = 1;
-    } else {
-      objectCountByMonth[fechaFormateada]++;
-      // console.log('Si');
-    }
-  });
-  console.log(objectCountByMonth,123);
-  
-  // Luego, actualiza los datos para el dataset 'ventas' en la propiedad 'data'
-  this.data.datasets[0].data = this.transformDataForChart(objectCountByMonth);
+//     for (let order of orders) {
+//       if (order.createdAt) {
+//         // Obtener el mes de la fecha de creación
+//         const orderMonth = new Date(order.createdAt).toLocaleString('es-ES', { month: 'numeric' });
+//         // Sumar la venta al mes correspondiente
+//         salesByMonth[orderMonth] = (salesByMonth[orderMonth] || 0) + order.salePrice;
+//         this.totalSale += order.salePrice;
+//       }
+//     }
+//     // Convertir el objeto en un array de objetos
+//     const salesArray = Object.keys(salesByMonth).map((month) => ({
+//       month,
+//       totalSale: salesByMonth[month],
+//     }));
+//     this.updateChartData(salesByMonth);
+//   });
+// }
+// private updateChartData(salesByMonth: { [month: string]: number }) {
+//   const salesArray = Object.keys(salesByMonth).map((month) => ({
+//     month,
+//     totalSale: salesByMonth[month],
+//   }));
+//   const newData: ChartData<'bar'> = {
+//     labels: salesArray.map((item) => item.month),
+//     datasets: [{
+//       data: salesArray.map((item) => item.totalSale),
+//       backgroundColor: ['rgba(255, 0, 0, 0.5)', 'rgba(0, 255, 0, 0.5)', 'rgba(0, 0, 255, 0.5)', 'rgba(220, 20, 102, 0.5)', 'rgba(115, 110, 5, 1)', 'rgba(250, 0, 255, 0.5)'],
+//       borderColor: '#36A2EB',
+//     }],
+//   };
+//   this.barChartData = newData;
+// }
+private updateChartData(salesByMonth: { [month: string]: number }, expensesByMonth: { [month: string]: number }) {
+  const salesArray = Object.keys(salesByMonth).map((month) => ({
+    month,
+    totalSale: salesByMonth[month],
+  }));
+  const expensesArray = Object.keys(expensesByMonth).map((month) => ({
+    month,
+    totalExpense: expensesByMonth[month],
+  }));
+  const newData: ChartData<'bar'> = {
+    labels: salesArray.map((item) => item.month),
+    datasets: [
+      {
+        label: 'Ventas',
+        data: salesArray.map((item) => item.totalSale),
+        backgroundColor: ['rgba(255, 0, 0, 0.5)', 'rgba(0, 255, 0, 0.5)', 'rgba(0, 0, 255, 0.5)', 'rgba(220, 20, 102, 0.5)', 'rgba(115, 110, 5, 1)', 'rgba(250, 0, 255, 0.5)'],
+        borderColor: '#36A2EB',
+      },
+      {
+        label: 'Gastos',
+        data: expensesArray.map((item) => item.totalExpense),
+        backgroundColor: ['rgba(255, 255, 0, 0.5)', 'rgba(0, 128, 0, 0.5)', 'rgba(70, 130, 180, 0.5)', 'rgba(255, 69, 0, 0.5)', 'rgba(139, 69, 19, 0.5)', 'rgba(128, 0, 128, 0.5)'],
+        borderColor: '#FFD700',
+      },
+    ],
+  };
+  this.barChartData = newData;
 }
 
-// Función para transformar los datos en el formato necesario para el gráfico
-// Función para transformar los datos en el formato necesario para el gráfico
-// Función para transformar los datos en el formato necesario para el gráfico
-private transformDataForChart(data: Record<string, number>): number[] {
-  const chartData: number[] = [];
 
-  // Recorre los meses en el orden en que aparecen en this.data.labels
-  for (const label of this.data.labels) {
-    // Convierte el nombre del mes en la clave esperada
-    const key = label.toLowerCase(); // Convierte "Octubre" a "octubre"
-    // console.log(key);
-    // Obtiene el valor correspondiente del objeto de datos
-    const monthData = data[key] || 0; // Obtiene el valor del mes o establece 0 si no hay datos
-    // console.log(monthData,'monthData');
-    chartData.push(monthData);
-  }
+/**
+ * Opciones de graficas
+ */
+public barChartOptions: any = {
+  responsive: true,
+  scales: {
+    y: {
+      beginAtZero: true,
+    },     
+  },
+  plugins: {
+    legend: {
+      display: false,
+    },
+  },
+  datasets: {
+    bar: {
+      backgroundColor: ['rgba(255, 0, 0, 0.5)', 'rgba(0, 255, 0, 0.5)', 'rgba(0, 0, 255, 0.5)','rgba(220, 20, 102, 0.5)','rgba(115,110,5,1)','rgba(250, 0, 255, 0.5)'],
+    },
+  },
+};
 
-  return chartData;
-}
-
-
-
-getOrders() {
-  this.storeServices.getOrders().subscribe((orders) => {
-    console.log(orders);
-
-    for(let order of orders){
-      this.totalSale += order.salePrice;
-    }
-   console.log(this.totalSale);
-    // Actualiza el registro con los datos recibidos
-    this.actualizarRegistro(orders);
-
-    // Ahora puedes acceder a this.data para usarlo en tu gráfica
-    console.log('Datos actualizados para la gráfica:', this.totalSale);
-  });
-}
 
 }

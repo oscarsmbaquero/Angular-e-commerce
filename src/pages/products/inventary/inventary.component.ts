@@ -51,7 +51,6 @@ private getProducts() {
       });
       
       this.stockStatus = this.products.map(product => product.stock!) ;// Puedes acceder a this.products con el campo 'stock' añadido
-      console.log(this.products);
     });
   }
 
@@ -70,7 +69,6 @@ private getProducts() {
 
 AddUnit(id: string, unidades: number, mode: string) {
   this.accepted = true;
-  console.log(id, unidades);
 
   switch (mode) {
     case 'decrement':
@@ -85,11 +83,9 @@ AddUnit(id: string, unidades: number, mode: string) {
         }, 500);
         
       } else {
-        console.log('Producto no encontrado con ID:', id);
       }
       if(productToDecrement){
         this.storeService.ChangeUnits(id, productToDecrement.unidades).subscribe((element) =>{
-          console.log(element);
         });
       }
       break;
@@ -103,19 +99,15 @@ AddUnit(id: string, unidades: number, mode: string) {
           this.getProducts();  
         }, 500);
       } else {
-        console.log('Producto no encontrado con ID:', id);
       }
-      console.log(productToIncrement?.unidades,id);
       if(productToIncrement){
         this.storeService.ChangeUnits(id, productToIncrement.unidades).subscribe((element) =>{
-          console.log(element);
         });
       }
       
       break;
 
     default:
-      console.log('Modo desconocido:', mode);
   }
 }
 
