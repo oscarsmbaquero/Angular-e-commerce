@@ -71,7 +71,7 @@
               <p class="p">Precio: <span style="color:black">{{ item.price }}€</span></p>
               <p class="p">Iva: <span style="color:black">{{ item.iva }}%</span></p>
               <p class="p">Precio Final: <span style="color:black">{{ item.priceFinal }}€</span></p>
-              <div *ngIf="item.image" (click)="generarPdf(item.image)">
+              <div *ngIf="item.image" (click)="generarPdf(item.image,item.concepto)">
                 <img src="../../../assets/images/pdf.jpg" width="40px">
               </div>
               
