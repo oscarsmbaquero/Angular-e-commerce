@@ -14,7 +14,7 @@ export class TopVentasComponent implements OnInit{
   
   public barChartType: ChartType = 'bar';
 
-   barChartLabels: string[] = ['Gastos'];
+   barChartLabels: string[] = [''];
 
    //pruebaInput:string='';
 
@@ -49,8 +49,7 @@ export class TopVentasComponent implements OnInit{
 
   private getProducts() {
     this.storeService.getProducts().subscribe((products) => {
-      this.products = products;
-      console.log(this.products);
+      this.products = products.sort((a,b)=>b.unidadesVendidas - a.unidadesVendidas);
       this.updateChartData(this.products);
     });
   }
@@ -60,7 +59,7 @@ export class TopVentasComponent implements OnInit{
       datasets: [{
         data: products.map(product => product.unidadesVendidas),
         backgroundColor: ['rgba(255, 0, 0, 0.5)', 'rgba(0, 255, 0, 0.5)', 'rgba(0, 0, 255, 0.5)', 'rgba(220, 20, 102, 0.5)', 'rgba(115,110,5,1)', 'rgba(250, 0, 255, 0.5)'],
-       
+        borderColor: '#36A2EB',
       }],
     };
     this.barChartData = newData;
@@ -70,7 +69,7 @@ export class TopVentasComponent implements OnInit{
     scales: {
       y: {
         beginAtZero: true,
-      },
+      },     
     },
     plugins: {
       legend: {
