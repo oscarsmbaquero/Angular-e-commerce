@@ -53,22 +53,14 @@ export class OrderComponent {
     ngAfterViewInit() {
       window.scrollTo(0, 0);
     }
-  
 
-  // myOrders(userId: string){
-  //   console.log('entro');
-  //   this.usersService.getOrderClient(userId).subscribe((data) =>{
-  //   console.log(data,'datas');
-  //   const orderNumbers = data.pedidos.numeroPedido.map((element: any) => element.orderNumber);
-  //   console.log(orderNumbers);
-  //   })
-  //   console.log(userId,'userId');
-  
-
-  // }
+    /**
+     * Metodo para obtener los pedidos
+     * @param userId 
+     */
   myOrders(userId: string): void {
     this.usersService.getOrderClient(userId).subscribe((response) => {
-      const data = response.data; // Accede al objeto "data"
+      const data = response.data;
       if (this.pedidos && data.length > 0) {
         this.ultimoPedido = true;
       }
@@ -82,33 +74,20 @@ export class OrderComponent {
               estadoPedido: pedido.estadoPedido,
               salePrice: pedido.salePrice,
               products: pedido.products.map((producto:any) => ({
-                productName: producto.name,
-                productDescription: producto.description,
-                unidades: producto.unidades,
-                precio: producto.precio,
-                // Agregar más campos de producto si es necesario.
+              productName: producto.name,
+              productDescription: producto.description,
+              unidades: producto.unidades,
+              precio: producto.precio,
               })),
-              // Agregar más campos de pedido si es necesario.
             };
             return orderDetails;
           });
-    
-          // Ahora, tienes un solo array que contiene todos los detalles de cada pedido.
-          console.log(this.pedidos);
           this.pedidos = allOrdersArray;
-          console.log(this.pedidos,'pedidos final');
-        } else {
-          console.error('No se encontraron datos válidos en la respuesta.');
-        }
-    
-     
+        }     
     });
-  
-    console.log(userId, 'userId');
   }
   
   buyAgain(product:IProduct){
-    console.log(product);
     this.storeService.addToCart(product);
     this.router.navigate(['/cesta']);
   }

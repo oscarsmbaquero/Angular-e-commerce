@@ -17,19 +17,18 @@ export class GastosComponent implements OnInit{
 
   gastos: any;
 
+  pruebaInput: string='';
 
   @Output() showGrafics = new EventEmitter<string>();
-  pruebaInput: string='';
-  // public anadirGasto: FormGroup;
-  // public submitted: boolean = false;
+
+
   ngOnInit() {
     this.storeService.getGastos().subscribe((data) => {
         this.gastos = data;
-        console.log(this.gastos);
-        this.showGraficas(this.gastos);    
+        this.showGraficas(this.gastos);
     });
     // setTimeout(() => {
-    //   this.showGraficas(this.gastos);  
+    //   this.showGraficas(this.gastos);
     // }, 2000);
     
 }
@@ -91,8 +90,6 @@ export class GastosComponent implements OnInit{
   showGraficas(gastos:any){
     console.log(gastos,'gastos');
     
-    this.pruebaInput = gastos
-    console.log(this.pruebaInput,402);
-    // this.showGrafics.emit(event)
+    this.pruebaInput = gastos;
   }
 }

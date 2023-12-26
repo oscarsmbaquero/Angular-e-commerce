@@ -22,7 +22,6 @@ export class ClientsComponent {
       
       this.users.forEach((user) => {
         this.numberPedidos = user.numeroPedido.length;
-        console.log(this.users,'users');
       });
     });
     
