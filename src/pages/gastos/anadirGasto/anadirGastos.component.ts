@@ -15,9 +15,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./anadirGastos.component.css']
 })
 export class AddGastosComponent {
+  importeTotalPlaceholder ='';
 
   public anadirGasto: FormGroup;
   public submitted: boolean = false;
+  
 
   constructor(
     private formBuilder: FormBuilder,
@@ -35,7 +37,37 @@ export class AddGastosComponent {
       image : ['']
       //date: [''],
     });
+    // this.anadirGasto.get('price')?.valueChanges.subscribe(() => {
+    //   this.onInputChange();
+    // });
+
+    // this.anadirGasto.get('iva')?.valueChanges.subscribe(() => {
+    //   this.onInputChange();
+    // });
   }
+  onInputChange() {
+    // Obtén los valores actuales de 'price' e 'iva'
+    const price = this.anadirGasto.get('price')?.value;
+    const ivaString = this.anadirGasto.get('iva')?.value;
+    const iva = parseFloat(ivaString);
+    console.log(price,iva);
+    
+
+    // Verifica si ambos valores son válidos antes de realizar el cálculo
+    if (price !== null && iva !== null && typeof price === 'number' && typeof iva === 'number') {
+      // Calcula el importe total (ajusta según tus necesidades)
+      const importeTotal = (price + (price * iva / 100)).toFixed(2);
+      this.importeTotalPlaceholder = importeTotal.toString();
+
+      this.anadirGasto.patchValue({ priceFinal: importeTotal });
+    } else {
+      // Si alguno de los campos está vacío, reinicia el placeholder
+      this.importeTotalPlaceholder = '';
+    }
+  }
+
+
+
 
   public onSubmit(): void {
     this.submitted = true;

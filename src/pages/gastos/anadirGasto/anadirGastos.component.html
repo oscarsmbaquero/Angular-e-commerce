@@ -40,8 +40,10 @@
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Importe neto:</mat-label>
-                <input matInput formControlName="price"  
-                type="number"/>
+                <input matInput formControlName="price"
+                type="number"
+                (input)="onInputChange()"
+                />
                 <mat-error *ngIf="anadirGasto.get('price')?.invalid">
                     Campo obligado
                 </mat-error>
@@ -56,17 +58,19 @@
               <mat-form-field>
                 <mat-label>IVA</mat-label>
                 <select matNativeControl required formControlName="iva"
-                
+                (change)="onInputChange()"
                 >
-                  <option></option>
-                  <option value="5">&nbsp;5%</option>
-                  <option value="16">&nbsp;16%</option>
-                  <option value="21">&nbsp;21%</option>
+                  <option ></option>
+                  <option value=5>&nbsp;5%</option>
+                  <option value=16>&nbsp;16%</option>
+                  <option value=21>&nbsp;21%</option>
                 </select>
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Importe total:</mat-label>
-                <input matInput formControlName="priceFinal"  type="number"/>
+                <input matInput formControlName="priceFinal" 
+                [value]="importeTotalPlaceholder"
+                type="number"/>
                 <mat-error *ngIf="anadirGasto.get('priceFinal')?.invalid">
                     Campo obligado
                 </mat-error>
