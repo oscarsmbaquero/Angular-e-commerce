@@ -19,13 +19,18 @@ export class FooterComponent implements OnInit{
 
 
   ngOnInit(){
-    this.year = new Date().getFullYear();
-
+    //this.year = new Date().getFullYear();
+    this.getDate();
+    /**
+     * pintar el logo de colores
+     */
     this.logoService.logoUrl$.subscribe(newLogoUrl => {
       this.logoUrl = newLogoUrl;
     });
   }
-
+  /**
+   * Metodo para el año en el footer
+   */
   getDate(){
     this.year = new Date().getFullYear(); 
   }

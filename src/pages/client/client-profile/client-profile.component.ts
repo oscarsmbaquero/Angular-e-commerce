@@ -56,9 +56,8 @@ export class ClientProfileComponent {
     
     
     if (userJSON) {
-      const userObject = JSON.parse(userJSON); // Parsea el JSON almacenado en 'user'
-      this.userId = userObject.data.id; // Accede al campo 'id' dentro del objeto 'data'
-      console.log(this.userId); // Muestra el 'id' en la consola
+      const userObject = JSON.parse(userJSON);
+      this.userId = userObject.data.id; 
       this.myUser(this.userId);
       
     } else {
@@ -79,9 +78,6 @@ export class ClientProfileComponent {
       this.userProvince = this.user.data.pedidos.province;
       this.userPhoto = this.user.data.pedidos.image;
       this.nPedidos = this.user.data.pedidos.numeroPedido.length;
-      console.log(this.nPedidos);
-
-
   })
   }
 

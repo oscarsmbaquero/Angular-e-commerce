@@ -5,15 +5,6 @@
       <!-- <img src="assets/images/reset.png" width="70" height="70" alt="" /> -->
       <img src="{{ logoUrl }}" width="120" height="120" alt="logo" />&nbsp;
     </a>
-    <!-- <button 
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarScroll"
-      aria-controls="navbarScroll"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    > -->
     <label
       class="hamburger navbar-toggler"
       type="button"
@@ -34,13 +25,6 @@
         <path class="line" d="M7 16 27 16"></path>
       </svg>
     </label>
-    <!-- <img
-    src="assets/images/hamburguesa.png" width="20" height="20" alt=""
-    /> -->
-    <!-- </button> -->
-    <!-- <a class="navbar-brand" [routerLink]="['']">
-      <img src="assets/images/logoGlass.jpg" width="70" height="50" alt="" />&nbsp;
-    </a> -->
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul
         class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
@@ -66,28 +50,6 @@
             ></a
           >
         </li>
-        <!-- <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <span style="color:white; font-weight: bold; font-size: 15px">Productos</span>
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" [routerLink]="['/list']"
-                ><span class="text-black">Quad Lock</span>
-              </a>
-            </li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Car Play</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Otros Productos</a></li>
-          </ul>
-        </li> -->
         <li  (click)="toggleNavbar()" class="nav-item" routerLinkActive="active">
           <a
             class="nav-link"
@@ -99,30 +61,6 @@
             ></a
           >
         </li>
-        <!-- <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <span style="color:white; font-size: 15px">Mis pedidos</span>
-          </a>
-          <ul class="dropdown-menu" style="background-color: black;">
-            <li>
-              <a class="dropdown-item" [routerLink]="['/client/orders']"
-                ><span class="text-white">Historial</span>
-              </a>
-            </li>
-            <li><hr class="dropdown-divider" /></li>
-            <li>
-              <a class="dropdown-item" [routerLink]="['/client/orders']"
-                ><span class="text-white">Perfil</span>
-              </a>
-            </li>
-          </ul>
-        </li> -->
         <li
           class="nav-item dropdown"
           *ngIf="activeUser && activeUser.data.rol === 'admin'"
