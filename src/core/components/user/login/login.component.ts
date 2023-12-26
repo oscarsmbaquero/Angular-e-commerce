@@ -54,7 +54,7 @@ export class LoginComponent {
     
   ) {
     this.loginUser = this.formBuilder.group({
-      user: ['', [Validators.required ]],
+      mail: ['', [Validators.required ]],
       password: ['', [Validators.required]],
     });
   }
@@ -82,7 +82,7 @@ export class LoginComponent {
     if (this.loginUser.valid) {
       // Creamos un Usuario y lo emitimos
       const user: any = {
-        user: this.loginUser.get('user')?.value,
+        mail: this.loginUser.get('mail')?.value,
         password: this.loginUser.get('password')?.value,
       };
       console.log(user, 46);
