@@ -12,3 +12,8 @@
     width: 90%;
     
 }
+.chart{
+    min-height: 80vh;
+    padding: 35px;
+    margin: 20px;
+}
