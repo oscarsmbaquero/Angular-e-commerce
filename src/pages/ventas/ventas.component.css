@@ -1,3 +1,9 @@
 .card{
     marging-left: 50px;
+    /* min-height: 100vh; */
+}
+.chart{
+    min-height: 80vh;
+    padding: 35px;
+    margin: 20px;
 }

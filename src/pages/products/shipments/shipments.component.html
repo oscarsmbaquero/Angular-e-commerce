@@ -12,6 +12,7 @@
           <th>Fecha Pedido</th>
           <th>Cliente</th>
           <th>Estado Pedido</th>
+          <th>Etiqueta</th>
           <!-- <th>Observaciones</th> -->
         </tr>
       </ng-template>
@@ -19,18 +20,16 @@
         <tr>
           <td>{{ order.orderNumber }}</td>
           <td>{{ order.createdAt  | date: 'dd-MM-yyyy'}}</td>
-          <td>{{ order.userBuy}}</td>
+          <td>{{ order.userBuy[0]?.user}}</td>
           <td *ngIf="order.estadoPedido !== 'Cerrado'">{{ order.estadoPedido}}
-            <p-checkbox 
-            
+            <p-checkbox
                 [(ngModel)]="order.isChecked" 
                 [binary]="true" inputId="binary" 
                 (click)="changeState(order._id)">
             </p-checkbox>
           </td>
-          <td *ngIf="order.estadoPedido === 'Cerrado'">{{ order.estadoPedido}}
-            
-          </td>
+          <td *ngIf="order.estadoPedido === 'Cerrado'">{{ order.estadoPedido}}</td>
+          <td><button class="albaran" (click)="printPdf(order)"><img src="../../../assets/images/albaran.png" style="width: 40px;"></button></td>
           <!-- <td>{{order.statusSend}}</td>           -->
         </tr>
       </ng-template>

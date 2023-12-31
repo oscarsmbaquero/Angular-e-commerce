@@ -6,6 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { IGasto } from 'src/core/services/models/gastos.model';
 import { StoreService } from 'src/core/services/store/store.service';
 
 @Component({
@@ -24,6 +25,8 @@ export class GastosComponent implements OnInit{
 
   ngOnInit() {
     this.storeService.getGastos().subscribe((data) => {
+      console.log(data);
+      
         this.gastos = data;
         this.showGraficas(this.gastos);
     });
@@ -87,9 +90,9 @@ export class GastosComponent implements OnInit{
   //     // );
   //   }
   // }
-  showGraficas(gastos:any){
+  showGraficas(gastos:IGasto){
     console.log(gastos,'gastos');
     
-    this.pruebaInput = gastos;
+    
   }
 }

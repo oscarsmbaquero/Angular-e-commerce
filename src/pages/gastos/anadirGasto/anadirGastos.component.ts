@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { StoreService } from 'src/core/services/store/store.service';
 import { Router } from '@angular/router';
+import { IGasto } from 'src/core/services/models/gastos.model';
 
 @Component({
   selector: 'app-add-gastos',
@@ -50,12 +51,8 @@ export class AddGastosComponent {
     const price = this.anadirGasto.get('price')?.value;
     const ivaString = this.anadirGasto.get('iva')?.value;
     const iva = parseFloat(ivaString);
-    console.log(price,iva);
-    
-
-    // Verifica si ambos valores son válidos antes de realizar el cálculo
     if (price !== null && iva !== null && typeof price === 'number' && typeof iva === 'number') {
-      // Calcula el importe total (ajusta según tus necesidades)
+      // Calcula el importe total
       const importeTotal = (price + (price * iva / 100)).toFixed(2);
       this.importeTotalPlaceholder = importeTotal.toString();
 
@@ -72,7 +69,7 @@ export class AddGastosComponent {
   public onSubmit(): void {
     this.submitted = true;
     if (this.anadirGasto) {
-      const newGasto: any = {
+      const newGasto: IGasto = {
         nameClient: this.anadirGasto.get('nameClient')?.value,
         numberIssue: this.anadirGasto.get('numberIssue')?.value,
         type: this.anadirGasto.get('type')?.value,
