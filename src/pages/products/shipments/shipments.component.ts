@@ -2,6 +2,8 @@ import { StoreService } from 'src/core/services/store/store.service';
 import { Component } from '@angular/core';
 import { IVenta } from 'src/core/services/models/ventas.models';
 
+import * as jsPDF from 'jspdf';
+
 
 @Component({
   selector: 'app-shipments',
@@ -69,6 +71,19 @@ changeState(id: string){
   }
   
 }
+
+printPdf(order: any){
+
+
+  console.log(order,'order');
+  
+  
+  
+  
+  
+
+}
+
 
 
 
