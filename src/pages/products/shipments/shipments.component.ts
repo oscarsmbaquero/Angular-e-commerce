@@ -2,7 +2,7 @@ import { StoreService } from 'src/core/services/store/store.service';
 import { Component } from '@angular/core';
 import { IVenta } from 'src/core/services/models/ventas.models';
 
-import * as jsPDF from 'jspdf';
+import { jsPDF } from 'jspdf';
 
 
 @Component({
@@ -73,15 +73,32 @@ changeState(id: string){
 }
 
 printPdf(order: any){
+  const nombreArchivo = `Pedido-${order.orderNumber}.pdf`;  
+  // Añade una página al PDF
+  const pdf = new jsPDF({
+    unit: 'mm',
+    format: [100, 150],
+  });
 
+  // Ajusta el tamaño de la fuente
+  pdf.setFontSize(8);
+  pdf.setLineHeightFactor(1.2);
+  pdf.text(`Número de Orden: ${order.orderNumber}`, 20, 20);
+  pdf.text(`Cliente: ${order.userBuy[0].user}`, 20, 30);
+  pdf.text(`Dirección: ${order.userBuy[0].address}`, 20, 40);
+  pdf.text(`C.P: ${order.userBuy[0].cp}`, 20, 50);
+  pdf.text(`Provincia: ${order.userBuy[0].province}`, 20, 60);
 
-  console.log(order,'order');
+  // Guarda el PDF
+  pdf.save(nombreArchivo);
   
-  
-  
-  
-  
+}
+generarPdf(image: any, concepto: string): void {
+  const nombreArchivo = `factura-${concepto}.pdf`;
 
+  const pdf = new jsPDF();
+  pdf.addImage(image, 'JPEG', 10, 10, 190, 150);
+  pdf.save(nombreArchivo);
 }
 
 
