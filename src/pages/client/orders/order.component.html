@@ -5,7 +5,7 @@
         <h3>Estado:<span style="font-weight: bold;">&nbsp;{{pedido.estadoPedido}}</span></h3>
         <h3>Pedido Nº:<span style="font-weight: bold;">&nbsp;{{pedido.orderNumber}}</span></h3>
         <h3>Importe Compra:<span style="font-weight: bold;">&nbsp;{{pedido.salePrice}}&nbsp;€</span></h3>
-        <button class="custom-button" (click)="buyAgain(pedido.products)">Volver a comprar</button>
+        <!-- <button class="custom-button" (click)="buyAgain(pedido.products)">Volver a comprar</button> -->
         <app-orders-table
             [products]="pedido.products"
         ></app-orders-table>
