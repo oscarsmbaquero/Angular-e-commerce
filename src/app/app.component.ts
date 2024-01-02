@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { StoreService } from 'src/core/services/store/store.service';
 import { UsersService } from 'src/core/services/users/users.service';
@@ -17,6 +17,12 @@ export class AppComponent implements OnInit{
   showCart = false; 
   activeUser: any;
 
+  scrollPosition = 0;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.scrollPosition = window.scrollY || document.documentElement.scrollTop;
+  }
 
   constructor(
     private storeService: StoreService,
@@ -51,6 +57,14 @@ export class AppComponent implements OnInit{
 
     // Abre la URL de WhatsApp en la misma ventana o pestaña
     window.location.href = url;
+  }
+
+  scrollToTop() {
+    // Usa JavaScript puro para hacer scroll suavemente hacia arriba
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
 
