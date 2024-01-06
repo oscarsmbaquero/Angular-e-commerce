@@ -1,3 +1,4 @@
+import { CardPlayModule } from './../pages/products/card-play/card-play.module';
 
 
 import { NgModule } from '@angular/core';
@@ -66,6 +67,16 @@ const routes: Routes = [
     path: 'top-ventas',
     //canActivate: [AuthGuard],
     loadChildren: () => import('src/pages/products/top-ventas/top-ventas.module').then(m => m.TopVentasModule)
+  },
+  {
+    path: 'parrilla',
+    //canActivate: [AuthGuard],
+    loadChildren: () => import('src/pages/products/cartelera-products/cartelera-products.module').then(m => m.CarteleraProductsModule)
+  },
+  {
+    path: 'card-play',
+    //canActivate: [AuthGuard],
+    loadChildren: () => import('src/pages/products/card-play/card-play.module').then(m => m.CardPlayModule)
   },
 ];
 
