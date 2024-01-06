@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { StoreService } from 'src/core/services/store/store.service';
 import { UsersService } from 'src/core/services/users/users.service';
 import { IProduct } from 'src/core/services/models/product.models';
-import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
+//import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { environment } from '../../../enviroment/environment'; // Ajusta la ruta según tu estructura de carpetas
 import emailjs from '@emailjs/browser';
 import { IVenta } from 'src/core/services/models/ventas.models';
@@ -22,7 +22,7 @@ declare var paypal: any;
 })
 export class CartComponent  implements OnInit, AfterViewInit, OnChanges{
 
-  public payPalConfig?: IPayPalConfig;
+  //public payPalConfig?: IPayPalConfig;
   /**
    * almacenar la cesta
    */

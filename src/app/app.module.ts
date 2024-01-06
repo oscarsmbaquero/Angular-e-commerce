@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 
 import { CoreModule } from 'src/core/core.module';
 import { SharedModule } from 'src/shared/shared.module';
-import { NgxPayPalModule } from 'ngx-paypal';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BadgeModule } from 'primeng/badge';
