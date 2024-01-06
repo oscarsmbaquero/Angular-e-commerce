@@ -1,0 +1,31 @@
+<!-- app.component.html -->
+<div class="container">
+    <!-- Primer elemento -->
+    <div class="box-send" (click)="navigate('first')">
+        <div class="image-container" style="background-color: red;">
+            <!-- <img src="https://m.media-amazon.com/images/G/01/x-locale/cs/help/images/gateway/self-service/order._CB660668735_.png" alt="Tus pedidos" width="70px"> -->
+            <img src="../../../assets/images/card-play.jpg" width="70px">
+        </div>
+        <div class="content-container">
+            <!-- <h1>CarPlay y Android Auto</h1> -->
+            <!-- <h2>CarPlay y Android Auto</h2> -->
+            <h2 class="cursive-text">{{ getText('first') | async }}</h2>
+        </div>
+    </div>
+
+    <!-- Segundo elemento -->
+    <div class="box-send" (click)="navigate('second')">
+        <div class="image-container">
+            <img src="../../../assets/images/glasses.jpg" width="70px">
+        </div>
+        <div class="content-container">
+            <h2 class="cursive-text">{{ getText('second') | async }}</h2>
+            <!-- <p>Revisa tu perfíl y actualiza tus datos</p> -->
+        </div>
+    </div>
+
+    <!-- Sección inferior con el texto o cualquier otro contenido -->
+    <div>
+        <p>Aquí va tu texto adicional...</p>
+    </div>
+</div>

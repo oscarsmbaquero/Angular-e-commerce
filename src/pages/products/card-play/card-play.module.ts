@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardPlayComponent } from './card-play.component';
+import { CardPlayRoutingModule } from './cart-play-routing.module';
 
 
 
@@ -9,7 +10,8 @@ import { CardPlayComponent } from './card-play.component';
     CardPlayComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    CardPlayRoutingModule
   ]
 })
 export class CardPlayModule { }
