@@ -9,6 +9,8 @@ import { TypingEffectService } from 'src/core/services/typing-effect/typing-effe
 })
 export class CarteleraProductsComponent implements OnInit{
 
+  mostrarIcono = false;
+
   constructor(
     private typingEffectService: TypingEffectService,
     private router: Router
@@ -23,6 +25,10 @@ export class CarteleraProductsComponent implements OnInit{
     this.startTyping('second', 'Smart Glasses');
     this.startTyping('third', 'Prueba el nuevo dispositivo y olvidate de cables');
     this.startTyping('four', 'Las patillas se doblan');
+
+    setTimeout(() => {
+      this.mostrarIcono = true;
+    }, 2000);
   }
   getText(key: string) {
     return this.typingEffectService.getText$(key);
