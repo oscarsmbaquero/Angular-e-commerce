@@ -26,7 +26,7 @@
 .content-container {
     flex: 1;
     margin-left: 10px;
-    text-align: left;
+    text-align: right;
 }
 
 img {

@@ -21,6 +21,8 @@ export class CarteleraProductsComponent implements OnInit{
   ngOnInit() {
     this.startTyping('first', 'CarPlay y Android Auto');
     this.startTyping('second', 'Smart Glasses');
+    this.startTyping('third', 'Prueba el nuevo dispositivo y olvidate de cables');
+    this.startTyping('four', 'Las patillas se doblan');
   }
   getText(key: string) {
     return this.typingEffectService.getText$(key);
