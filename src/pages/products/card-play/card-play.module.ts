@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { CardPlayComponent } from './card-play.component';
 import { CardPlayRoutingModule } from './cart-play-routing.module';
 
+//PrimeNg
+import { GalleriaModule } from 'primeng/galleria';
+
 
 
 @NgModule({
@@ -11,7 +14,8 @@ import { CardPlayRoutingModule } from './cart-play-routing.module';
   ],
   imports: [
     CommonModule,
-    CardPlayRoutingModule
+    CardPlayRoutingModule,
+    GalleriaModule
   ]
 })
 export class CardPlayModule { }
