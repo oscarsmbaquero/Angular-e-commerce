@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ConfirmCartService } from 'src/core/services/confirmCart/confirm-cart.service';
 import { PhotoService } from 'src/core/services/photoservice/photoservice';
+import { StoreService } from 'src/core/services/store/store.service';
 
 @Component({
   selector: 'app-card-play',
@@ -12,6 +14,8 @@ import { PhotoService } from 'src/core/services/photoservice/photoservice';
 export class CardPlayComponent implements OnInit {
 
   images: any[] | undefined;
+  
+  activeUser: any;
 
   activeIndex: number = 0;
  // responsiveOptions: any[] | undefined;
@@ -58,13 +62,17 @@ responsiveOptions: any[] = [
     }
 ];
 constructor(
-  private photoService: PhotoService
+  private photoService: PhotoService,
+  private confirmCartService: ConfirmCartService,
+  private storeService: StoreService,
 ){
 
 }
 
 
 ngOnInit() {
+  //recupero el usuario activo
+    this.activeUser = localStorage.getItem('user');
   this.photoService.getImages().then((images) => (this.images = images));
   this.responsiveOptions = [
       {
@@ -81,5 +89,24 @@ ngOnInit() {
       }
   ];
 }
+addToCart(): void {
+    const product ={
+        
+            "_id": "6516f079188964aaf379cf7d",
+            "name": "OhO sunshine",
+            "description": "OhO sunshine Water Resistance Audio Sunglasses,Open Ear Bluetooth Sunglasses to Listen Music and Make Phone Call",
+            "unidades": 1,
+            "precio": 49,
+            "image": "https://res.cloudinary.com/dcfk8yjwr/image/upload/v1699178959/gafa1_otlsvr.jpg",
+            "updatedAt": "2024-01-06T21:17:35.257Z",
+            "unidadesVendidas": 7,
+            "stock": "Stock",
+            "stockStatus": "warning",
+            "unidadesCompra": 1,
+            "totalPrice": 49
+          
+    }
+    this.storeService.addToCart(product);
+  }
 
 }

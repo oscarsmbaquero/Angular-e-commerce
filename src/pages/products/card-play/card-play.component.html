@@ -46,7 +46,7 @@
         </p-tabPanel>
     </p-tabView>
     <div class="price">
-        <button class="btn btn-info mt-3" >
+        <button class="btn btn-info mt-3" (click)="addToCart()" [disabled]="true">
             <i class="fas fa-shopping-cart"></i>&nbsp;<span style="color:white">Añadir a la cesta</span>
           </button>
           <h2 class="mt-4" style="font-weight: bold; color:white; margin-left:20px">80€</h2>
