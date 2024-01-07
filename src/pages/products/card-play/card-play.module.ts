@@ -5,6 +5,7 @@ import { CardPlayRoutingModule } from './cart-play-routing.module';
 
 //PrimeNg
 import { GalleriaModule } from 'primeng/galleria';
+import { TabViewModule } from 'primeng/tabview';
 
 
 
@@ -15,7 +16,8 @@ import { GalleriaModule } from 'primeng/galleria';
   imports: [
     CommonModule,
     CardPlayRoutingModule,
-    GalleriaModule
+    GalleriaModule,
+    TabViewModule
   ]
 })
 export class CardPlayModule { }

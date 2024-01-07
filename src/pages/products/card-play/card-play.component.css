@@ -1,0 +1,42 @@
+.carousel-container {
+    display: flex;
+    padding: 15px;
+    background-color: transparent;
+  }
+  
+  .first {
+    /* Puedes ajustar estos estilos según tus necesidades */
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .data-container {
+    /* Puedes ajustar estos estilos según tus necesidades */
+    flex: 1;
+    padding: 20px;
+    background-color: #333; /* Un fondo oscuro como ejemplo */
+  }
+  @media (max-width: 767px) {
+    /* Cambios de estilo para pantallas más pequeñas (tamaño de teléfono móvil) */
+    .carousel-container {
+      flex-direction: column;
+    }
+  
+    .first, .data-container {
+      flex: auto;
+      width: 100%;
+      padding: 10px; /* Ajusta el espaciado para pantallas más pequeñas */
+    }
+  }
+  
+  .data-container h4 {
+    color: white;
+    font-size: 24px; /* Tamaño de fuente predeterminado para pantallas grandes */
+  }
+  
+  @media (max-width: 767px) {
+    /* Cambios de estilo para pantallas más pequeñas (tamaño de teléfono móvil) */
+    .data-container h4 {
+      font-size: 16px; /* Tamaño de fuente más pequeño para pantallas pequeñas */
+    }
+  }
