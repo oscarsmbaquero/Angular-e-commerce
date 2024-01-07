@@ -6,10 +6,11 @@
             <!-- <img src="https://m.media-amazon.com/images/G/01/x-locale/cs/help/images/gateway/self-service/order._CB660668735_.png" alt="Tus pedidos" width="70px"> -->
             <img src="../../../assets/images/card-play.jpg" width="70px">
             <img src='../../../assets/images/new.png' width="50px" *ngIf="mostrarIcono">
+            <img  width="50px" *ngIf="!mostrarIcono">
         </div>
-        <div class="content-container">
-            <h2 class="cursive-text">{{ getText('first') | async }}</h2>
-            <!-- <h6 class="cursive-text">{{ getText('third') | async }}</h6> -->
+        <div class="content-container" style="padding-top: 20px;">
+            <h2 class="cursive-text" style="color:blue">{{ getText('first') | async }}</h2>
+            <h6 class="cursive-text">{{ getText('third') | async }}</h6>
         </div>
     </div>
 
@@ -17,10 +18,13 @@
     <div class="box-send" (click)="navigate('second')">
         <div class="image-container">
             <img src="../../../assets/images/glasses.jpg" width="70px">
+            <img src='../../../assets/images/new.png' width="50px" *ngIf="mostrarIcono">
+            <img  width="50px" *ngIf="!mostrarIcono">
+            
         </div>
-        <div class="content-container">
-            <h2 class="cursive-text">{{ getText('second') | async }}</h2>
-            <!-- <h6 class="cursive-text">{{ getText('four') | async }}</h6> -->
+        <div class="content-container" style="padding-top: 20px;">
+            <h2 class="cursive-text"  style="color:blue">{{ getText('second') | async }}</h2>
+            <h6 class="cursive-text">{{ getText('four') | async }}</h6>
             <!-- <p>Revisa tu perfíl y actualiza tus datos</p> -->
         </div>
     </div>

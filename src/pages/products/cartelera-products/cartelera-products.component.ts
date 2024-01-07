@@ -21,10 +21,10 @@ export class CarteleraProductsComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.startTyping('first', 'CarPlay y Android Auto');
+    this.startTyping('first', 'CarPlay/Android Auto');
     this.startTyping('second', 'Smart Glasses');
-    this.startTyping('third', 'Prueba el nuevo dispositivo y olvidate de cables');
-    this.startTyping('four', 'Las patillas se doblan');
+    this.startTyping('third', 'Adaptador inalámbrico CarPlay 2 en 1 y adaptador inalámbrico para automóvil Android Auto.');
+    this.startTyping('four', 'Gafas inteligentes con Bluetooth 5.0, control de audio doble, carga rápida, protección UV.');
 
     setTimeout(() => {
       this.mostrarIcono = true;

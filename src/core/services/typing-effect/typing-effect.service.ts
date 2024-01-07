@@ -25,7 +25,7 @@ export class TypingEffectService {
     if (index < text.length) {
       this._textSubjects[key].next(text.substring(0, index + 1));
       index++;
-      setTimeout(() => this._startTypingEffect(key, text, index), 100);
+      setTimeout(() => this._startTypingEffect(key, text, index), 50);
     }
   }
 }
